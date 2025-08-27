@@ -1,0 +1,74 @@
+// ************** IMPORT STYLES **************
+
+@use '../abstracts' as *;
+
+
+// **************** TYPGRAPHY ****************
+
+// ----- GENERAL -----
+
+h1, h2, h3, h4, h5, p, span, a, label {
+    color: $cream;
+    font-family: $poppins;
+}
+
+// ----- TEXT MODIFICATIONS -----
+
+.line-jump {
+    display: block; // allows the text to go back to the line
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+// ----- TITLES -----
+// Here is the hierarchy design of the titles; 
+// to apply modifications, go to the file base\mixins
+
+.title__primary {
+    @include text-preset(title);
+    @include text-preset(title__primary);
+}
+
+.title__secondary {
+    @include text-preset(title);
+    @include text-preset(title__secondary);
+}
+
+
+.accent {
+    @include text-preset(accent); // Sets the text in italic
+}
+
+// ----- PARAGRAPHS & OTHER TEXTS -----
+// Here is the hierarchy design of the texts; 
+// to apply modifications, go to the file base\mixins
+
+p {
+    @include text-preset(paragraph);
+}
+
+.paragraph__small {
+    @include text-preset(paragraph);
+    @include text-preset(paragraph__small);
+}
+
+.paragraph__xsmall {
+    @include text-preset(paragraph);
+    @include text-preset(paragraph__xsmall);
+}
+
+.link__xsmall {
+    @include text-preset(paragraph);
+    @include text-preset(paragraph__xsmall);
+    @include text-preset(link__small);
+}

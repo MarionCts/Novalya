@@ -1,0 +1,121 @@
+// ************** IMPORT STYLES **************
+
+@use "variables" as *;
+
+// ****************** MIXINS *****************
+
+// ----- MEDIA QUERIES -----
+
+@mixin media($min-width) {
+
+    @media (min-width: $min-width) {
+        @content;
+    }
+
+}
+
+// ----- FLEXBOX PRESETS -----
+
+@mixin flex-preset($direction: row, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+// ----- TEXT PRESETS -----
+
+@mixin text-preset($type) {
+
+    @if $type == title {
+        font-family: $playfair;
+        line-height: 110%;
+
+    } @else if $type == title__primary {
+        font-weight: 700;
+        font-size: 4.6rem;
+        letter-spacing: 1.4rem;
+
+        @include media(768px) {
+            font-size: 8rem;
+            letter-spacing: 2.4rem;
+        }
+
+    } @else if $type == title__secondary {
+        font-weight: 700;
+        font-size: 2.8rem;
+
+        @include media(768px) {
+            font-size: 4rem;
+        }
+
+    } @else if $type == accent {
+        font-style: italic;
+        font-weight: 500;
+
+    } @else if $type == paragraph {
+        font-family: $poppins;
+        font-weight: 300;
+        font-size: 1.8rem;
+        letter-spacing: .05rem;
+
+    } @else if $type == paragraph__small {
+        font-size: 1.5rem;
+
+    } @else if $type == paragraph__xsmall {
+        font-size: 1.2rem;
+
+    } @else if $type == link__small {
+        border-bottom: $cream .1rem solid;
+        transition: all .1s linear;
+
+        &:hover {
+            color: $beige;
+            border-bottom: $beige .1rem solid;
+        }
+    }
+
+}
+
+// ----- BUTTON PRESETS -----
+
+@mixin button-preset($type) {
+
+    @if $type == button {
+        font-family: $poppins;
+        border: none;
+        border-radius: 0 2rem 0 2rem;
+        padding: 1.4rem 1.3rem;
+        font-weight: 600;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+        cursor: pointer;
+        transition: all 0.2s linear;
+        text-align: center;
+
+    } @else if $type == button__primary {
+        border: none;
+        background-color: $cream;
+        color: $coal;
+
+    } @else if $type == button__secondary {
+        background-color: transparent;
+        border: .1rem solid $cream;
+        color: $cream;
+    }
+
+}
+
+@mixin button-hover-preset($type) {
+
+    @if $type == button__primary {
+        background-color: $cappucino;
+        color: $cream;
+
+    } @else if $type == button__secondary {
+        background-color: $cream;
+        color: $coal;
+    }
+
+}

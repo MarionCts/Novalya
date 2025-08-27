@@ -1,0 +1,29 @@
+// ************** IMPORT STYLES **************
+
+@use "../abstracts" as *;
+
+// ****************** GLOBALS ****************
+
+// ----- BODY -----
+
+body {
+    background: $midnight;
+    padding: 4rem 3.1rem;
+}
+
+// ----- HEADER -----
+
+// ----- SIZES -----
+
+.full-w {
+    width: 100%;
+}
+
+.full-h {
+    height: 100%;
+}
+
+.full-vh-center {
+    min-height: 100vh;
+    @include flex-preset(column, center, center);
+}

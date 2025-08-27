@@ -1,0 +1,14 @@
+// ************** IMPORT STYLES **************
+
+@use "./abstracts" as *;
+@use "./components" as *;
+@use "base" as *;
+
+// ******************* MAIN ******************
+
+header {
+    position: fixed;
+    top: 4rem;
+    left: 3.1rem;
+    right: 3.1rem;
+}

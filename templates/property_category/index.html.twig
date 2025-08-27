@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PropertyCategory index{% endblock %}
+
+{% block body %}
+    <h1>PropertyCategory index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for property_category in property_categories %}
+            <tr>
+                <td>{{ property_category.id }}</td>
+                <td>{{ property_category.name }}</td>
+                <td>
+                    <a href="{{ path('app_property_category_show', {'id': property_category.id}) }}">show</a>
+                    <a href="{{ path('app_property_category_edit', {'id': property_category.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_property_category_new') }}">Create new</a>
+{% endblock %}

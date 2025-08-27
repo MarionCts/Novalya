@@ -1,0 +1,27 @@
+// ************** IMPORT STYLES **************
+
+@use "../abstracts" as *;
+
+// ***************** BUTTONS ******************
+
+.button__primary {
+    @include button-preset(button);
+    @include button-preset(button__primary);
+
+    &:hover {
+        @include button-hover-preset(button__primary);
+    }
+
+    .logout {
+        width: auto;
+    }
+}
+
+.button__secondary {
+    @include button-preset(button);
+    @include button-preset(button__secondary);
+
+    &:hover {
+        @include button-hover-preset(button__secondary);
+    }
+}

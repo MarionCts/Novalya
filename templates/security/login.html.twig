@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novalya | Se connecter
+{% endblock %}
+
+{% block body %}
+
+		<form method="post" class="form__auth">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			{% if app.user %}
+				<div class="mb-3">
+					Vous êtes connecté avec l'adresse
+					{{ app.user.userIdentifier }},
+					<a href="{{ path('app_logout') }}">Se déconnecter</a>
+				</div>
+			{% endif %}
+
+			<div class="form__auth--text">
+				<h1 class="title title__secondary accent">Se connecter</h1>
+				<p class="paragraph__small center">Connectez-vous à votre espace personnel pour voir et gérer vos favoris.</p>
+			</div>
+
+			<div class="form__auth--input">
+				<label for="username" class="paragraph__small">Email *</label>
+				<input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+			</div>
+			<div class="form__auth--input">
+				<label for="password" class="paragraph__small">Mot de passe *</label>
+				<input type="password" name="_password" id="password" autocomplete="current-password" required>
+			</div>
+			<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+
+			<button class="button button__primary full-w" type="submit">
+				Se connecter
+			</button>
+
+			<div class="form__auth--options">
+				<p class="paragraph__xsmall">Vous n'avez pas encore de compte ?
+				</p>
+				<a href="{{ path('app_register')}}" class="link__xsmall">Inscrivez-vous</a>
+			</div>
+
+		</form>
+
+{% endblock %}

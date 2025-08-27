@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Property index{% endblock %}
+
+{% block body %}
+    <h1>Property index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Description</th>
+                <th>RoomsTotal</th>
+                <th>BathroomNumber</th>
+                <th>BedroomNumber</th>
+                <th>IndoorSurface</th>
+                <th>OutdoorSurface</th>
+                <th>EnergyClass</th>
+                <th>ClimateClass</th>
+                <th>MapUrl</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>CreatedAt</th>
+                <th>ModifiedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for property in properties %}
+            <tr>
+                <td>{{ property.id }}</td>
+                <td>{{ property.name }}</td>
+                <td>{{ property.city }}</td>
+                <td>{{ property.description }}</td>
+                <td>{{ property.roomsTotal }}</td>
+                <td>{{ property.bathroomNumber }}</td>
+                <td>{{ property.bedroomNumber }}</td>
+                <td>{{ property.indoorSurface }}</td>
+                <td>{{ property.outdoorSurface }}</td>
+                <td>{{ property.energyClass }}</td>
+                <td>{{ property.climateClass }}</td>
+                <td>{{ property.mapUrl }}</td>
+                <td>{{ property.price }}</td>
+                <td>{{ property.status }}</td>
+                <td>{{ property.createdAt ? property.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ property.modifiedAt ? property.modifiedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_property_show', {'id': property.id}) }}">show</a>
+                    <a href="{{ path('app_property_edit', {'id': property.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_property_new') }}">Create new</a>
+{% endblock %}

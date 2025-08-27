@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PropertyImage{% endblock %}
+
+{% block body %}
+    <h1>PropertyImage</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ property_image.id }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ property_image.url }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_property_image_index') }}">back to list</a>
+
+    <a href="{{ path('app_property_image_edit', {'id': property_image.id}) }}">edit</a>
+
+    {{ include('property_image/_delete_form.html.twig') }}
+{% endblock %}

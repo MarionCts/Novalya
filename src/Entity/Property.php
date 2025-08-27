@@ -6,6 +6,8 @@ use App\Enum\ClimateClass;
 use App\Enum\EnergyClass;
 use App\Enum\Status;
 use App\Repository\PropertyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -55,6 +57,33 @@ class Property
 
     #[ORM\Column(enumType: Status::class)]
     private ?Status $status = null;
+
+    #[ORM\Column]
+    private ?\DateTime $createdAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $modifiedAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'properties')]
+    private ?PropertyCategory $category = null;
+
+    /**
+     * @var Collection<int, Favorite>
+     */
+    #[ORM\OneToMany(targetEntity: Favorite::class, mappedBy: 'property')]
+    private Collection $favorites;
+
+    /**
+     * @var Collection<int, PropertyImage>
+     */
+    #[ORM\OneToMany(targetEntity: PropertyImage::class, mappedBy: 'property')]
+    private Collection $propertyImages;
+
+    public function __construct()
+    {
+        $this->favorites = new ArrayCollection();
+        $this->propertyImages = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -213,6 +242,102 @@ class Property
     public function setStatus(Status $status): static
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getModifiedAt(): ?\DateTimeImmutable
+    {
+        return $this->modifiedAt;
+    }
+
+    public function setModifiedAt(?\DateTimeImmutable $modifiedAt): static
+    {
+        $this->modifiedAt = $modifiedAt;
+
+        return $this;
+    }
+
+    public function getCategory(): ?PropertyCategory
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?PropertyCategory $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Favorite>
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
+    }
+
+    public function addFavorite(Favorite $favorite): static
+    {
+        if (!$this->favorites->contains($favorite)) {
+            $this->favorites->add($favorite);
+            $favorite->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Favorite $favorite): static
+    {
+        if ($this->favorites->removeElement($favorite)) {
+            // set the owning side to null (unless already changed)
+            if ($favorite->getProperty() === $this) {
+                $favorite->setProperty(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PropertyImage>
+     */
+    public function getPropertyImages(): Collection
+    {
+        return $this->propertyImages;
+    }
+
+    public function addPropertyImage(PropertyImage $propertyImage): static
+    {
+        if (!$this->propertyImages->contains($propertyImage)) {
+            $this->propertyImages->add($propertyImage);
+            $propertyImage->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removePropertyImage(PropertyImage $propertyImage): static
+    {
+        if ($this->propertyImages->removeElement($propertyImage)) {
+            // set the owning side to null (unless already changed)
+            if ($propertyImage->getProperty() === $this) {
+                $propertyImage->setProperty(null);
+            }
+        }
 
         return $this;
     }
