@@ -1,0 +1,5 @@
+property:
+  description:
+    not_blank: "You must enter some text"
+    length_min: "This field must contain at least {{ limit }} characters"
+    length_max: "This field cannot exceed {{ limit }} characters"

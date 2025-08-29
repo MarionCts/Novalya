@@ -1,0 +1,121 @@
+// ************** IMPORT STYLES **************
+
+@use "../abstracts" as *;
+
+// **************** NAV MENU *****************
+
+.header__nav--bg {
+    display: none;
+
+    @include media(768px) {
+        display: block;
+        background-image: url("./../../images/nav_menu_background_villa.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 65%;
+    }
+}
+
+.scroll-lock {
+    overflow: hidden;
+    touch-action: none;
+}
+
+.header__nav--content {
+    @include flex-preset(column, center, center);
+    gap: 4.5rem;
+
+    @include media(768px) {
+        width: 35%;
+    }
+}
+
+.menu-overlay {
+    @include flex-preset(row, center, center);
+    background-color: css-var(bg);
+    color: css-var(text);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(1rem);
+    transition: all 0.2s ease;
+
+    @include media(768px) {
+        @include flex-preset(row, center, space-between);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        background-image: url("./../../images/menu_background_overlay.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        mix-blend-mode: multiply;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+    }
+
+    > * {
+        z-index: 1;
+    }
+
+    ul {
+        @include flex-preset(column, center, center);
+        gap: 3rem;
+    }
+}
+
+// transition when the menu is clicked to open it
+.menu-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+    &::before {
+        opacity: css-var(menu-bg-opacity);
+    }
+}
+
+.header__logo,
+.social-media {
+    height: 5.5rem;
+
+    a {
+        svg {
+            path {
+                fill: css-var(text);
+                transition: all 0.2s linear;
+            }
+        }
+    }
+}
+
+.social-media {
+    @include flex-preset(row, center, center);
+    gap: 1.5rem;
+
+    a {
+        svg {
+            height: 3rem;
+
+            path {
+                fill: css-var(text);
+                transition: all 0.2s linear;
+            }
+        }
+
+        &:hover svg path {
+            fill: css-var(link);
+        }
+    }
+}

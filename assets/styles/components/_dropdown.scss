@@ -1,0 +1,63 @@
+// ************** IMPORT STYLES **************
+
+@use "../abstracts" as *;
+
+// ********** ADMIN DROPDOWN MENU ***********
+
+.admin__aside {
+    width: 100%;
+    
+    @include media(768px) {
+        width: 35rem;
+    }
+}
+
+.admin__panel {
+    border: 0.1rem solid css-var(text);
+    border-radius: 0 2rem 0 2rem;
+    padding: 4rem;
+}
+
+.admin__panel--dropdown {
+    margin-top: 2rem;
+    background: none;
+    border: none;
+    color: css-var(text);
+    cursor: pointer;
+    transition: all 0.2s linear;
+    @include flex-preset(row, center, space-between);
+    width: 100%;
+
+    &:hover {
+        color: css-var(link);
+    }
+}
+
+.dropdown__menu {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+    transform: translateY(1rem);
+}
+
+.dropdown__menu.opens {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    transform: translateY(0);
+    margin-top: 2.5rem;
+    @include flex-preset(column, flex-start, center);
+    gap: 1rem;
+}
+
+.dropdown-icon {
+
+    path {
+    fill: currentColor;
+    transition: fill .2s linear; 
+  }
+
+  &:is(:hover, :focus-visible) {
+    color: css-var(link);
+  }
+}

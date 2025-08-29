@@ -1,4 +1,5 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="button button__primary">{{ button_label|default('Ajouter') }}</button>
+    <a class="button button__secondary" href="{{ path('app_property_index') }}">Retour aux propriétés</a>
 {{ form_end(form) }}

@@ -4,14 +4,159 @@
 
 // ****************** GLOBALS ****************
 
+// --- GENERAL ---
+
+.hidden {
+    display: none;
+    transition: all 0.2s linear;
+}
+
 // ----- BODY -----
 
 body {
-    background: $midnight;
+    background: css-var(bg);
+    @include flex-preset(column, center, space-between);
+    min-height: 100vh;
     padding: 4rem 3.1rem;
 }
 
 // ----- HEADER -----
+
+header {
+    @include flex-preset(row, center, space-between);
+    width: 100%;
+}
+
+.header {
+    @include flex-preset(row, center, flex-start);
+    gap: 2rem;
+}
+
+// ----- FOOTER -----
+
+// SHARED FLEXBOX, PADDING & GAP
+
+.footer,
+.footer__connect,
+.footer__legal,
+.footer__links,
+.footer__links--text,
+.footer__newsletter {
+    @include flex-preset(column, center, center);
+
+    @include media(980px) {
+        @include flex-preset(column, flex-start, flex-start);
+    }
+}
+
+.footer__connect,
+.footer__links,
+.footer__newsletter {
+    padding: 4.8rem 0;
+    border-bottom: 0.1rem solid css-var(text);
+    width: 100%;
+
+    @include media(980px) {
+        padding: 0;
+        border-bottom: none;
+    }
+}
+
+.footer__connect,
+.footer__links,
+.footer__newsletter {
+    gap: 4.1rem;
+}
+
+// General
+
+footer {
+    width: 100%;
+
+    .footer {
+        @include media(980px) {
+            @include flex-preset(row, flex-start, flex-start);
+        }
+    }
+}
+
+.footer {
+    @include media(980px) {
+        @include flex-preset(row, center, center);
+        border: 0.1rem solid css-var(text);
+        border-radius: 0 8rem 0 8rem;
+        padding: 4rem;
+        margin-bottom: 4.1rem;
+        height: 43rem;
+    }
+
+    @include media(1035px) {
+        height: 41rem;
+    }
+
+    @include media(1350px) {
+        height: 35rem;
+    }
+}
+
+.footer__connect {
+    border-top: 0.1rem solid css-var(text);
+
+    @include media(980px) {
+        border-top: none;
+    }
+}
+
+.footer__connect,
+.footer__links {
+    @include media(980px) {
+        position: relative;
+        height: 100%;
+        
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 0.1rem;
+            background-color: css-var(text);
+        }
+    }
+}
+
+.footer__links,
+.footer__newsletter {
+    @include media(980px) {
+        padding-left: 4rem;
+    }
+}
+
+.footer__newsletter {
+    margin-bottom: 4.1rem;
+
+    @include media(980px) {
+        margin-bottom: 0;
+    }
+
+    form {
+        @include flex-preset(column, center, center);
+        gap: 1.2rem;
+    }
+}
+
+.footer__legal,
+.footer__links--text {
+    gap: 1.5rem;
+}
+
+.footer__legal {
+    @include flex-preset(
+        column,
+        center,
+        center
+    ); // only footer__legal keeps the same flexblox behavior as mobile
+}
 
 // ----- SIZES -----
 
@@ -23,7 +168,37 @@ body {
     height: 100%;
 }
 
-.full-vh-center {
-    min-height: 100vh;
-    @include flex-preset(column, center, center);
+// ----- MARGIN & PADDINGS -----
+
+.mb-55 {
+    margin-bottom: 5.5rem;
+}
+
+.mt-35 {
+    margin-top: 3.5rem;
+}
+
+.px-100 {
+    padding: 10rem 0;
+}
+
+.p-section {
+    padding: 6rem 0;
+
+    @include media(980px) {
+        padding: 9rem 0;
+    }
+}
+
+// ------- BORDER-RADIUS -------
+
+.brr-60 {
+    border-radius: 0 6rem 0 0;
+    overflow: hidden;
+}
+
+// --------- POSITION ---------
+
+.as-l {
+    align-self: start;
 }

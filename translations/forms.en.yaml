@@ -1,0 +1,52 @@
+property:
+  name:
+    label: "Name :"
+  city:
+    label: "City :"
+  description:
+    label: "Description :"
+  rooms_total:
+    label: "Total rooms number :"
+  bathrooms:
+    label: "Bathrooms number :"
+  bedrooms:
+    label: "Bedrooms number :"
+  indoor_surface:
+    label: "Indoor surface :"
+  outdoor_surface:
+    label: "Outdoor surface :"
+  energy_class:
+    label: "Energy class :"
+  climate_class:
+    label: "Climate class :"
+  map_url:
+    label: "Google Maps URL :"
+    invalid: "The link is invalid."
+  price:
+    label: "Price :"
+  status:
+    label: "Status :"
+  category:
+    label: "Category :"
+
+enum:
+  status:
+    Draft: "Draft"
+    Published: "Published"
+    Archived: "Archived"
+  energy_class:
+    A: "A"
+    B: "B"
+    C: "C"
+    D: "D"
+    E: "E"
+    F: "F"
+    G: "G"
+  climate_class:
+    A: "A"
+    B: "B"
+    C: "C"
+    D: "D"
+    E: "E"
+    F: "F"
+    G: "G"

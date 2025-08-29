@@ -7,20 +7,18 @@
 // ----- MEDIA QUERIES -----
 
 @mixin media($min-width) {
-
     @media (min-width: $min-width) {
         @content;
     }
-
 }
 
 // ----- FLEXBOX PRESETS -----
 
 @mixin flex-preset($direction: row, $align: center, $justify: center) {
-  display: flex;
-  flex-direction: $direction;
-  align-items: $align;
-  justify-content: $justify;
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
 }
 
 // ----- TEXT PRESETS -----
@@ -32,13 +30,13 @@
         line-height: 110%;
 
     } @else if $type == title__primary {
-        font-weight: 700;
+        font-weight: 500;
+        text-transform: uppercase;
+        line-height: 100%;
         font-size: 4.6rem;
-        letter-spacing: 1.4rem;
 
         @include media(768px) {
             font-size: 8rem;
-            letter-spacing: 2.4rem;
         }
 
     } @else if $type == title__secondary {
@@ -48,16 +46,23 @@
         @include media(768px) {
             font-size: 4rem;
         }
+    } @else if $type == title__tertiary {
+        font-weight: 700;
+        font-size: 3.2rem;
 
-    } @else if $type == accent {
+    } @else if $type == panel__titles {
+        font-weight: 700;
+        font-size: 1.8rem;
+
+    }@else if $type == accent {
         font-style: italic;
         font-weight: 500;
 
     } @else if $type == paragraph {
         font-family: $poppins;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 1.8rem;
-        letter-spacing: .05rem;
+        letter-spacing: 0.05rem;
 
     } @else if $type == paragraph__small {
         font-size: 1.5rem;
@@ -65,16 +70,37 @@
     } @else if $type == paragraph__xsmall {
         font-size: 1.2rem;
 
-    } @else if $type == link__small {
-        border-bottom: $cream .1rem solid;
-        transition: all .1s linear;
+    } @else if $type == link__menu {
+        font-size: 2rem;
+        font-weight: 400;
+        letter-spacing: 0.06rem;
+        transition: all 0.1s linear;
+        text-transform: uppercase;
 
         &:hover {
-            color: $beige;
-            border-bottom: $beige .1rem solid;
+            color: css-var(link);
         }
-    }
 
+    } @else if $type == link__small {
+        border-bottom: css-var(text) 0.1rem solid;
+        transition: all 0.1s linear;
+
+        &:hover {
+            color: css-var(link);
+            border-bottom: css-var(link) 0.1rem solid;
+        }
+
+    } @else if $type == footer__links {
+        font-size: 1.3rem;
+        font-weight: 600;
+
+    }@else if $type == legal__mentions {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        font-weight: 600;
+
+    }
 }
 
 // ----- BUTTON PRESETS -----
@@ -96,26 +122,24 @@
 
     } @else if $type == button__primary {
         border: none;
-        background-color: $cream;
-        color: $coal;
+        background-color: css-var(primary-btn-bg);
+        color: css-var(primary-btn-text);
 
     } @else if $type == button__secondary {
         background-color: transparent;
-        border: .1rem solid $cream;
-        color: $cream;
-    }
-
+        border: 0.1rem solid css-var(text);
+        color: css-var(secondary-btn-text);
+    } 
 }
 
 @mixin button-hover-preset($type) {
 
     @if $type == button__primary {
-        background-color: $cappucino;
-        color: $cream;
+        background-color: css-var(primary-btn-bg-hover);
+        color: css-var(primary-btn-text-hover);
 
     } @else if $type == button__secondary {
-        background-color: $cream;
-        color: $coal;
+        background-color: css-var(secondary-btn-bg-hover);
+        color: css-var(secondary-btn-text-hover);
     }
-
 }

@@ -1,19 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Novalya | S'inscrire
+{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
-    {{ form_errors(registrationForm) }}
+	<main class="px-100">
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+		{{ form_errors(registrationForm) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+		{{ form_start(registrationForm) }}
+
+		<div class="form__text">
+			<h1 class="title title__secondary accent">S'inscrire</h1>
+			<p class="paragraph__small center">Créez votre espace personnel pour voir vos biens favoris.</p>
+		</div>
+
+		<div class="form__choices">
+			{{ form_row(registrationForm.name) }}
+		</div>
+		<div class="form__choices">
+			{{ form_row(registrationForm.firstName) }}
+		</div>
+		<div class="form__choices">
+			{{ form_row(registrationForm.email) }}
+		</div>
+		<div class="form__choices">
+			{{ form_row(registrationForm.plainPassword) }}
+		</div>
+		<div class="form__choices">
+			{{ form_row(registrationForm.agreeTerms) }}
+		</div>
+
+		<button type="submit" class="button button__primary full-w">S'inscrire</button>
+
+		<div class="form__options">
+			<p class="paragraph__xsmall">Vous avez déjà un compte ?
+			</p>
+			<a href="{{ path('app_login')}}" class="link__xsmall">Connectez-vous</a>
+		</div>
+
+		{{ form_end(registrationForm) }}
+
+	</main>
+
 {% endblock %}

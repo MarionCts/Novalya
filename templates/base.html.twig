@@ -7,9 +7,18 @@
 			{% block title %}Novalya
 			{% endblock %}
 		</title>
+
+		{# Import Google Fonts #}
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+		{# JS scripts #}
+		<script src="{{ asset('script/menu.js') }}" defer></script>
+		<script src="{{ asset('script/dropdown.js') }}" defer></script>
+		<script src="{{ asset('script/theme.js') }}" defer></script>
+
+		{# Favicon #}
 		<link
 		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 
@@ -19,8 +28,7 @@
 	</head>
 
 	{# BODY #}
-	<body
-		class="full-vh-center">
+	<body>
 
 		{# HEADER #}
 		{% block header %}
@@ -28,6 +36,11 @@
 		{% endblock %}
 
 		{% block body %}{% endblock %}
+
+		{# SWITCH THEME BUTTON #}
+		{% block theme %}
+			{% include 'layout/theme.html.twig' %}
+		{% endblock %}
 
 		{# JS #}
 		{{ encore_entry_script_tags('app') }}

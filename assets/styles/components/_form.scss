@@ -4,37 +4,145 @@
 
 // ***************** FORMS *******************
 
-// AUTHENTIFICATION FORM
+// GENERAL FORMS
 
-.form__auth {
+.form {
     @include flex-preset(column, center, center);
     gap: 2rem;
+    width: 100%;
+
+    div {
+        @include flex-preset(column, flex-start, center);
+        gap: 0.5rem;
+        width: 100%;
+
+        label {
+            @include text-preset(paragraph);
+            @include text-preset(paragraph__small);
+        }
+    }
 }
 
-.form__auth--text {
+.form__text {
     @include flex-preset(column, center, center);
     gap: 3.7rem;
 }
 
-.form__auth--input {
+.form__choices {
     @include flex-preset(column, flex-start, center);
-    gap: .5rem;
+    gap: 0.5rem;
     width: 100%;
 
-    input {
+    div {
+        @include flex-preset(column, flex-start, center);
+        gap: 0.5rem;
         width: 100%;
-        height: 4rem;
-        padding: 1.3rem;
-        border-radius: 0 2rem 0 0;
-        background-color: transparent;
-        border: 0.1rem $cream solid;
-        color: $cream;
-        font-family: $poppins;
-        font-size: 1.3rem;
+
+        label {
+            @include text-preset(paragraph);
+            @include text-preset(paragraph__small);
+        }
+    }
+
+    .agree-terms {
+        @include flex-preset(row, center, flex-start);
+        gap: 0.5rem;
     }
 }
 
-.form__auth--options {
+.form__input {
+    width: 100%;
+    min-height: 4rem;
+    padding: 1.3rem;
+    border-radius: 0 2rem 0 0;
+    background-color: transparent;
+    border: 0.1rem solid css-var(text);
+    color: css-var(text);
+    font-family: $poppins;
+    font-size: 1.3rem;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: white;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    background: url("./../../images/dropdown_icon_open.svg") no-repeat right 1rem center;
+    background-size: 1rem;
+
+    option {
+        background-color: css-var(bg);
+        color: css-var(text);
+    }
+}
+
+.form__options {
     @include flex-preset(row, center, center);
-    gap: .5rem;
+    gap: 0.5rem;
+}
+
+// NEWSLETTER FORM
+
+.form__news--input {
+    width: 100%;
+    height: 4rem;
+    padding: 1.3rem;
+    border-radius: 0 2rem 0 0;
+    background-color: css-var(newsletter-input-bg);
+    border: 0.1rem solid css-var(newsletter-input-border);
+    color: css-var(newsletter-input-text);
+    font-family: $poppins;
+    font-size: 1.3rem;
+}
+
+// "ADD NEW..." FORM
+
+.new__property {
+    @include flex-preset(column, center, center);
+    width: 100%;
+}
+
+.new__property {
+    form {
+        width: 100%;
+
+        @include media(768px) {
+            max-width: 60rem;
+        }
+
+        .form {
+            gap: 2rem;
+            position: relative;
+
+            @include media(768px) {
+                max-width: 60rem;
+            }
+        }
+    }
+}
+
+.new__property {
+    button,
+    a {
+        width: 100%;
+
+        @include media(768px) {
+            max-width: 60rem;
+        }
+    }
+    button {
+        margin-top: 3rem;
+    }
+}
+
+.new__property {
+    h2 {
+        color: css-var(category-title);
+        text-align: center;
+        padding: 1rem;
+        background: css-var(category-bg);
+        border-radius: 0 2rem 0 2rem;
+        width: 100%;
+    }
 }

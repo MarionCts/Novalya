@@ -1,11 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Property{% endblock %}
+{% block title %}Novalya | {{ 'addPropertyPage.pageTitle'|trans }}
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Property</h1>
 
-    {{ include('property/_form.html.twig') }}
+	<main class="new__property px-100">
 
-    <a href="{{ path('app_property_index') }}">back to list</a>
+		<h1 class="title title__secondary mb-55">{{ 'addPropertyPage.mainTitle'|trans }}
+			<span class="title title__secondary accent">{{ 'addPropertyPage.mainAccent'|trans }}</span>
+		</h1>
+
+		{{ form_start(form) }}
+
+		<h2 class="title panel__titles as-l">{{ 'addPropertyPage.infos'|trans }}</h2>
+		{{ form_row(form.name) }}
+		{{ form_row(form.price) }}
+		{{ form_row(form.category) }}
+		{{ form_row(form.description) }}
+
+		<h2 class="title panel__titles mt-35">{{ 'addPropertyPage.localisation'|trans }}</h2>
+		{{ form_row(form.city) }}
+		{{ form_row(form.mapUrl) }}
+
+		<h2 class="title panel__titles mt-35">{{ 'addPropertyPage.roomsTotal'|trans }}</h2>
+		{{ form_row(form.roomsTotal) }}
+		{{ form_row(form.bedroomNumber) }}
+		{{ form_row(form.bathroomNumber) }}
+
+		<h2 class="title panel__titles mt-35">{{ 'addPropertyPage.surface'|trans }}</h2>
+		{{ form_row(form.indoorSurface) }}
+		{{ form_row(form.outdoorSurface) }}
+
+		<h2 class="title panel__titles mt-35">{{ 'addPropertyPage.perf'|trans }}</h2>
+		{{ form_row(form.energyClass) }}
+		{{ form_row(form.climateClass) }}
+
+        <h2 class="title panel__titles mt-35">{{ 'addPropertyPage.status'|trans }}</h2>
+		{{ form_row(form.status) }}
+
+
+		<button class="button button__primary">{{ 'addPropertyPage.addBtn'|trans }}</button>
+		<a class="button button__secondary" href="{{ path('app_property_index') }}">{{ 'addPropertyPage.getBack'|trans }}</a>
+		{{ form_end(form) }}
+
+
+	</main>
+
 {% endblock %}

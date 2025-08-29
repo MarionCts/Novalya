@@ -19,6 +19,9 @@ class PropertyImage
     #[ORM\ManyToOne(inversedBy: 'propertyImages')]
     private ?Property $property = null;
 
+    #[ORM\Column]
+    private ?bool $isFeatured = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class PropertyImage
     public function setProperty(?Property $property): static
     {
         $this->property = $property;
+
+        return $this;
+    }
+
+    public function isFeatured(): ?bool
+    {
+        return $this->isFeatured;
+    }
+
+    public function setIsFeatured(bool $isFeatured): static
+    {
+        $this->isFeatured = $isFeatured;
 
         return $this;
     }

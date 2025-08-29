@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novalya | Agence immobilière de biens de prestige
+{% endblock %}
+
+{% block body %}
+
+	<main class="homepage">
+
+		<section class="hero">
+			<div class="hero__bg"></div>
+			<div class="hero__content">
+				<h1 class="title title__primary center">Immobilier
+					<span class="title title__primary line-jump center">de luxe</span>
+				</h1>
+				<p class="center">Découvrez notre collection de biens d'exception</p>
+				<a href="#" class="button__primary">Voir nos propriétés</a>
+			</div>
+		</section>
+
+		<section class="intro p-section">
+			<div class="intro__image brr-60">
+				<img src="{{ asset('images/intro_villa.webp') }}" alt="Image d'une villa avec piscine">
+			</div>
+			<div class="intro__content">
+				<h2 class="title title__secondary mb-55">Trouvez votre prochain bien d'exception avec
+					<span class="title title__secondary accent">Novalya Prestige</span>
+				</h2>
+				<p class="paragraph">Nous vous offrons un service personnalisé et confidentiel pour vous aider à trouver la résidence de vos rêves.</p>
+				<br>
+				<p class="paragraph">Notre sélection se compose de propriétés alliant raffinement, élégance, emplacement privilégié et discrétion.</p>
+			</div>
+		</section>
+
+	</main>
+
+	{# FOOTER #}
+	{% block footer %}
+		{% include 'layout/footer.html.twig' %}
+	{% endblock %}
+
+{% endblock %}

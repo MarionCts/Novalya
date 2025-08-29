@@ -2,12 +2,71 @@
 
 // Colors
 
-$midnight: #131722;
-$coal: #141418;
-$cream: #FFFBF9;
-$sand: #B2ABA2;
-$cappucino: #7F4620;
-$beige: #F1CBA9;
+$theme-dark: (
+    color-scheme: dark light,
+    bg: hsl(227, 28, 11),
+    text: hsl(21, 100, 99),
+    primary-btn-bg: hsl(21, 100, 99),
+    primary-btn-bg-hover: hsl(24, 60, 31),
+    primary-btn-text: hsl(235, 10, 9),
+    primary-btn-text-hover: hsl(21, 100, 99),
+    secondary-btn-text: hsl(21, 100, 99),
+    secondary-btn-border: hsl(21, 100, 99),
+    secondary-btn-bg-hover: hsl(21, 100, 99),
+    secondary-btn-text-hover: hsl(235, 10, 9),
+    newsletter-input-bg: hsl(21, 100, 99),
+    newsletter-input-border: hsl(21, 100, 99),
+    newsletter-input-text: hsl(227, 28, 11),
+    category-bg: hsl(24, 60, 31),
+    category-title: hsl(21, 100, 99),
+    sand: hsl(33, 9, 67),
+    link: hsl(29, 72, 80),
+    menu-bg-opacity: 1,
+);
+
+$theme-light: (
+    color-scheme: light dark,
+    bg: hsl(21, 100, 99),
+    text: hsl(227, 28, 11),
+    primary-btn-bg: hsl(227, 28, 11),
+    primary-btn-bg-hover: hsl(24, 60, 31),
+    primary-btn-text: hsl(21, 100, 99),
+    primary-btn-text-hover: hsl(21, 100, 99),
+    secondary-btn-text: hsl(227, 28, 11),
+    secondary-btn-border: hsl(227, 28, 11),
+    secondary-btn-bg-hover: hsl(227, 28, 11),
+    secondary-btn-text-hover: hsl(21, 100, 99),
+    newsletter-input-bg: hsl(21, 100, 99),
+    newsletter-input-border: hsl(227, 28, 11),
+    newsletter-input-text: hsl(227, 28, 11),
+    category-bg: hsl(24, 60, 31),
+    category-title: hsl(21, 100, 99),
+    sand: hsl(33, 9, 67),
+    link: hsl(24, 60, 31),
+    menu-bg-opacity: 0.15,
+);
+
+@function css-var($name) {
+    @return unquote("var(--#{$name})");
+}
+
+// Creates a map that gets the color value of a key
+@mixin export-css-vars($theme-map) {
+    color-scheme: map-get($theme-map, color-scheme);
+
+    @each $key, $val in $theme-map {
+        @if $key != color-scheme {
+            --#{$key}: #{$val};
+        }
+    }
+}
+
+// Mixin to apply on style to get the right color according to the choosen theme
+@mixin apply-theme($selector, $theme-map) {
+    #{$selector} {
+        @include export-css-vars($theme-map);
+    }
+}
 
 // Font families
 

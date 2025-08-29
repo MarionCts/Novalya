@@ -1,0 +1,52 @@
+mainMenu:
+  about: "About"
+  properties: "Properties"
+  contact: "Contact"
+  admin: "Admin Panel"
+  logout: "Log Out"
+  login: "Log In"
+  register: "Register"
+
+footer:
+  connect:
+    mainTitle: "Stay"
+    mainAccent: "in touch" 
+  useful:
+    mainTitle: "Useful"
+    mainAccent: "links"
+    careers: "Career opportunities"
+    media: "Press articles"
+    story: "Our story"
+    support: "Contact our support team"
+  newsletter:
+    mainTitle: "Subscribe to the"
+    mainAccent: "newsletter"
+    text: "Get prime access to our exclusive properties by subscribing to our daily newsletter:"
+    placeholder: "Email"
+    button: "Subscribe"
+  mentions:
+    info: "© 2025 Novalya agency, all rights reserved"
+    cookies: "Cookies management"
+    legal : "Legal information"
+
+addPropertyPage:
+  pageTitle: "Add a property"
+  mainTitle: "Add a" 
+  mainAccent: "property"
+  infos: "Main informations"
+  localisation: "Localisation"
+  roomsTotal: "Rooms number"
+  surface: "Surface area"
+  perf: "Performances"
+  status: "Publication status"
+  addBtn: "Add"
+  getBack: "Back to properties"
+
+panelAdmin:
+  pageTitle: "Administrator Panel"
+  mainTitle: "Administrator" 
+  mainAccent: "panel"
+  userManage: "Manage users"
+  propertyManage: "Manage properties"
+  seeProperties: "See all properties"
+  addProperties: "Add a property"

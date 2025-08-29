@@ -1,0 +1,52 @@
+property:
+  name:
+    label: "Nom :"
+  city:
+    label: "Ville :"
+  description:
+    label: "Description :"
+  rooms_total:
+    label: "Nombre de pièces total :"
+  bathrooms:
+    label: "Nombre de salles de bain :"
+  bedrooms:
+    label: "Nombre de chambres :"
+  indoor_surface:
+    label: "Surface intérieure :"
+  outdoor_surface:
+    label: "Surface extérieure :"
+  energy_class:
+    label: "Classe énergétique :"
+  climate_class:
+    label: "Classe climatique :"
+  map_url:
+    label: "Lien Google Maps :"
+    invalid: "L’URL renseignée n’est pas valide."
+  price:
+    label: "Prix :"
+  status:
+    label: "Statut :"
+  category:
+    label: "Catégorie :"
+
+enum:
+  status:
+    Draft: "Brouillon"
+    Published: "Publié"
+    Archived: "Archivé"
+  energy_class:
+    A: "A"
+    B: "B"
+    C: "C"
+    D: "D"
+    E: "E"
+    F: "F"
+    G: "G"
+  climate_class:
+    A: "A"
+    B: "B"
+    C: "C"
+    D: "D"
+    E: "E"
+    F: "F"
+    G: "G"

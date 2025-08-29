@@ -2,7 +2,7 @@
 
 @use "../abstracts" as *;
 
-// ***************** BUTTONS ******************
+// ******* REUSABLE BUTTONS COMPONENTS *******
 
 .button__primary {
     @include button-preset(button);
@@ -24,4 +24,68 @@
     &:hover {
         @include button-hover-preset(button__secondary);
     }
+}
+
+// ************* ONY ONE USE BUTTONS **************
+
+// MAIN NAV HAMBURGER MENU
+
+.button__hamburger {
+    background-color: transparent;
+    color: css-var(text);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    &:hover {
+        color: css-var(link);
+    }
+}
+
+.button__hamburger--close {
+    position: absolute;
+    top: 4rem;
+    right: 3.1rem;
+}
+
+// SWITCH THEMES BUTTONS
+
+.button__switch {
+    background-color: css-var(text);
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    position: fixed;
+    left: 3rem;
+    bottom: 7rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s linear;
+
+    .button__switch svg {
+        width: 2.3rem;
+        height: 2.3rem;
+        transform-origin: center;
+        transform-box: fill-box;
+    }
+}
+
+.button__switch--light svg {
+    path {
+        fill: css-var(bg);
+    }
+}
+
+.button__switch--dark svg {
+    path {
+        stroke: css-var(bg);
+    }
+}
+
+.button__switch:hover {
+    transform: scale(1.2);
+}
+
+.is-hidden {
+    display: none;
 }

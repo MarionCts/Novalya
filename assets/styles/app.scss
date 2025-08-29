@@ -4,11 +4,76 @@
 @use "./components" as *;
 @use "base" as *;
 
+// ****************** THEMES *****************
+
+@include apply-theme(":root", $theme-dark);
+@include apply-theme('[data-theme="light"]', $theme-light);
+
 // ******************* MAIN ******************
 
-header {
-    position: fixed;
-    top: 4rem;
-    left: 3.1rem;
-    right: 3.1rem;
+
+// HOMEPAGE : SHARED FLEXBOX
+
+.hero, .hero__content, .intro__content {
+    @include flex-preset(column, center, center);
+}
+
+// HOMEPAGE : HERO SECTION
+
+.hero__content {
+    min-height: 86vh;
+    max-width: 29rem;
+    gap: 3.5rem;
+
+    a {
+        width: 100%;
+    }
+}
+
+.hero__bg {
+    &::before {
+        content: "";
+        opacity: 0.4;
+        z-index: -1;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("./../images/hero_background_villa.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+// HOMEPAGE : INTRO SECTION
+
+.intro {
+    @include flex-preset(column, center, flex-start);
+    gap: 4.1rem;
+
+    @include media(768px) {
+        @include flex-preset(row, center, flex-start);
+        max-width: 95.5rem;
+    }
+}
+
+.intro__image {
+    height: 41.6rem;
+    width: 100%;
+
+    @include media(768px) {
+        order: 2;
+        height: 60rem;
+        max-width: 41rem;
+    }
+
+    img {
+        object-fit: cover;
+        object-position: center;
+        height: inherit;
+        width: inherit;
+    }
 }

@@ -8,8 +8,16 @@
 // ----- GENERAL -----
 
 h1, h2, h3, h4, h5, p, span, a, label {
-    color: $cream;
+    color: css-var(text);
     font-family: $poppins;
+}
+
+a {
+    transition: all 0.2s linear;
+
+    &:hover {
+        color: css-var(link);
+    }
 }
 
 // ----- TEXT MODIFICATIONS -----
@@ -44,6 +52,15 @@ h1, h2, h3, h4, h5, p, span, a, label {
     @include text-preset(title__secondary);
 }
 
+.title__tertiary {
+    @include text-preset(title);
+    @include text-preset(title__tertiary);
+}
+
+.panel__titles {
+    @include text-preset(title);
+    @include text-preset(panel__titles);
+}
 
 .accent {
     @include text-preset(accent); // Sets the text in italic
@@ -67,8 +84,21 @@ p {
     @include text-preset(paragraph__xsmall);
 }
 
+.link__menu {
+    @include text-preset(paragraph);
+    @include text-preset(link__menu);
+}
+
 .link__xsmall {
     @include text-preset(paragraph);
     @include text-preset(paragraph__xsmall);
     @include text-preset(link__small);
+}
+
+.f-links {
+    @include text-preset(footer__links);
+}
+
+.legal__mentions {
+    @include text-preset(legal__mentions);
 }

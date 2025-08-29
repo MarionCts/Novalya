@@ -17,12 +17,25 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('name', null, [
+                'attr' => ['class' => 'form__input'],
+                'label' => "Nom * :",
+            ])
+            ->add('firstName', null, [
+                'attr' => ['class' => 'form__input'],
+                'label' => "Prénom * :",
+            ])
+            ->add('email', null, [
+                'attr' => ['class' => 'form__input'],
+                'label' => "Email * :",
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'label' => "Accepter les conditions d'utilisation * :",
+                'row_attr' => ['class' => 'agree-terms'],
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => "Veuillez agréer aux conditions d'utilisation du site",
                     ]),
                 ],
             ])
@@ -30,14 +43,18 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'label' => "Mot de passe * :",
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'class' => 'form__input'
+                ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Veuillez indiquer un mot de passe',
                     ]),
                     new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'min' => 8,
+                        'minMessage' => 'Le mot de passe doit comporter un minimum de {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
@@ -50,6 +67,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'attr' => ['class' => 'form'],
         ]);
     }
 }

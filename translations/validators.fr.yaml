@@ -1,0 +1,5 @@
+property:
+  description:
+    not_blank: "Vous devez écrire du texte"
+    length_min: "Le champ doit contenir au moins {{ limit }} caractères"
+    length_max: "Le champ ne peut pas dépasser {{ limit }} caractères"
