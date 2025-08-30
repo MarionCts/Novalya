@@ -58,6 +58,16 @@ a {
     @include text-preset(title__tertiary);
 }
 
+.title__city {
+    @include text-preset(title);
+    @include text-preset(title__city);
+}
+
+.title__specs {
+    @include text-preset(title);
+    @include text-preset(title__specs);
+}
+
 .panel__titles {
     @include text-preset(paragraph);
     @include text-preset(panel__titles);
@@ -83,6 +93,11 @@ p {
 .paragraph__xsmall {
     @include text-preset(paragraph);
     @include text-preset(paragraph__xsmall);
+}
+
+.paragraph__xsmall__bold {
+    @include text-preset(paragraph);
+    @include text-preset(paragraph__xsmall__bold);
 }
 
 .link__menu {

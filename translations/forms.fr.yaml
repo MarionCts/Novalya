@@ -44,6 +44,8 @@ property:
     label: "Statut :"
   category:
     label: "Catégorie :"
+  images:
+    label: "Choisissez une ou plusieurs photos :"
 
 
 # ENUM OF THE PROPERTY FORM

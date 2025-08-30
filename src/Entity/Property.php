@@ -43,10 +43,10 @@ class Property
     #[ORM\Column]
     private ?float $outdoorSurface = null;
 
-    #[ORM\Column(enumType: EnergyClass::class)]
+    #[ORM\Column(type: 'string', enumType: EnergyClass::class)]
     private ?EnergyClass $energyClass = null;
 
-    #[ORM\Column(enumType: ClimateClass::class)]
+    #[ORM\Column(type: 'string', enumType: ClimateClass::class)]
     private ?ClimateClass $climateClass = null;
 
     #[ORM\Column(length: 255)]
@@ -55,7 +55,7 @@ class Property
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 0)]
     private ?string $price = null;
 
-    #[ORM\Column(enumType: Status::class)]
+    #[ORM\Column(type: 'string', enumType: Status::class)]
     private ?Status $status = null;
 
     #[ORM\Column]
@@ -65,6 +65,7 @@ class Property
     private ?\DateTimeImmutable $modifiedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'properties')]
+    #[ORM\JoinColumn(nullable: true, onDelete: "CASCADE")]
     private ?PropertyCategory $category = null;
 
     /**

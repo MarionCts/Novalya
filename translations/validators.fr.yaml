@@ -39,6 +39,9 @@ property:
   outdoorSurface:
     not_blank: "* Ce champ ne peut pas être vide"
     number: "* Vous devez entrer un nombre"
+  images:
+    maxSizeMessage: "L'image ne peut pas dépasser {{ limit }} Mo"
+    mimeTypesMessage: "Veuillez choisir un fichier de format jpg, jpeg, png ou webp"
 
 
 # REGISTER FORM CONSTRAINTS

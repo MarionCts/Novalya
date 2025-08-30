@@ -50,6 +50,14 @@
         font-weight: 700;
         font-size: 3.2rem;
 
+    } @else if $type == title__city {
+        font-weight: 500;
+        font-size: 2.4rem;
+
+    } @else if $type == title__specs {
+        font-weight: 700;
+        font-size: 1.7rem;
+
     } @else if $type == accent {
         font-style: italic;
         font-weight: 500;
@@ -64,7 +72,11 @@
         font-size: 1.5rem;
 
     } @else if $type == paragraph__xsmall {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+
+    } @else if $type == paragraph__xsmall__bold {
+        font-size: 1.3rem;
+        font-weight: 600;
 
     } @else if $type == link__menu {
         font-size: 2rem;

@@ -17,6 +17,7 @@ class PropertyImage
     private ?string $url = null;
 
     #[ORM\ManyToOne(inversedBy: 'propertyImages')]
+    #[ORM\JoinColumn(nullable: true, onDelete: "CASCADE")]
     private ?Property $property = null;
 
     #[ORM\Column]

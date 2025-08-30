@@ -41,10 +41,10 @@
 				{% for label, messages in app.flashes %}
 					{% for message in messages %}
 						<div class="px-4 py-2 rounded text-sm
-								{% if label == 'danger' %}info info-bg-danger
-								{% elseif label == 'success' %}info info-bg-success
-								{% elseif label == 'info' %}info info-bg-info
-								{% elseif label == 'warning' %}info info-bg-warning
+								{% if label == 'danger' %}form__info info-bg-danger
+								{% elseif label == 'success' %}form__info info-bg-success
+								{% elseif label == 'info' %}form__info info-bg-info
+								{% elseif label == 'warning' %}form__info info-bg-warning
 								{% endif %}">
 							{{ message }}
 						</div>

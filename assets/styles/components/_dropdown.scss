@@ -4,14 +4,6 @@
 
 // ********** ADMIN DROPDOWN MENU ***********
 
-.admin__aside {
-    width: 100%;
-    
-    @include media(768px) {
-        width: 35rem;
-    }
-}
-
 .admin__panel {
     border: 0.1rem solid css-var(text);
     border-radius: 0 2rem 0 2rem;

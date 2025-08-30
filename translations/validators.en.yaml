@@ -39,6 +39,9 @@ property:
   outdoorSurface:
     not_blank: "* This field cannot be blank"
     number: "* You must enter a number"
+  images:
+    maxSizeMessage: "The photo cannot exceed {{ limit }} Mo"
+    mimeTypesMessage: "Please choose a jpg, jpeg, png or webp format file"
 
 
 # REGISTER FORM CONSTRAINTS

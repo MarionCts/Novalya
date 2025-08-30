@@ -2,49 +2,51 @@
 
 register:
   name:
-    label: "Name :"
+    label: "Name:"
   firstName:
-    label: "First name :"
+    label: "First name:"
   password:
-    label: "Password :"
+    label: "Password:"
   email:
-    label: "Email :"
+    label: "Email:"
   checkbox:
-    label: "Accept the terms of use :"
+    label: "Accept the terms of use:"
     
 
 # PROPERTY FORM
 
 property:
   name:
-    label: "Name :"
+    label: "Name:"
   city:
-    label: "City :"
+    label: "City:"
   description:
-    label: "Description :"
+    label: "Description:"
   rooms_total:
-    label: "Total rooms number :"
+    label: "Total rooms number:"
   bathrooms:
-    label: "Bathrooms number :"
+    label: "Bathrooms number:"
   bedrooms:
-    label: "Bedrooms number :"
+    label: "Bedrooms number:"
   indoor_surface:
-    label: "Indoor surface :"
+    label: "Indoor surface:"
   outdoor_surface:
-    label: "Outdoor surface :"
+    label: "Outdoor surface:"
   energy_class:
-    label: "Energy class :"
+    label: "Energy class:"
   climate_class:
-    label: "Climate class :"
+    label: "Climate class:"
   map_url:
-    label: "Google Maps URL :"
+    label: "Google Maps URL:"
     invalid: "The link is invalid."
   price:
-    label: "Price :"
+    label: "Price:"
   status:
-    label: "Status :"
+    label: "Status:"
   category:
-    label: "Category :"
+    label: "Category:"
+  images:
+    label: "Please choose one or more photos:"
 
 
 # ENUM OF THE PROPERTY FORM

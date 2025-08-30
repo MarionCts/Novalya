@@ -50,6 +50,11 @@ updateBtn: "Modifier"
 deleteBtn: "Supprimer"
 
 
+# RETURN TO ADMIN PANEL BUTTON
+
+adminBtn: "Retour au panel Admin"
+
+
 # HOME PAGE
 
 homePage:
@@ -66,27 +71,20 @@ homePage:
 
 
 # PAGE "ADD A PROPERTY"
-categoryIndex:
-  pageTitle: "Liste des catégories"
-  mainTitle: "Liste des"
-  mainAccent: "catégories"
-  addBtn: "Ajouter une catégorie"
-  noRecord: "Il n'y a pas encore de catégorie."
-
-
-# PAGE "ADD A PROPERTY"
 
 addPropertyPage:
   pageTitle: "Ajouter une propriété"
   mainTitle: "Ajouter une" 
   mainAccent: "propriété"
   infos: "Informations principales"
+  images: "Photos de la propriété"
   localisation: "Localisation"
   roomsTotal: "Nombre de pièces"
   surface: "Surface totale"
   perf: "Performances"
   status: "Statut de publication"
   getBack: "Retour aux propriétés"
+  flashSuccess: "Propriété ajoutée avec succès !"
 
 
 # PAGE "UPDATE A PROPERTY"
@@ -98,13 +96,51 @@ updateCategoryPage:
   getBack: "Retour aux catégories"
 
 
-# PAGE "ADD A PROPERTY"
+# PAGE "DELETE A PROPERTY"
+
+deletePropertyPage:
+  flashSuccess: "Propriété supprimée avec succès !"
+
+
+# PAGE "CATEGORIES LIST"
+
+categoryIndex:
+  pageTitle: "Liste des catégories"
+  mainTitle: "Liste des"
+  mainAccent: "catégories"
+  addBtn: "Ajouter une catégorie"
+  noRecord: "Aucune catégorie."
+
+
+# PAGE "ADD A CATEGORY"
 
 addCategoryPage:
   pageTitle: "Ajouter une catégorie"
   mainTitle: "Ajouter une" 
   mainAccent: "catégorie"
   getBack: "Retour aux catégories"
+  flashSuccess: "Catégorie ajoutée avec succès !"
+
+
+# PAGE "DELETE A CATEGORY"
+
+deleteCategoryPage:
+  flashSuccess: "Catégorie supprimée avec succès !"
+
+
+# INDIVIDUAL PROPERTY PAGE
+
+indivudualPropertyPage:
+  rooms: "pièces"
+  bathrooms: "salles de bain"
+  specsTitle: "Caractéristiques"
+  category: "Catégorie"
+  location: "Emplacement"
+  indoor: "Intérieur"
+  outdoor: "Extérieur"
+  bedrooms: "Chambres"
+  energy: "Classe énergétique"
+  climate: "Classe climatique"
 
 
 # ADMINISTRATOR PANEL

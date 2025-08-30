@@ -44,6 +44,15 @@
 			<div class="form__constraint">{{ error.message }}</div>
 		{% endfor %}
 
+		<h2 class="panel__titles mt-35 mb-15">{{ 'addPropertyPage.images'|trans }}</h2>
+
+		{# PHOTOS FIELD #}
+		{{ form_label(form.images) }}
+		{{ form_widget(form.images) }}
+		{% for error in form.images.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
 		<h2 class="panel__titles mt-35 mb-15">{{ 'addPropertyPage.localisation'|trans }}</h2>
 
 		{# CITY FIELD #}

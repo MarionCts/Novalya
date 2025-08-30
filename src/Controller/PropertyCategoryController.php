@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/property/category')]
 final class PropertyCategoryController extends AbstractController
@@ -23,7 +24,7 @@ final class PropertyCategoryController extends AbstractController
     }
 
     #[Route('/new', name: 'app_property_category_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         $propertyCategory = new PropertyCategory();
         $form = $this->createForm(PropertyCategoryType::class, $propertyCategory);
@@ -33,6 +34,7 @@ final class PropertyCategoryController extends AbstractController
             $entityManager->persist($propertyCategory);
             $entityManager->flush();
 
+            $this->addFlash('success', $translator->trans('addCategoryPage.flashSuccess'));
             return $this->redirectToRoute('app_property_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,11 +71,12 @@ final class PropertyCategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_property_category_delete', methods: ['POST'])]
-    public function delete(Request $request, PropertyCategory $propertyCategory, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, PropertyCategory $propertyCategory, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         if ($this->isCsrfTokenValid('delete'.$propertyCategory->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($propertyCategory);
             $entityManager->flush();
+            $this->addFlash('success', $translator->trans('deleteCategoryPage.flashSuccess'));
         }
 
         return $this->redirectToRoute('app_property_category_index', [], Response::HTTP_SEE_OTHER);

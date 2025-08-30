@@ -50,6 +50,11 @@ updateBtn: "Update"
 deleteBtn: "Delete"
 
 
+# RETURN TO ADMIN PANEL BUTTON
+
+adminBtn: "Back to Admin panel"
+
+
 # HOME PAGE
 
 homePage:
@@ -72,15 +77,32 @@ addPropertyPage:
   mainTitle: "Add a" 
   mainAccent: "property"
   infos: "Main informations"
+  images: "Pictures of the property"
   localisation: "Localisation"
   roomsTotal: "Rooms number"
   surface: "Surface area"
   perf: "Performances"
   status: "Publication status"
   getBack: "Back to properties"
+  flashSuccess: "Property added successfully!"
 
 
-# PAGE "ADD A PROPERTY"
+  # PAGE "UPDATE A PROPERTY"
+
+updateCategoryPage:
+  pageTitle: "Update a category"
+  mainTitle: "Update a" 
+  mainAccent: "category"
+  getBack: "Back to categories"
+
+
+  # PAGE "DELETE A PROPERTY"
+
+deletePropertyPage:
+  flashSuccess: "Property deleted successfully!"
+
+
+# PAGE "CATEGORIES LIST"
 categoryIndex:
   pageTitle: "All categories"
   mainTitle: "Categories"
@@ -89,22 +111,35 @@ categoryIndex:
   noRecord: "No category found."
 
 
-# PAGE "ADD A PROPERTY"
+# PAGE "ADD A CATEGORY"
 
 addCategoryPage:
   pageTitle: "Add a category"
   mainTitle: "Add a" 
   mainAccent: "category"
   getBack: "Back to categories"
+  flashSuccess: "Category added successfully!"
 
 
-# PAGE "UPDATE A PROPERTY"
+# PAGE "DELETE A CATEGORY"
 
-updateCategoryPage:
-  pageTitle: "Update a category"
-  mainTitle: "Update a" 
-  mainAccent: "category"
-  getBack: "Back to categories"
+deleteCategoryPage:
+  flashSuccess: "Category deleted successfully!"
+
+
+# INDIVIDUAL PROPERTY PAGE
+
+indivudualPropertyPage:
+  rooms: "rooms"
+  bathrooms: "bathrooms"
+  specsTitle: "Features"
+  category: "Category"
+  location: "Location"
+  indoor: "Indoor"
+  outdoor: "Outdoor"
+  bedrooms: "Bedrooms"
+  energy: "Energy class"
+  climate: "Climate class"
 
 
 # ADMINISTRATOR PANEL

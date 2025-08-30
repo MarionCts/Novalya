@@ -8,19 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
-                <th>City</th>
-                <th>Description</th>
-                <th>RoomsTotal</th>
-                <th>BathroomNumber</th>
-                <th>BedroomNumber</th>
-                <th>IndoorSurface</th>
-                <th>OutdoorSurface</th>
-                <th>EnergyClass</th>
-                <th>ClimateClass</th>
-                <th>MapUrl</th>
-                <th>Price</th>
                 <th>Status</th>
                 <th>CreatedAt</th>
                 <th>ModifiedAt</th>
@@ -30,20 +18,8 @@
         <tbody>
         {% for property in properties %}
             <tr>
-                <td>{{ property.id }}</td>
                 <td>{{ property.name }}</td>
-                <td>{{ property.city }}</td>
-                <td>{{ property.description }}</td>
-                <td>{{ property.roomsTotal }}</td>
-                <td>{{ property.bathroomNumber }}</td>
-                <td>{{ property.bedroomNumber }}</td>
-                <td>{{ property.indoorSurface }}</td>
-                <td>{{ property.outdoorSurface }}</td>
-                <td>{{ property.energyClass }}</td>
-                <td>{{ property.climateClass }}</td>
-                <td>{{ property.mapUrl }}</td>
-                <td>{{ property.price }}</td>
-                <td>{{ property.status }}</td>
+                <td>{{ property.status.value }}</td>
                 <td>{{ property.createdAt ? property.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ property.modifiedAt ? property.modifiedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
@@ -59,5 +35,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_property_new') }}">Create new</a>
+    <a href="{{ path('app_property_new') }}" class="button button__primary mt-15">Create new</a>
+    <a href="{{ path('app_admin') }}" class="button button__secondary mt-15">{{ 'adminBtn'|trans }}</a>
 {% endblock %}

@@ -14,16 +14,30 @@
 
 		<section class="categories">
 			{% for property_category in property_categories %}
-				<div class="categories__item">
-					<h3>{{ property_category.name }}</h3>
-					<a href="{{ path('app_property_category_edit', {'id': property_category.id}) }}" class="button button__secondary">{{ 'updateBtn'|trans }}</a>
+				<div
+					class="categories__item">
+
+					{# category name #}
+					<h3 class="title panel__titles">{{ property_category.name }}</h3>
+
+					<div class="categories__buttons">
+						{# udpate button #}
+						<a href="{{ path('app_property_category_edit', {'id': property_category.id}) }}" class="button button__secondary">{{ 'updateBtn'|trans }}</a>
+						{# delete button #}
+						{{ include('property_category/_delete_form.html.twig') }}
+					</div>
 				</div>
+
 			{% else %}
-				<h3>{{ 'categoryIndex.noRecord'|trans }}</h3>
+
+				{# message if there is no category to be found #}
+				<h3 class="paragraph__small">{{ 'categoryIndex.noRecord'|trans }}</h3>
+
 			{% endfor %}
 		</section>
 
 		<a href="{{ path('app_property_category_new') }}" class="button button__primary mt-35">{{ 'categoryIndex.addBtn'|trans }}</a>
+		<a href="{{ path('app_admin') }}" class="button button__secondary mt-15">{{ 'adminBtn'|trans }}</a>
 
 	</main>
 
