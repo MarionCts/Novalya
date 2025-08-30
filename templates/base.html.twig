@@ -11,7 +11,8 @@
 		{# Import Google Fonts #}
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+		<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 		{# JS scripts #}
 		<script src="{{ asset('script/menu.js') }}" defer></script>
@@ -33,6 +34,23 @@
 		{# HEADER #}
 		{% block header %}
 			{% include 'layout/header.html.twig' %}
+		{% endblock %}
+
+		{% block flash %}
+			<div>
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="px-4 py-2 rounded text-sm
+								{% if label == 'danger' %}info info-bg-danger
+								{% elseif label == 'success' %}info info-bg-success
+								{% elseif label == 'info' %}info info-bg-info
+								{% elseif label == 'warning' %}info info-bg-warning
+								{% endif %}">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
 		{% endblock %}
 
 		{% block body %}{% endblock %}

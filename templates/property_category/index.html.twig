@@ -1,35 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PropertyCategory index{% endblock %}
+{% block title %}Novalya |
+	{{ 'categoryIndex.pageTitle'|trans }}
+{% endblock %}
 
 {% block body %}
-    <h1>PropertyCategory index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for property_category in property_categories %}
-            <tr>
-                <td>{{ property_category.id }}</td>
-                <td>{{ property_category.name }}</td>
-                <td>
-                    <a href="{{ path('app_property_category_show', {'id': property_category.id}) }}">show</a>
-                    <a href="{{ path('app_property_category_edit', {'id': property_category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<main class="new__property px-100">
 
-    <a href="{{ path('app_property_category_new') }}">Create new</a>
+		<h1 class="title title__secondary mb-55">{{ 'categoryIndex.mainTitle'|trans }}
+			<span class="title title__secondary accent">{{ 'categoryIndex.mainAccent'|trans }}</span>
+		</h1>
+
+		<section class="categories">
+			{% for property_category in property_categories %}
+				<div class="categories__item">
+					<h3>{{ property_category.name }}</h3>
+					<a href="{{ path('app_property_category_edit', {'id': property_category.id}) }}" class="button button__secondary">{{ 'updateBtn'|trans }}</a>
+				</div>
+			{% else %}
+				<h3>{{ 'categoryIndex.noRecord'|trans }}</h3>
+			{% endfor %}
+		</section>
+
+		<a href="{{ path('app_property_category_new') }}" class="button button__primary mt-35">{{ 'categoryIndex.addBtn'|trans }}</a>
+
+	</main>
+
 {% endblock %}

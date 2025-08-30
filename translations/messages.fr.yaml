@@ -1,3 +1,5 @@
+# HEADER MAIN MENU
+
 mainMenu:
   about: "À propos"
   properties: "Propriétés"
@@ -6,6 +8,9 @@ mainMenu:
   logout: "Se déconnecter"
   login: "Se connecter"
   register: "S'inscrire"
+
+
+# FOOTER
 
 footer:
   connect:
@@ -30,6 +35,47 @@ footer:
     legal : "Mentions légales"
 
 
+# ADD BUTTON
+
+addBtn: "Ajouter"
+
+
+# UPDATE BUTTON
+
+updateBtn: "Modifier"
+
+
+# DELETE BUTTON
+
+deleteBtn: "Supprimer"
+
+
+# HOME PAGE
+
+homePage:
+  pageTitle: "Agence immobilière de biens de prestige"
+  mainTitle: "Immobilier" 
+  mainAccent: "de luxe" 
+  description: "Découvrez notre collection de biens d'exception"
+  button: "Voir nos propriétés"
+  intro:
+    mainTitle: "Trouvez votre prochain bien d'exception avec"
+    mainAccent: "Novalya Prestige"
+    firstP: "Nous vous offrons un service personnalisé et confidentiel pour vous aider à trouver la résidence de vos rêves."
+    secondP: "Notre sélection se compose de propriétés alliant raffinement, élégance, emplacement privilégié et discrétion."
+
+
+# PAGE "ADD A PROPERTY"
+categoryIndex:
+  pageTitle: "Liste des catégories"
+  mainTitle: "Liste des"
+  mainAccent: "catégories"
+  addBtn: "Ajouter une catégorie"
+  noRecord: "Il n'y a pas encore de catégorie."
+
+
+# PAGE "ADD A PROPERTY"
+
 addPropertyPage:
   pageTitle: "Ajouter une propriété"
   mainTitle: "Ajouter une" 
@@ -40,8 +86,28 @@ addPropertyPage:
   surface: "Surface totale"
   perf: "Performances"
   status: "Statut de publication"
-  addBtn: "Ajouter"
   getBack: "Retour aux propriétés"
+
+
+# PAGE "UPDATE A PROPERTY"
+
+updateCategoryPage:
+  pageTitle: "Modifier une catégorie"
+  mainTitle: "Modifier une" 
+  mainAccent: "catégorie"
+  getBack: "Retour aux catégories"
+
+
+# PAGE "ADD A PROPERTY"
+
+addCategoryPage:
+  pageTitle: "Ajouter une catégorie"
+  mainTitle: "Ajouter une" 
+  mainAccent: "catégorie"
+  getBack: "Retour aux catégories"
+
+
+# ADMINISTRATOR PANEL
 
 panelAdmin:
   pageTitle: "Panel Adminstrateur"
@@ -51,3 +117,31 @@ panelAdmin:
   propertyManage: "Gérer les propriétés"
   seeProperties: "Voir toutes les propriétés"
   addProperties: "Ajouter une propriété"
+  categoryManage: "Gérer les catégories"
+  seeCategories: "Voir les catégories"
+  addCategories: "Ajouter une catégorie"
+
+
+# LOGIN PAGE
+
+login:
+  pageTitle: "Se connecter"
+  mainTitle: "Se connecter"
+  description: "Connectez-vous à votre espace personnel pour voir et gérer vos favoris."
+  email: "Email *"
+  password: "Mot de passe *"
+  button: "Se connecter"
+  notRegistered: "Pas encore inscrit ?"
+  createAccount: "Créez votre compte"
+  alreadyLogged: "Vous êtes déjà connecté avec l'adresse"
+
+
+# REGISTER PAGE
+
+register:
+  pageTitle: "S'inscrire"
+  mainTitle: "S'inscrire"
+  text: "Créez votre espace personnel pour voir vos biens favoris."
+  button: "S'inscrire"
+  alreadyRegistered: "Déjà inscrit ?"
+  logIn: "Connectez-vous"

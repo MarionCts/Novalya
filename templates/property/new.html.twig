@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Novalya | {{ 'addPropertyPage.pageTitle'|trans }}
+{% block title %}Novalya |
+	{{ 'addPropertyPage.pageTitle'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -13,35 +14,122 @@
 
 		{{ form_start(form) }}
 
-		<h2 class="title panel__titles as-l">{{ 'addPropertyPage.infos'|trans }}</h2>
-		{{ form_row(form.name) }}
-		{{ form_row(form.price) }}
-		{{ form_row(form.category) }}
-		{{ form_row(form.description) }}
+		<h2 class="panel__titles as-l mb-15">{{ 'addPropertyPage.infos'|trans }}</h2>
 
-		<h2 class="title panel__titles mt-35">{{ 'addPropertyPage.localisation'|trans }}</h2>
-		{{ form_row(form.city) }}
-		{{ form_row(form.mapUrl) }}
+		{# NAME FIELD #}
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name) }}
+		{% for error in form.name.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
 
-		<h2 class="title panel__titles mt-35">{{ 'addPropertyPage.roomsTotal'|trans }}</h2>
-		{{ form_row(form.roomsTotal) }}
-		{{ form_row(form.bedroomNumber) }}
-		{{ form_row(form.bathroomNumber) }}
+		{# PRICE FIELD #}
+		{{ form_label(form.price) }}
+		{{ form_widget(form.price) }}
+		{% for error in form.price.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
 
-		<h2 class="title panel__titles mt-35">{{ 'addPropertyPage.surface'|trans }}</h2>
-		{{ form_row(form.indoorSurface) }}
-		{{ form_row(form.outdoorSurface) }}
+		{# CATEGORY FIELD #}
+		{{ form_label(form.category) }}
+		{{ form_widget(form.category) }}
+		{% for error in form.category.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
 
-		<h2 class="title panel__titles mt-35">{{ 'addPropertyPage.perf'|trans }}</h2>
-		{{ form_row(form.energyClass) }}
-		{{ form_row(form.climateClass) }}
+		{# DESCRIPTION FIELD #}
+		{{ form_label(form.description) }}
+		{{ form_widget(form.description) }}
+		{% for error in form.description.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
 
-        <h2 class="title panel__titles mt-35">{{ 'addPropertyPage.status'|trans }}</h2>
-		{{ form_row(form.status) }}
+		<h2 class="panel__titles mt-35 mb-15">{{ 'addPropertyPage.localisation'|trans }}</h2>
 
+		{# CITY FIELD #}
+		{{ form_label(form.city) }}
+		{{ form_widget(form.city) }}
+		{% for error in form.city.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
 
-		<button class="button button__primary">{{ 'addPropertyPage.addBtn'|trans }}</button>
+		{# MAP URL FIELD #}
+		{{ form_label(form.mapUrl) }}
+		{{ form_widget(form.mapUrl) }}
+		{% for error in form.mapUrl.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		<h2 class="panel__titles mt-35 mb-15">{{ 'addPropertyPage.roomsTotal'|trans }}</h2>
+
+		{# ROOMS TOTAL FIELD #}
+		{{ form_label(form.roomsTotal) }}
+		{{ form_widget(form.roomsTotal) }}
+		{% for error in form.roomsTotal.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# BEDROOMS FIELD #}
+		{{ form_label(form.bedroomNumber) }}
+		{{ form_widget(form.bedroomNumber) }}
+		{% for error in form.bedroomNumber.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# BATHROOMS FIELD #}
+		{{ form_label(form.bathroomNumber) }}
+		{{ form_widget(form.bathroomNumber) }}
+		{% for error in form.bathroomNumber.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		<h2 class="panel__titles mt-35 mb-15">{{ 'addPropertyPage.surface'|trans }}</h2>
+
+		{# INDOOR SURFACE FIELD #}
+		{{ form_label(form.indoorSurface) }}
+		{{ form_widget(form.indoorSurface) }}
+		{% for error in form.indoorSurface.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# OUTDOOR SURFACE FIELD #}
+		{{ form_label(form.outdoorSurface) }}
+		{{ form_widget(form.outdoorSurface) }}
+		{% for error in form.outdoorSurface.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		<h2 class="panel__titles mt-35 mb-15">{{ 'addPropertyPage.perf'|trans }}</h2>
+
+		{# ENERGY CLASS FIELD #}
+		{{ form_label(form.energyClass) }}
+		{{ form_widget(form.energyClass) }}
+		{% for error in form.energyClass.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# CLIMATE CLASS FIELD #}
+		{{ form_label(form.climateClass) }}
+		{{ form_widget(form.climateClass) }}
+		{% for error in form.climateClass.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		<h2 class="panel__titles mt-35 mb-15">{{ 'addPropertyPage.status'|trans }}</h2>
+
+		{# PUBLICATION STATUS FIELD #}
+		{{ form_label(form.status) }}
+		{{ form_widget(form.status) }}
+		{% for error in form.status.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# ADD BUTTON #}
+		<button class="button button__primary  mt-30">{{ 'addBtn'|trans }}</button>
+
+		{# GET BACK TO PROPERTIES BUTTON #}
 		<a class="button button__secondary" href="{{ path('app_property_index') }}">{{ 'addPropertyPage.getBack'|trans }}</a>
+
 		{{ form_end(form) }}
 
 

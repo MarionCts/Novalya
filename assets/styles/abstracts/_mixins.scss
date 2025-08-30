@@ -50,11 +50,7 @@
         font-weight: 700;
         font-size: 3.2rem;
 
-    } @else if $type == panel__titles {
-        font-weight: 700;
-        font-size: 1.8rem;
-
-    }@else if $type == accent {
+    } @else if $type == accent {
         font-style: italic;
         font-weight: 500;
 
@@ -80,6 +76,12 @@
         &:hover {
             color: css-var(link);
         }
+
+    } @else if $type == panel__titles {
+        font-weight: 600;
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03rem;
 
     } @else if $type == link__small {
         border-bottom: css-var(text) 0.1rem solid;
@@ -129,7 +131,12 @@
         background-color: transparent;
         border: 0.1rem solid css-var(text);
         color: css-var(secondary-btn-text);
-    } 
+
+    } @else if $type == button__delete {
+        border: none;
+        background-color: css-var(delete-btn-bg);
+        color: css-var(delete-btn-text);
+    }
 }
 
 @mixin button-hover-preset($type) {
@@ -141,5 +148,8 @@
     } @else if $type == button__secondary {
         background-color: css-var(secondary-btn-bg-hover);
         color: css-var(secondary-btn-text-hover);
+
+    } @else if $type == button__delete {
+        background-color: css-var(delete-btn-bg-hover);
     }
 }

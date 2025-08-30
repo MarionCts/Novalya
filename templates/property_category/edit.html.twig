@@ -1,13 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit PropertyCategory{% endblock %}
+{% block title %}Novalya |
+	{{ 'updateCategoryPage.pageTitle'|trans }}
+{% endblock %}
 
 {% block body %}
-    <h1>Edit PropertyCategory</h1>
 
-    {{ include('property_category/_form.html.twig', {'button_label': 'Update'}) }}
+	<main class="new__property px-100">
 
-    <a href="{{ path('app_property_category_index') }}">back to list</a>
+		<h1 class="title title__secondary mb-55">{{ 'updateCategoryPage.mainTitle'|trans }}
+			<span class="title title__secondary accent">{{ 'updateCategoryPage.mainAccent'|trans }}</span>
+		</h1>
 
-    {{ include('property_category/_delete_form.html.twig') }}
+		{{ form_start(form) }}
+
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name) }}
+		{% for error in form.name.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# UPDATE BUTTON #}
+		<div class="flex-responsive">
+			<button class="button button__primary">{{ 'updateBtn'|trans }}</button>
+
+			{{ form_end(form) }}
+
+			{# DELETE BUTTON #}
+			{{ include('property_category/_delete_form.html.twig') }}
+		</div>
+
+		{# GET BACK TO PROPERTIES BUTTON #}
+		<a class="button button__secondary get-back" href="{{ path('app_property_category_index') }}">{{ 'updateCategoryPage.getBack'|trans }}</a>
+
+
+	</main>
+
+
 {% endblock %}

@@ -1,5 +1,65 @@
+# PROPERTY FORM CONSTRAINTS
+
 property:
+  name:
+    not_blank: "* Ce champ ne peut pas être vide"
+    length_min: "* Le champ doit contenir au moins {{ limit }} caractères"
+    length_max: "* Le champ ne peut pas dépasser {{ limit }} caractères"
+  price:
+    not_blank: "* Ce champ ne peut pas être vide"
+    number: "* Vous devez entrer un nombre"
+    positive: "* Vous devez entrer un nombre supérieur à 0"
   description:
-    not_blank: "Vous devez écrire du texte"
-    length_min: "Le champ doit contenir au moins {{ limit }} caractères"
-    length_max: "Le champ ne peut pas dépasser {{ limit }} caractères"
+    not_blank: "* Ce champ ne peut pas être vide"
+    length_min: "* Le champ doit contenir au moins {{ limit }} caractères"
+    length_max: "* Le champ ne peut pas dépasser {{ limit }} caractères"
+  city:
+    not_blank: "* Ce champ ne peut pas être vide"
+    length_min: "* Le champ doit contenir au moins {{ limit }} caractères"
+    length_max: "* Le champ ne peut pas dépasser {{ limit }} caractères"
+  mapUrl:
+    not_blank: "* Ce champ ne peut pas être vide"
+    valid: "* Veuillez entrer une URL valide"
+  roomsTotal:
+    not_blank: "* Ce champ ne peut pas être vide"
+    number: "* Vous devez entrer un nombre"
+    positive: "* Vous devez entrer un nombre supérieur à 0"
+  bedrooms:
+    not_blank: "* Ce champ ne peut pas être vide"
+    number: "* Vous devez entrer un nombre"
+    positive: "* Vous devez entrer un nombre supérieur à 0"
+  bathrooms:
+    not_blank: "* Ce champ ne peut pas être vide"
+    number: "* Vous devez entrer un nombre"
+    positive: "* Vous devez entrer un nombre supérieur à 0"
+  indoorSurface:
+    not_blank: "* Ce champ ne peut pas être vide"
+    number: "* Vous devez entrer un nombre"
+    positive: "* Vous devez entrer un nombre supérieur à 0"
+  outdoorSurface:
+    not_blank: "* Ce champ ne peut pas être vide"
+    number: "* Vous devez entrer un nombre"
+
+
+# REGISTER FORM CONSTRAINTS
+
+register:
+  name:
+    not_blank: "* Ce champ ne peut pas être vide"
+    length_min: "* Le nom doit comporter un minimum de {{ limit }} caractères"
+    length_max: "* Le nom ne peut pas dépasser {{ limit }} caractères"
+  firstName:
+    not_blank: "* Ce champ ne peut pas être vide"
+    length_min: "* Le prénom doit comporter un minimum de {{ limit }} caractères"
+    length_max: "* Le prénom ne peut pas dépasser {{ limit }} caractères"
+  password:
+    not_blank: "* Ce champ ne peut pas être vide"
+    length_min: "* Le mot de passe doit comporter un minimum de {{ limit }} caractères"
+    length_max: "* Le mot de passe ne peut pas dépasser {{ limit }} caractères"
+    regex: "* Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule et un caractère spécial"
+  email:
+    not_blank: "* Ce champ ne peut pas être vide"
+    regex: "* L'adresse mail indiquée est invalide"
+    unique: "* Il existe déjà un compte avec cette adresse mail"
+  conditions:
+    isFalse: "* Veuillez agréer aux conditions d'utilisation du site"

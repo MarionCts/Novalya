@@ -38,6 +38,7 @@ a {
     text-align: right;
 }
 
+
 // ----- TITLES -----
 // Here is the hierarchy design of the titles; 
 // to apply modifications, go to the file base\mixins
@@ -58,7 +59,7 @@ a {
 }
 
 .panel__titles {
-    @include text-preset(title);
+    @include text-preset(paragraph);
     @include text-preset(panel__titles);
 }
 

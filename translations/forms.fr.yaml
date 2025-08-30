@@ -1,3 +1,19 @@
+# REGISTRATION FORM
+
+register:
+  name:
+    label: "Nom :"
+  firstName:
+    label: "Prénom :"
+  password:
+    label: "Mot de passe :"
+  email:
+    label: "Email :"
+  checkbox:
+    label: "Accepter les conditions d'utilisation :"
+
+# PROPERTY FORM
+
 property:
   name:
     label: "Nom :"
@@ -28,6 +44,9 @@ property:
     label: "Statut :"
   category:
     label: "Catégorie :"
+
+
+# ENUM OF THE PROPERTY FORM
 
 enum:
   status:

@@ -1,11 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New PropertyCategory{% endblock %}
+{% block title %}Novalya |
+	{{ 'addCategoryPage.pageTitle'|trans }}
+{% endblock %}
 
 {% block body %}
-    <h1>Create new PropertyCategory</h1>
 
-    {{ include('property_category/_form.html.twig') }}
+	<main class="new__property px-100">
 
-    <a href="{{ path('app_property_category_index') }}">back to list</a>
+		<h1 class="title title__secondary mb-55">{{ 'addCategoryPage.mainTitle'|trans }}
+			<span class="title title__secondary accent">{{ 'addCategoryPage.mainAccent'|trans }}</span>
+		</h1>
+
+		{{ form_start(form) }}
+
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name) }}
+		{% for error in form.name.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# ADD BUTTON #}
+		<button class="button button__primary mt-30">{{ 'addBtn'|trans }}</button>
+
+		{# GET BACK TO PROPERTIES BUTTON #}
+		<a class="button button__secondary" href="{{ path('app_property_category_index') }}">{{ 'addCategoryPage.getBack'|trans }}</a>
+
+		{{ form_end(form) }}
+
+	</main>
+
 {% endblock %}

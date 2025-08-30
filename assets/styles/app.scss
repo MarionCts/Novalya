@@ -11,10 +11,11 @@
 
 // ******************* MAIN ******************
 
-
 // HOMEPAGE : SHARED FLEXBOX
 
-.hero, .hero__content, .intro__content {
+.hero,
+.hero__content,
+.intro__content {
     @include flex-preset(column, center, center);
 }
 
@@ -25,8 +26,16 @@
     max-width: 29rem;
     gap: 3.5rem;
 
+    @include media(768px) {
+        max-width: 60rem;
+    }
+
     a {
         width: 100%;
+
+        @include media(768px) {
+            max-width: 29rem;
+        }
     }
 }
 
@@ -75,5 +84,17 @@
         object-position: center;
         height: inherit;
         width: inherit;
+    }
+}
+
+// CATEGORIES PAGE
+
+.categories {
+    @include flex-preset(column, center, center);
+    gap: 2rem;
+
+    .categories__item {
+        @include flex-preset(row, center, space-between);
+    gap: 1rem;
     }
 }

@@ -1,5 +1,65 @@
+# PROPERTY FORM CONSTRAINTS
+
 property:
+  name:
+    not_blank: "* This field cannot be blank"
+    length_min: "* This field must contain at least {{ limit }} characters"
+    length_max: "* This field cannot exceed {{ limit }} characters"
+  price:
+    not_blank: "* This field cannot be blank"
+    number: "* You must enter a number"
+    positive: "* You must enter a number greater than 0"
   description:
-    not_blank: "You must enter some text"
-    length_min: "This field must contain at least {{ limit }} characters"
-    length_max: "This field cannot exceed {{ limit }} characters"
+    not_blank: "* This field cannot be blank"
+    length_min: "* This field must contain at least {{ limit }} characters"
+    length_max: "* This field cannot exceed {{ limit }} characters"
+  city:
+    not_blank: "* This field cannot be blank"
+    length_min: "* This field must contain at least {{ limit }} characters"
+    length_max: "* This field cannot exceed {{ limit }} characters"
+  mapUrl:
+    not_blank: "* This field cannot be blank"
+    valid: "* Please enter a valid URL"
+  roomsTotal:
+    not_blank: "* This field cannot be blank"
+    number: "* You must enter a number"
+    positive: "* You must enter a number greater than 0"
+  bedrooms:
+    not_blank: "* This field cannot be blank"
+    number: "* You must enter a number"
+    positive: "* You must enter a number greater than 0"
+  bathrooms:
+    not_blank: "* This field cannot be blank"
+    number: "* You must enter a number"
+    positive: "* You must enter a number greater than 0"
+  indoorSurface:
+    not_blank: "* This field cannot be blank"
+    number: "* You must enter a number"
+    positive: "* You must enter a number greater than 0"
+  outdoorSurface:
+    not_blank: "* This field cannot be blank"
+    number: "* You must enter a number"
+
+
+# REGISTER FORM CONSTRAINTS
+
+register:
+  name:
+    not_blank: "* This field cannot be blank"
+    length_min: "* The name must have at least {{ limit }} characters"
+    length_max: "* The name cannot exceed {{ limit }} characters"
+  firstName:
+    not_blank: "* This field cannot be blank"
+    length_min: "* The first name must have at least {{ limit }} characters"
+    length_max: "* The first name cannot exceed {{ limit }} characters"
+  password:
+    not_blank: "* This field cannot be blank"
+    length_min: "* The password must have at least {{ limit }} characters"
+    length_max: "* The password cannot exceed {{ limit }} characters"
+    regex: "* The password must contain at least 1 uppercase letter, 1 lowercase letter and 1 special character"
+  email:
+    not_blank: "* This field cannot be blank"
+    regex: "* The email address is not valid"
+    unique: "* There is already an account with this email"
+  conditions:
+    isFalse: "* You must accept the terms of use"

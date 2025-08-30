@@ -1,48 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Novalya | Se connecter
+{% block title %}Novalya |
+	{{ 'login.pageTitle'|trans }}
 {% endblock %}
 
 {% block body %}
 
 	<main class="px-100">
 
-		<form method="post" class="form">
+		<form method="post" class="form auth__form">
 			{% if error %}
-				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				<div class="form__constraint constraint-bg-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 			{% endif %}
 
 			{% if app.user %}
 				<p>
-					Vous êtes connecté avec l'adresse
+					{{ 'login.alreadyLogged'|trans }}
 					<span class="accent">{{ app.user.userIdentifier }}</span>.</p>
 				<a href="{{ path('app_logout') }}" class="button button__primary full-w">Se déconnecter</a>
 			{% endif %}
 
 			{% if not app.user %}
+				<h1 class="title title__secondary accent">{{ 'login.mainTitle'|trans }}</h1>
+
 				<div class="form__text">
-					<h1 class="title title__secondary accent">Se connecter</h1>
-					<p class="paragraph__small center">Connectez-vous à votre espace personnel pour voir et gérer vos favoris.</p>
+					<p class="paragraph__small center">{{ 'login.description'|trans }}</p>
 				</div>
 
 				<div class="form__choices">
-					<label for="username" class="paragraph__small">Email *</label>
+					<label for="username" class="paragraph__small">{{ 'login.email'|trans }}</label>
 					<input type="email" class="form__input" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
 				</div>
 				<div class="form__choices">
-					<label for="password" class="paragraph__small">Mot de passe *</label>
+					<label for="password" class="paragraph__small">{{ 'login.password'|trans }}</label>
 					<input type="password" class="form__input" name="_password" id="password" autocomplete="current-password" required>
 				</div>
 				<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
 
 				<button class="button button__primary full-w" type="submit">
-					Se connecter
+					{{ 'login.button'|trans }}
 				</button>
 
 				<div class="form__options">
-					<p class="paragraph__xsmall">Pas encore inscrit ?
+					<p class="paragraph__xsmall">{{ 'login.notRegistered'|trans }}
 					</p>
-					<a href="{{ path('app_register')}}" class="link__xsmall">Créez votre compte</a>
+					<a href="{{ path('app_register')}}" class="link__xsmall">{{ 'login.createAccount'|trans }}</a>
 				</div>
 
 			</form>

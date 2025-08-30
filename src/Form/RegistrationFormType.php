@@ -11,52 +11,85 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $builder->setAttribute('translation_domain', 'forms');
+
         $builder
             ->add('name', null, [
                 'attr' => ['class' => 'form__input'],
-                'label' => "Nom * :",
+                'label' => 'register.name.label',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'register.name.not_blank',
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'minMessage' => 'register.name.length_min',
+                        'max' => 100,
+                    ]),
+                ],
             ])
             ->add('firstName', null, [
                 'attr' => ['class' => 'form__input'],
-                'label' => "Prénom * :",
+                'label' => 'register.firstName.label',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'register.firstName.not_blank',
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'minMessage' => 'register.firstName.length_min',
+                        'max' => 100,
+                    ]),
+                ],
             ])
             ->add('email', null, [
                 'attr' => ['class' => 'form__input'],
-                'label' => "Email * :",
+                'label' => 'register.email.label',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'register.email.not_blank',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
+                        'message' => "register.email.regex",
+                    ]),
+                ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => "Accepter les conditions d'utilisation * :",
+                'label' => 'register.checkbox.label',
                 'row_attr' => ['class' => 'agree-terms'],
                 'constraints' => [
                     new IsTrue([
-                        'message' => "Veuillez agréer aux conditions d'utilisation du site",
+                        'message' => 'register.conditions.isFalse',
                     ]),
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
-                'label' => "Mot de passe * :",
+                'label' => 'register.password.label',
                 'attr' => [
                     'autocomplete' => 'new-password',
                     'class' => 'form__input'
                 ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez indiquer un mot de passe',
+                        'message' => 'register.password.not_blank',
                     ]),
                     new Length([
                         'min' => 8,
-                        'minMessage' => 'Le mot de passe doit comporter un minimum de {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
+                        'minMessage' => 'register.password.length_min',
                         'max' => 4096,
+                    ]),
+                    new Regex([
+                        'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-_=+{};:,<.>]).*$/',
+                        'message' => 'register.password.regex',
                     ]),
                 ],
             ])
@@ -67,7 +100,9 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'attr' => ['class' => 'form'],
+            'attr' => ['class' => 'form auth__form'],
+            'required' => false,
+            'translation_domain' => 'forms',
         ]);
     }
 }

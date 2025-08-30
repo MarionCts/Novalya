@@ -26,6 +26,15 @@
     }
 }
 
+.button__delete {
+    @include button-preset(button);
+    @include button-preset(button__delete);
+
+    &:hover {
+        @include button-hover-preset(button__delete);
+    }
+}
+
 // ************* ONY ONE USE BUTTONS **************
 
 // MAIN NAV HAMBURGER MENU

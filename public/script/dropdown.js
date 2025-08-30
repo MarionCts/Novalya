@@ -1,15 +1,35 @@
-const dropdown = document.getElementById("admin-dropdown");
-const menu = document.getElementById("dropdown-menu");
-const dropdownOpenIcon = document.getElementById("dropdown-icon-open");
-const dropdownCloseIcon = document.getElementById("dropdown-icon-close");
+// DROPDOWN BEHAVIOR FOR PROPERTIES
+
+const propertiesDropdown = document.getElementById("properties-dropdown");
+const propertiesMenu = document.getElementById("properties-dropdown-menu");
+const propertiesOpenIcon = document.getElementById("properties-icon-open");
+const propertiesCloseIcon = document.getElementById("properties-icon-close");
 
 // Function to open or close the dropdown when the link is clicked
-dropdown.addEventListener("click", (e) => {
+propertiesDropdown.addEventListener("click", (e) => {
   e.preventDefault();
-  const isOpen = menu.classList.toggle("opens");
+  const isOpen = propertiesMenu.classList.toggle("opens");
 
-  dropdown.setAttribute("aria-expanded", String(isOpen));
-  dropdownOpenIcon.classList.toggle("hidden", isOpen);
-  dropdownCloseIcon.classList.toggle("hidden", !isOpen);
+  propertiesDropdown.setAttribute("aria-expanded", String(isOpen));
+  propertiesOpenIcon.classList.toggle("hidden", isOpen);
+  propertiesCloseIcon.classList.toggle("hidden", !isOpen);
+
+});
+
+// DROPDOWN BEHAVIOR FOR CATEGORIES
+
+const categoriesDropdown = document.getElementById("categories-dropdown");
+const categoriesMenu = document.getElementById("categories-dropdown-menu");
+const categoriesOpenIcon = document.getElementById("categories-icon-open");
+const categoriesCloseIcon = document.getElementById("categories-icon-close");
+
+// Function to open or close the dropdown when the link is clicked
+categoriesDropdown.addEventListener("click", (e) => {
+  e.preventDefault();
+  const isOpen = categoriesMenu.classList.toggle("opens");
+
+  categoriesDropdown.setAttribute("aria-expanded", String(isOpen));
+  categoriesOpenIcon.classList.toggle("hidden", isOpen);
+  categoriesCloseIcon.classList.toggle("hidden", !isOpen);
 
 });

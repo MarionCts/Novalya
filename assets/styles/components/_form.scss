@@ -11,6 +11,12 @@
     gap: 2rem;
     width: 100%;
 
+    label {
+        @include text-preset(paragraph);
+        @include text-preset(paragraph__small);
+        align-self: flex-start;
+    }
+
     div {
         @include flex-preset(column, flex-start, center);
         gap: 0.5rem;
@@ -19,6 +25,23 @@
         label {
             @include text-preset(paragraph);
             @include text-preset(paragraph__small);
+        }
+    }
+
+    .flex-responsive {
+        margin-top: 2rem;
+        gap: 1rem;
+
+        @include media(768px) {
+            @include flex-preset(row, center, center);
+
+            button:first-child {
+                border-radius: 2rem 0 2rem 0;
+            }
+
+            button:last-child {
+                border-radius: 0 2rem 0 2rem;
+            }
         }
     }
 }
@@ -68,7 +91,7 @@ select {
     -moz-appearance: none;
     background: white;
     padding: 0.5rem 2rem 0.5rem 0.75rem;
-    background: url("./../../images/dropdown_icon_open.svg") no-repeat right 1rem center;
+    background: css-var(dropdown-icon-select);
     background-size: 1rem;
 
     option {
@@ -77,9 +100,54 @@ select {
     }
 }
 
-.form__options {
+.form .form__options {
     @include flex-preset(row, center, center);
     gap: 0.5rem;
+}
+
+// CONSTRAINTS STYLE & COLOR
+
+// ------ Login -------
+
+.form__info {
+    color: css-var(info);
+    @include text-preset(paragraph);
+    align-items: center !important;
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%;
+    height: auto;
+    border-radius: 0 2rem 0 2rem;
+    margin-bottom: 3rem;
+}
+
+.info-bg-danger {
+    background-color: css-var(info-bg-danger);
+}
+
+.info-bg-success {
+    background-color: css-var(info-bg-success);
+}
+
+.info-bg-info {
+    background-color: css-var(info-bg-info);
+}
+
+.info-bg-warning {
+    background-color: css-var(info-bg-warning);
+}
+
+// ------ Other forms -------
+
+.form__constraint {
+    color: css-var(constraint);
+    @include text-preset(paragraph);
+    @include text-preset(paragraph__small);
+    font-weight: 600;
+    width: 100%;
+    height: auto;
+    border-radius: 0 2rem 0 2rem;
+    margin: 0;
 }
 
 // NEWSLETTER FORM
@@ -94,6 +162,12 @@ select {
     color: css-var(newsletter-input-text);
     font-family: $poppins;
     font-size: 1.3rem;
+}
+
+// LOGIN & REGISTER FORM
+
+.auth__form {
+    max-width: 40rem;
 }
 
 // "ADD NEW..." FORM
@@ -131,9 +205,6 @@ select {
             max-width: 60rem;
         }
     }
-    button {
-        margin-top: 3rem;
-    }
 }
 
 .new__property {
@@ -141,7 +212,7 @@ select {
         color: css-var(category-title);
         text-align: center;
         padding: 1rem;
-        background: css-var(category-bg);
+        background: css-var(categories);
         border-radius: 0 2rem 0 2rem;
         width: 100%;
     }

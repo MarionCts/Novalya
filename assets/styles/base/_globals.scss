@@ -170,12 +170,28 @@ footer {
 
 // ----- MARGIN & PADDINGS -----
 
-.mb-55 {
-    margin-bottom: 5.5rem;
+.mt-5 {
+    margin-top: 0.5rem;
+}
+
+.mt-15 {
+    margin-top: 1.5rem;
+}
+
+.mb-15 {
+    margin-bottom: 1.5rem;
+}
+
+.mt-30 {
+    margin-top: 3rem;
 }
 
 .mt-35 {
     margin-top: 3.5rem;
+}
+
+.mb-55 {
+    margin-bottom: 5.5rem;
 }
 
 .px-100 {
@@ -187,6 +203,14 @@ footer {
 
     @include media(980px) {
         padding: 9rem 0;
+    }
+}
+
+.get-back {
+    margin-top: 3.5rem;
+
+    @include media(768px) {
+        margin-top: 1rem;
     }
 }
 

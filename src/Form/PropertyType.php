@@ -15,6 +15,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class PropertyType extends AbstractType
 {
@@ -26,10 +29,34 @@ class PropertyType extends AbstractType
             ->add('name', null, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.name.label',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.name.not_blank',
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'max' => 200,
+                        'minMessage' => 'property.name.length_min',
+                        'maxMessage' => 'property.name.length_max',
+                        'normalizer' => 'trim',
+                    ]),
+                ],
             ])
             ->add('city', null, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.city.label',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.city.not_blank',
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'max' => 200,
+                        'minMessage' => 'property.city.length_min',
+                        'maxMessage' => 'property.city.length_max',
+                        'normalizer' => 'trim',
+                    ]),
+                ],
             ])
             ->add('description', TextareaType::class, [
                 'attr'  => ['class' => 'form__input', 'rows' => 8],
@@ -47,54 +74,131 @@ class PropertyType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('roomsTotal', null, [
+            ->add('roomsTotal', IntegerType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.rooms_total.label',
+                'invalid_message' => 'property.roomsTotal.number',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.roomsTotal.not_blank',
+                    ]),
+                    new Assert\Positive([
+                        'message' => 'property.roomsTotal.positive',
+                    ]),
+                    new Assert\Type([
+                        'type' => 'integer',
+                    ]),
+                ],
             ])
-            ->add('bathroomNumber', null, [
+            ->add('bathroomNumber', IntegerType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.bathrooms.label',
+                'invalid_message' => 'property.bathrooms.number',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.bathrooms.not_blank',
+                    ]),
+                    new Assert\Positive([
+                        'message' => 'property.bathrooms.positive',
+                    ]),
+                    new Assert\Type([
+                        'type' => 'integer',
+                    ]),
+                ],
             ])
-            ->add('bedroomNumber', null, [
+            ->add('bedroomNumber', IntegerType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.bedrooms.label',
+                'invalid_message' => 'property.bedrooms.number',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.bedrooms.not_blank',
+                    ]),
+                    new Assert\Positive([
+                        'message' => 'property.bedrooms.positive',
+                    ]),
+                    new Assert\Type([
+                        'type' => 'integer',
+                    ]),
+                ],
             ])
-            ->add('indoorSurface', null, [
+            ->add('indoorSurface', IntegerType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.indoor_surface.label',
+                'invalid_message' => 'property.indoorSurface.number',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.indoorSurface.not_blank',
+                    ]),
+                    new Assert\Positive([
+                        'message' => 'property.indoorSurface.positive',
+                    ]),
+                    new Assert\Type([
+                        'type' => 'integer',
+                    ]),
+                ],
             ])
-            ->add('outdoorSurface', null, [
+            ->add('outdoorSurface', IntegerType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.outdoor_surface.label',
+                'invalid_message' => 'property.outdoorSurface.number',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.outdoorSurface.not_blank',
+                    ]),
+                    new Assert\Type([
+                        'type' => 'integer',
+                    ]),
+                ],
             ])
             ->add('energyClass', EnumType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.energy_class.label',
                 'class' => EnergyClass::class,
-                'choice_label' => fn(EnergyClass $c) => 'enum.energy_class.'.$c->name,
+                'choice_label' => fn(EnergyClass $c) => 'enum.energy_class.' . $c->name,
                 'choice_translation_domain' => 'forms',
             ])
             ->add('climateClass', EnumType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.climate_class.label',
                 'class' => ClimateClass::class,
-                'choice_label' => fn(ClimateClass $c) => 'enum.climate_class.'.$c->name,
+                'choice_label' => fn(ClimateClass $c) => 'enum.climate_class.' . $c->name,
                 'choice_translation_domain' => 'forms',
             ])
-            ->add('mapUrl', null, [
+            ->add('mapUrl', UrlType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.map_url.label',
                 'invalid_message' => 'property.map_url.invalid',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.mapUrl.not_blank',
+                    ]),
+                    new Assert\Url([
+            'message' => 'property.mapUrl.valid',
+        ]),
+                ],
             ])
-            ->add('price', null, [
+            ->add('price', IntegerType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.price.label',
+                'invalid_message' => 'property.price.number',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.price.not_blank',
+                    ]),
+                    new Assert\Positive([
+                        'message' => 'property.price.positive',
+                    ]),
+                    new Assert\Type([
+                        'type' => 'integer',
+                    ]),
+                ],
             ])
             ->add('status', EnumType::class, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.status.label',
                 'class' => Status::class,
-                'choice_label' => fn(Status $s) => 'enum.status.'.$s->name,
+                'choice_label' => fn(Status $s) => 'enum.status.' . $s->name,
                 'choice_translation_domain' => 'forms',
             ])
             ->add('category', EntityType::class, [

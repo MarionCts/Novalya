@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Novalya | Agence immobilière de biens de prestige
+{% block title %}Novalya | {{ 'homePage.pageTitle'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -10,11 +10,11 @@
 		<section class="hero">
 			<div class="hero__bg"></div>
 			<div class="hero__content">
-				<h1 class="title title__primary center">Immobilier
-					<span class="title title__primary line-jump center">de luxe</span>
+				<h1 class="title title__primary center">{{ 'homePage.mainTitle'|trans }}
+					<span class="title title__primary line-jump center">{{ 'homePage.mainAccent'|trans }}</span>
 				</h1>
-				<p class="center">Découvrez notre collection de biens d'exception</p>
-				<a href="#" class="button__primary">Voir nos propriétés</a>
+				<p class="center">{{ 'homePage.description'|trans }}</p>
+				<a href="#" class="button__primary">{{ 'homePage.button'|trans }}</a>
 			</div>
 		</section>
 
@@ -23,12 +23,12 @@
 				<img src="{{ asset('images/intro_villa.webp') }}" alt="Image d'une villa avec piscine">
 			</div>
 			<div class="intro__content">
-				<h2 class="title title__secondary mb-55">Trouvez votre prochain bien d'exception avec
-					<span class="title title__secondary accent">Novalya Prestige</span>
+				<h2 class="title title__secondary mb-55">{{ 'homePage.intro.mainTitle'|trans }}
+					<span class="title title__secondary accent">{{ 'homePage.intro.mainAccent'|trans }}</span>
 				</h2>
-				<p class="paragraph">Nous vous offrons un service personnalisé et confidentiel pour vous aider à trouver la résidence de vos rêves.</p>
+				<p class="paragraph">{{ 'homePage.intro.firstP'|trans }}</p>
 				<br>
-				<p class="paragraph">Notre sélection se compose de propriétés alliant raffinement, élégance, emplacement privilégié et discrétion.</p>
+				<p class="paragraph">{{ 'homePage.intro.secondP'|trans }}</p>
 			</div>
 		</section>
 

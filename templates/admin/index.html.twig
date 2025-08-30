@@ -15,20 +15,38 @@
 					<a href="#" class="panel__titles">{{ 'panelAdmin.userManage'|trans }}</a>
 				</li>
 				<li>
-					<button id="admin-dropdown" class="admin__panel--dropdown panel__titles" aria-expanded="false" aria-controls="dropdown-menu">{{ 'panelAdmin.propertyManage'|trans }}
-						<svg id="dropdown-icon-open" class="dropdown-icon" width="18" height="15" viewbox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<button id="properties-dropdown" class="admin__panel--dropdown panel__titles" aria-expanded="false" aria-controls="dropdown-menu">{{ 'panelAdmin.propertyManage'|trans }}
+						<svg id="properties-icon-open" class="dropdown-icon" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 4.69771C16.3032 4.24392 15.5711 4.24871 15.1225 4.70839L9.00806 10.9738L2.89358 4.70839C2.44496 4.24871 1.71288 4.24392 1.25847 4.69771C0.804028 5.1515 0.79928 5.892 1.2479 6.35168L8.18524 13.4602C8.40245 13.6828 8.69882 13.8082 9.00806 13.8082C9.31725 13.8082 9.61363 13.6828 9.83088 13.4602L16.7682 6.35168C17.2168 5.892 17.212 5.1515 16.7576 4.69771Z"/>
 						</svg>
-						<svg id="dropdown-icon-close" class="dropdown-icon hidden" width="18" height="15" viewbox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<svg id="properties-icon-close" class="dropdown-icon hidden" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 10.3023C16.3032 10.7561 15.5711 10.7513 15.1225 10.2916L9.00806 4.02623L2.89358 10.2916C2.44496 10.7513 1.71288 10.7561 1.25847 10.3023C0.804028 9.8485 0.79928 9.108 1.2479 8.64832L8.18524 1.53976C8.40245 1.31716 8.69882 1.19184 9.00806 1.19184C9.31725 1.19184 9.61363 1.31716 9.83088 1.53976L16.7682 8.64832C17.2168 9.108 17.212 9.8485 16.7576 10.3023Z"/>
 						</svg>
 					</button>
-					<ul id="dropdown-menu" class="dropdown__menu">
+					<ul id="properties-dropdown-menu" class="dropdown__menu">
 						<li>
 							<a href="{{ path('app_property_index') }}" class="paragraph__small">{{ 'panelAdmin.seeProperties'|trans }}</a>
 						</li>
 						<li>
 							<a href="{{ path('app_property_new') }}" class="paragraph__small">{{ 'panelAdmin.addProperties'|trans }}</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<button id="categories-dropdown" class="admin__panel--dropdown panel__titles" aria-expanded="false" aria-controls="dropdown-menu">{{ 'panelAdmin.categoryManage'|trans }}
+						<svg id="categories-icon-open" class="dropdown-icon" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 4.69771C16.3032 4.24392 15.5711 4.24871 15.1225 4.70839L9.00806 10.9738L2.89358 4.70839C2.44496 4.24871 1.71288 4.24392 1.25847 4.69771C0.804028 5.1515 0.79928 5.892 1.2479 6.35168L8.18524 13.4602C8.40245 13.6828 8.69882 13.8082 9.00806 13.8082C9.31725 13.8082 9.61363 13.6828 9.83088 13.4602L16.7682 6.35168C17.2168 5.892 17.212 5.1515 16.7576 4.69771Z"/>
+						</svg>
+						<svg id="categories-icon-close" class="dropdown-icon hidden" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 10.3023C16.3032 10.7561 15.5711 10.7513 15.1225 10.2916L9.00806 4.02623L2.89358 10.2916C2.44496 10.7513 1.71288 10.7561 1.25847 10.3023C0.804028 9.8485 0.79928 9.108 1.2479 8.64832L8.18524 1.53976C8.40245 1.31716 8.69882 1.19184 9.00806 1.19184C9.31725 1.19184 9.61363 1.31716 9.83088 1.53976L16.7682 8.64832C17.2168 9.108 17.212 9.8485 16.7576 10.3023Z"/>
+						</svg>
+					</button>
+					<ul id="categories-dropdown-menu" class="dropdown__menu">
+						<li>
+							<a href="{{ path('app_property_category_index') }}" class="paragraph__small">{{ 'panelAdmin.seeCategories'|trans }}</a>
+						</li>
+						<li>
+							<a href="{{ path('app_property_category_new') }}" class="paragraph__small">{{ 'panelAdmin.addCategories'|trans }}</a>
 						</li>
 					</ul>
 				</li>

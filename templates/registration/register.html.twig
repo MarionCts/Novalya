@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Novalya | S'inscrire
+{% block title %}Novalya | {{ 'register.pageTitle'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -11,9 +11,10 @@
 
 		{{ form_start(registrationForm) }}
 
+		<h1 class="title title__secondary accent">{{ 'register.mainTitle'|trans }}</h1>
+
 		<div class="form__text">
-			<h1 class="title title__secondary accent">S'inscrire</h1>
-			<p class="paragraph__small center">Créez votre espace personnel pour voir vos biens favoris.</p>
+			<p class="paragraph__small center">{{ 'register.text'|trans }}</p>
 		</div>
 
 		<div class="form__choices">
@@ -32,12 +33,12 @@
 			{{ form_row(registrationForm.agreeTerms) }}
 		</div>
 
-		<button type="submit" class="button button__primary full-w">S'inscrire</button>
+		<button type="submit" class="button button__primary full-w">{{ 'register.button'|trans }}</button>
 
 		<div class="form__options">
-			<p class="paragraph__xsmall">Vous avez déjà un compte ?
+			<p class="paragraph__xsmall">{{ 'register.alreadyRegistered'|trans }}
 			</p>
-			<a href="{{ path('app_login')}}" class="link__xsmall">Connectez-vous</a>
+			<a href="{{ path('app_login')}}" class="link__xsmall">{{ 'register.logIn'|trans }}</a>
 		</div>
 
 		{{ form_end(registrationForm) }}

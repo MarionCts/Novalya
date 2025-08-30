@@ -1,3 +1,5 @@
+# HEADER MAIN MENU
+
 mainMenu:
   about: "About"
   properties: "Properties"
@@ -6,6 +8,9 @@ mainMenu:
   logout: "Log Out"
   login: "Log In"
   register: "Register"
+
+
+# FOOTER
 
 footer:
   connect:
@@ -29,6 +34,39 @@ footer:
     cookies: "Cookies management"
     legal : "Legal information"
 
+
+# ADD BUTTON
+
+addBtn: "Add"
+
+
+# UPDATE BUTTON
+
+updateBtn: "Update"
+
+
+# DELETE BUTTON
+
+deleteBtn: "Delete"
+
+
+# HOME PAGE
+
+homePage:
+  pageTitle: "High end real estate agency"
+  mainTitle: "Luxury" 
+  mainAccent: "real estate" 
+  description: "Discover our collection of exceptional properties"
+  button: "See our properties"
+  intro:
+    mainTitle: "Find your next luxurious home with"
+    mainAccent: "Novalya Prestige"
+    firstP: "We offer you a personalized and confidential service to help you find the residence of your dreams."
+    secondP: "Our selection features properties that combine refinement, elegance, prime locations, and discretion."
+
+
+# PAGE "ADD A PROPERTY"
+
 addPropertyPage:
   pageTitle: "Add a property"
   mainTitle: "Add a" 
@@ -39,8 +77,37 @@ addPropertyPage:
   surface: "Surface area"
   perf: "Performances"
   status: "Publication status"
-  addBtn: "Add"
   getBack: "Back to properties"
+
+
+# PAGE "ADD A PROPERTY"
+categoryIndex:
+  pageTitle: "All categories"
+  mainTitle: "Categories"
+  mainAccent: "list"
+  addBtn: "Add a category"
+  noRecord: "No category found."
+
+
+# PAGE "ADD A PROPERTY"
+
+addCategoryPage:
+  pageTitle: "Add a category"
+  mainTitle: "Add a" 
+  mainAccent: "category"
+  getBack: "Back to categories"
+
+
+# PAGE "UPDATE A PROPERTY"
+
+updateCategoryPage:
+  pageTitle: "Update a category"
+  mainTitle: "Update a" 
+  mainAccent: "category"
+  getBack: "Back to categories"
+
+
+# ADMINISTRATOR PANEL
 
 panelAdmin:
   pageTitle: "Administrator Panel"
@@ -50,3 +117,31 @@ panelAdmin:
   propertyManage: "Manage properties"
   seeProperties: "See all properties"
   addProperties: "Add a property"
+  categoryManage: "Manage categories"
+  seeCategories: "See all categories"
+  addCategories: "Add a category"
+
+
+  # LOGIN PAGE
+
+login:
+  pageTitle: "Log in"
+  mainTitle: "Log in"
+  description: "Log into your personnal account to see and manage your favorite properties."
+  email: "Email *"
+  password: "Password *"
+  button: "Log in"
+  notRegistered: "Not registered yet ?"
+  createAccount: "Create your account"
+  alreadyLogged: "You are already logged in as"
+  
+
+# REGISTER PAGE
+
+register:
+  pageTitle: "Register"
+  mainTitle: "Register"
+  text: "Create your personal account to see and manage your favorite properties."
+  button: "Register"
+  alreadyRegistered: "Already registered ?"
+  logIn: "Log in"
