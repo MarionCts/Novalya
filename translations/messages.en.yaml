@@ -35,6 +35,13 @@ footer:
     legal : "Legal information"
 
 
+# PAGE 404
+
+errorPage:
+  message: "This page does not exist or cannot be found."
+  button: "Back to home" 
+
+
 # ADD BUTTON
 
 addBtn: "Add"
@@ -112,6 +119,7 @@ updatePropertyPage:
   mainTitle: "Update a" 
   mainAccent: "property"
   getBack: "Back to properties"
+  flashSuccess: "Property updated successfully!"
 
 
   # PAGE "DELETE A PROPERTY"
@@ -157,8 +165,8 @@ deleteCategoryPage:
 # INDIVIDUAL PROPERTY PAGE
 
 indivudualPropertyPage:
-  rooms: "rooms"
-  bathrooms: "bathrooms"
+  rooms: "Rooms"
+  bathrooms: "Bathrooms"
   specsTitle: "Features"
   category: "Category"
   location: "Location"

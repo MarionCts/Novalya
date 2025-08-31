@@ -58,6 +58,11 @@ a {
     @include text-preset(title__tertiary);
 }
 
+.error__page {
+    @include text-preset(title);
+    @include text-preset(error__page);
+}
+
 .title__city {
     @include text-preset(title);
     @include text-preset(title__city);

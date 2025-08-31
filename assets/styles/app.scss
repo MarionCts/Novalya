@@ -15,7 +15,7 @@
 
 .hero,
 .hero__content,
-.intro__content {
+.intro__content, .error__find {
     @include flex-preset(column, center, center);
 }
 
@@ -359,4 +359,10 @@
             border-radius: 0 2rem 0 2rem;
         }
     }
+}
+
+// PAGE 404
+
+.error__find {
+    gap: 4rem;
 }

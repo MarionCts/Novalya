@@ -78,7 +78,7 @@ final class PropertyController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_property_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Property $property, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Property $property, EntityManagerInterface $entityManager, TranslatorInterface $translator, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
@@ -86,6 +86,29 @@ final class PropertyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $imageFile = $form->get('images')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                $imageFile->move(
+                    $this->getParameter('images_directory'),
+                    $newFilename
+                );
+                $media = new PropertyImage;
+                $media->setUrl('/uploads/images/' . $newFilename);
+                $media->setProperty($property);
+                $media->setIsFeatured(false);
+
+                $entityManager->persist($media);
+                $entityManager->flush();
+                $property->addPropertyImage($media);
+            }
+
+            $entityManager->flush();
+
+            $this->addFlash('success', $translator->trans('updatePropertyPage.flashSuccess'));
             return $this->redirectToRoute('app_property_index', [], Response::HTTP_SEE_OTHER);
         }
 

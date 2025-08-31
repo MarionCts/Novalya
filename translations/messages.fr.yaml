@@ -35,6 +35,13 @@ footer:
     legal : "Mentions légales"
 
 
+# PAGE 404
+
+errorPage:
+  message: "Cette page n'existe pas ou est introuvable."
+  button: "Retour à l'accueil" 
+
+
 # ADD BUTTON
 
 addBtn: "Ajouter"
@@ -112,6 +119,7 @@ updatePropertyPage:
   mainTitle: "Modifier une" 
   mainAccent: "propriété"
   getBack: "Retour aux propriétés"
+  flashSuccess: "Propriété modifiée avec succès !"
 
 
 # PAGE "DELETE A PROPERTY"
@@ -158,8 +166,8 @@ deleteCategoryPage:
 # INDIVIDUAL PROPERTY PAGE
 
 indivudualPropertyPage:
-  rooms: "pièces"
-  bathrooms: "salles de bain"
+  rooms: "Pièces"
+  bathrooms: "Salles de bain"
   specsTitle: "Caractéristiques"
   category: "Catégorie"
   location: "Emplacement"

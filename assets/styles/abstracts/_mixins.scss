@@ -50,6 +50,11 @@
         font-weight: 700;
         font-size: 3.2rem;
 
+    } @else if $type == error__page {
+        font-weight: 500;
+        font-size: 15rem;
+        font-style: italic;
+
     } @else if $type == title__city {
         font-weight: 500;
         font-size: 2.4rem;

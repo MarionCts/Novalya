@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Novalya | {{ 'register.pageTitle'|trans }}
+{% block title %}Novalya |
+	{{ 'register.pageTitle'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -18,19 +19,41 @@
 		</div>
 
 		<div class="form__choices">
-			{{ form_row(registrationForm.name) }}
+			{{ form_label(registrationForm.name) }}
+			{{ form_widget(registrationForm.name) }}
+			{% for error in registrationForm.name.vars.errors %}
+				<div class="form__constraint">{{ error.message }}</div>
+			{% endfor %}
 		</div>
 		<div class="form__choices">
-			{{ form_row(registrationForm.firstName) }}
+			{{ form_label(registrationForm.firstName) }}
+			{{ form_widget(registrationForm.firstName) }}
+			{% for error in registrationForm.firstName.vars.errors %}
+				<div class="form__constraint">{{ error.message }}</div>
+			{% endfor %}
 		</div>
 		<div class="form__choices">
-			{{ form_row(registrationForm.email) }}
+			{{ form_label(registrationForm.email) }}
+			{{ form_widget(registrationForm.email) }}
+			{% for error in registrationForm.email.vars.errors %}
+				<div class="form__constraint">{{ error.message }}</div>
+			{% endfor %}
 		</div>
 		<div class="form__choices">
-			{{ form_row(registrationForm.plainPassword) }}
+			{{ form_label(registrationForm.plainPassword) }}
+			{{ form_widget(registrationForm.plainPassword) }}
+			{% for error in registrationForm.plainPassword.vars.errors %}
+				<div class="form__constraint">{{ error.message }}</div>
+			{% endfor %}
 		</div>
 		<div class="form__choices">
-			{{ form_row(registrationForm.agreeTerms) }}
+			<div class="form__agree">
+				{{ form_label(registrationForm.agreeTerms) }}
+				{{ form_widget(registrationForm.agreeTerms) }}
+			</div>
+			{% for error in registrationForm.agreeTerms.vars.errors %}
+				<div class="form__constraint">{{ error.message }}</div>
+			{% endfor %}
 		</div>
 
 		<button type="submit" class="button button__primary full-w">{{ 'register.button'|trans }}</button>
