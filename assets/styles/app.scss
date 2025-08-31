@@ -15,7 +15,8 @@
 
 .hero,
 .hero__content,
-.intro__content, .error__find {
+.intro__content,
+.error__find {
     @include flex-preset(column, center, center);
 }
 
@@ -271,10 +272,20 @@
 
 .properties__container {
     @include flex-preset(column, center, center);
+    width: 100%;
     gap: 2.5rem;
 
-    @include media(768px) {
-        @include flex-preset(row, center, center);
+    @include media(880px) {
+        width: auto;
+        display: grid;
+        grid-template-columns: repeat((2, 1fr));
+        justify-content: center;
+        justify-items: center;
+        gap: 2.5rem;
+    }
+
+    @include media(1280px) {
+        grid-template-columns: repeat((3, 1fr));
     }
 }
 
@@ -283,22 +294,23 @@
     gap: 1.5rem;
     padding: 2.5rem;
     width: 100%;
+    max-width: 60rem;
     border: 0.1rem solid css-var(text);
     border-radius: 0 2rem 0 2rem;
 
-    @include media(768px) {
-        max-width: 50rem;
+    @include media(880px) {
+        width: 38rem;
     }
 }
 
 .properties__image {
     height: 14rem;
-    width: inherit;
+    width: 100%;
     border-radius: 0 1rem 0 0;
     overflow: hidden;
 
     img {
-        width: inherit;
+        width: 100%;
         object-fit: cover;
         object-position: center;
     }
@@ -325,7 +337,7 @@
         gap: 1rem;
         width: 100%;
 
-        @include media(768px) {
+        @include media(880px) {
             @include flex-preset(row, center, center);
 
             a:first-child {
@@ -344,7 +356,11 @@
     gap: 1.5rem;
     width: 100%;
 
-    @include media(768px) {
+    a {
+            max-width: 60rem;
+        }
+
+    @include media(880px) {
         @include flex-preset(row, center, center);
 
         a {

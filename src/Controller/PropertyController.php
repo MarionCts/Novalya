@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Property;
+use App\Enum\Status;
 use App\Entity\PropertyImage;
 use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
@@ -74,7 +75,7 @@ final class PropertyController extends AbstractController
     {
         $status = $property->getStatus();
 
-        if ($status === 'Published' || $this->isGranted('ROLE_ADMIN')) {
+        if ($status === Status::Published || $this->isGranted('ROLE_ADMIN')) {
             return $this->render('property/show.html.twig', [
                 'property' => $property,
             ]);

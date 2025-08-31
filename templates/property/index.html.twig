@@ -11,9 +11,9 @@
 			<span class="title title__secondary accent">{{ 'propertyIndex.mainAccent'|trans }}</span>
 		</h1>
 
-		<div class="properties__container">
+			<div class="properties__container">
 
-			{% for property in properties %}
+				{% for property in properties %}
 
 					<div class="properties__specs">
 						{% for image in property.propertyImages %}
@@ -61,9 +61,9 @@
 
 					<p>{{ 'propertyIndex.noRecord'|trans }}</p>
 
-			{% endfor %}
+				{% endfor %}
 
-		</div>
+			</div>
 
 		<div class="properties__controls  mt-55">
 			<a href="{{ path('app_property_new') }}" class="button button__primary">{{ 'propertyIndex.addBtn'|trans }}</a>
