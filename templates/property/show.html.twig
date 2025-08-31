@@ -13,7 +13,7 @@
 			{% for image in property.propertyImages %}
 
                 {# Selects only the featured image among all the pictures related to this property #}
-				{% if image.isFeatured == false %}
+				{% if image.property.id == property.id and image.isFeatured == false %}
 					<div class="property__hero--bg" style="background-image: url('{{ asset(image.url) }}')"></div>
 				{% endif %}
 			{% endfor %}

@@ -169,42 +169,7 @@ select {
     max-width: 40rem;
 }
 
-// "ADD NEW..." FORM
-
-.new__property {
-    @include flex-preset(column, center, center);
-    width: 100%;
-}
-
-.new__property {
-    form {
-        width: 100%;
-
-        @include media(768px) {
-            max-width: 60rem;
-        }
-
-        .form {
-            gap: 2rem;
-            position: relative;
-
-            @include media(768px) {
-                max-width: 60rem;
-            }
-        }
-    }
-}
-
-.new__property {
-    button,
-    a {
-        width: 100%;
-
-        @include media(768px) {
-            max-width: 60rem;
-        }
-    }
-}
+// ADD A NEW PROPERTY PAGE
 
 .new__property {
     h2 {

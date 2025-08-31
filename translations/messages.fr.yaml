@@ -40,6 +40,11 @@ footer:
 addBtn: "Ajouter"
 
 
+# SHOW BUTTON
+
+showBtn: "Voir"
+
+
 # UPDATE BUTTON
 
 updateBtn: "Modifier"
@@ -70,6 +75,19 @@ homePage:
     secondP: "Notre sélection se compose de propriétés alliant raffinement, élégance, emplacement privilégié et discrétion."
 
 
+# PAGE "PROPERTIES LIST"
+
+propertyIndex:
+  pageTitle: "Liste des propriétés"
+  mainTitle: "Liste des"
+  mainAccent: "propriétés"
+  addBtn: "Ajouter une propriété"
+  noRecord: "Aucune propriété."
+  status: "Statut :"
+  creation: "Date de création :"
+  update: "Dernière modification :"
+
+
 # PAGE "ADD A PROPERTY"
 
 addPropertyPage:
@@ -89,11 +107,11 @@ addPropertyPage:
 
 # PAGE "UPDATE A PROPERTY"
 
-updateCategoryPage:
-  pageTitle: "Modifier une catégorie"
+updatePropertyPage:
+  pageTitle: "Modifier une propriété"
   mainTitle: "Modifier une" 
-  mainAccent: "catégorie"
-  getBack: "Retour aux catégories"
+  mainAccent: "propriété"
+  getBack: "Retour aux propriétés"
 
 
 # PAGE "DELETE A PROPERTY"
@@ -120,6 +138,15 @@ addCategoryPage:
   mainAccent: "catégorie"
   getBack: "Retour aux catégories"
   flashSuccess: "Catégorie ajoutée avec succès !"
+
+
+# PAGE "UPDATE A CATEGORY"
+
+updateCategoryPage:
+  pageTitle: "Modifier une catégorie"
+  mainTitle: "Modifier une" 
+  mainAccent: "catégorie"
+  getBack: "Retour aux catégories"
 
 
 # PAGE "DELETE A CATEGORY"
