@@ -9,9 +9,6 @@
 	<main
 		class="property">
 
-		{# Prevents the user who is not an admin to see the page property if the status is not "published" #}
-		{% if property.status.value == 'published' or is_granted('ROLE_ADMIN') %}
-
 			{# FEATURED IMAGE OF THE PROPERTY #}
 			<section class="property__hero">
 				{% for image in property.propertyImages %}
@@ -119,18 +116,11 @@
 			<iframe src="{{ property.mapUrl }}" frameborder="0"></iframe>
 		</section>
 
-	{% else %}
+	</main>
 
-		{# ERROR 404 #}
-		{% block errorPage %}
-			{% include 'layout/error.html.twig' %}
-		{% endblock %}
+	{# FOOTER #}
+	{% block footer %}
+		{% include 'layout/footer.html.twig' %}
+	{% endblock %}
 
-	{% endif %}
-
-</main>
-
-{# FOOTER #}
-{% block footer %}
-	{% include 'layout/footer.html.twig' %}
-{% endblock %}{% endblock %}
+{% endblock %}

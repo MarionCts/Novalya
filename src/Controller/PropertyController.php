@@ -72,9 +72,14 @@ final class PropertyController extends AbstractController
     #[Route('/{id}', name: 'app_property_show', methods: ['GET'])]
     public function show(Property $property): Response
     {
-        return $this->render('property/show.html.twig', [
-            'property' => $property,
-        ]);
+        $status = $property->getStatus();
+
+        if ($status === 'Published' || $this->isGranted('ROLE_ADMIN')) {
+            return $this->render('property/show.html.twig', [
+                'property' => $property,
+            ]);
+        }
+        return $this->redirectToRoute('app_error_error', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}/edit', name: 'app_property_edit', methods: ['GET', 'POST'])]

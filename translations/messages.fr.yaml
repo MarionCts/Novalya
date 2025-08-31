@@ -38,6 +38,7 @@ footer:
 # PAGE 404
 
 errorPage:
+  pageTitle: "Erreur 404"
   message: "Cette page n'existe pas ou est introuvable."
   button: "Retour à l'accueil" 
 
