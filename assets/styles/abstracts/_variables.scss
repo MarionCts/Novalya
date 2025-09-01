@@ -29,9 +29,13 @@ $theme-dark: (
     info-bg-warning: hsl(320, 100, 31),
     constraint: hsl(29, 72, 80),
     link: hsl(29, 72, 80),
+    favorite: hsl(359, 99, 67),
     menu-bg-opacity: 1,
+    linear-services: linear-gradient(hsla(225, 29%, 11%, 0), hsla(225, 29%, 11%, 0.5), hsl(225, 29%, 11%, 0.8)),
+    linear-services-hover: linear-gradient(hsla(225, 29%, 11%, 0.9), hsla(225, 29%, 11%, 1), hsl(225, 29%, 11%, 1)),
     dropdown-icon-select: url("./../../images/dropdown_icon_open.svg") no-repeat right
         1rem center,
+    menu-background: url("./../../images/nav_menu_background_villa.webp"),
 );
 
 $theme-light: (
@@ -61,9 +65,13 @@ $theme-light: (
     info-bg-warning: hsl(320, 100, 31),
     constraint: hsl(340, 100, 35),
     link: hsl(34, 56, 29),
+    favorite: hsl(359, 99, 67),
     menu-bg-opacity: 0.15,
+    linear-services: linear-gradient(rgba(255, 252, 250, 0), rgba(255, 252, 250, 0.4), rgba(255, 252, 250, 1)),
+    linear-services-hover: linear-gradient(rgba(255, 252, 250, 1), rgba(255, 252, 250, 1), rgba(255, 252, 250, 1)),
     dropdown-icon-select: url("./../../images/dropdown_icon_open_dark.svg") no-repeat right
         1rem center,
+    menu-background: url("./../../images/nav_menu_background_villa_light.webp"),
 );
 
 @function css-var($name) {

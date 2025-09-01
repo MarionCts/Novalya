@@ -13,6 +13,7 @@
 
 // HOMEPAGE : SHARED FLEXBOX
 
+.homepage,
 .hero,
 .hero__content,
 .intro__content,
@@ -86,6 +87,265 @@
         height: inherit;
         width: inherit;
     }
+}
+
+// HOMEPAGE : PROPERTIES CAROUSEL SECTION
+
+.home__properties {
+    @include flex-preset(column, center, center);
+    gap: 5rem;
+
+    .card__container {
+        min-width: 35rem;
+    }
+}
+
+// HOMEPAGE : SERVICES SECTION
+
+.services {
+    @include flex-preset(column, center, center);
+    gap: 2.3rem;
+}
+
+.services__container {
+    @include flex-preset(column, center, center);
+    gap: 5.6rem;
+
+    @include media(768px) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(35rem, 1fr));
+        gap: 0;
+    }
+
+    @include media(1200px) {
+        @include flex-preset(row, center, center);
+        gap: 0;
+    }
+}
+
+.services__card {
+    @include flex-preset(column, center, space-between);
+    width: 100%;
+    min-height: 50rem;
+    position: relative;
+    padding: 3.4rem;
+    border-radius: 0 10rem 0 0;
+    max-width: 40rem;
+    width: auto;
+    background-size: cover;
+    background-position: center;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 1;
+        z-index: 0;
+        transition: all 0.5s ease;
+        background: css-var(linear-services);
+    }
+
+    &:hover::before {
+        opacity: 0;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        z-index: 0;
+        transition: all 0.5s ease;
+        background: css-var(linear-services-hover);
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+
+    @include media(1200px) {
+        max-width: 30rem;
+    }
+}
+
+.services__card:first-child {
+    background-image: url("../images/architecture.webp");
+
+    @include media(768px) {
+        border-radius: 0 0 0 0;
+    }
+
+    @include media(1200px) {
+        border-radius: 10rem 0 0 0;
+    }
+}
+
+.services__card:nth-child(2) {
+    background-image: url("../images/law.webp");
+    border-radius: 10rem 0 0 0;
+
+    @include media(768px) {
+        border-radius: 0 10rem 0 0;
+    }
+
+    @include media(1200px) {
+        border-radius: 0;
+    }
+}
+
+.services__card:nth-child(3) {
+    background-image: url("../images/renting.webp");
+    border-radius: 0 10rem 0 0;
+
+    @include media(768px) {
+        border-radius: 0 0 0 10rem;
+    }
+
+    @include media(1200px) {
+        border-radius: 0;
+    }
+}
+
+.services__card:nth-child(4) {
+    background-image: url("../images/auto.webp");
+    border-radius: 10rem 0 0 0;
+
+    @include media(768px) {
+        border-radius: 0 0 0 0;
+    }
+
+    @include media(1200px) {
+        border-radius: 0 0 10rem 0;
+    }
+}
+
+.services__card--recto {
+    align-self: flex-end;
+    width: 100%;
+
+    h3 {
+        align-self: flex-start;
+    }
+}
+
+.services__card--recto,
+.services__card--verso {
+    position: relative;
+    z-index: 1;
+}
+
+.services__card--recto {
+    height: inherit;
+    @include flex-preset(column, flex-start, flex-end);
+}
+
+.accent__number {
+    position: absolute;
+    right: 0;
+    bottom: -5.5rem;
+}
+
+.services__card--verso {
+    @include flex-preset(column, center, center);
+    gap: 3rem;
+    padding: 4rem 0;
+
+    h4 {
+        align-self: flex-start;
+    }
+}
+
+.services__card--verso h4,
+.services__card--verso p {
+    opacity: 0;
+    transform: translateY(25rem);
+    pointer-events: none;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.services__card:hover .services__card--verso h4 {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0.1s;
+    transform: translateY(0);
+}
+
+.services__card:hover .services__card--verso p {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0.25s;
+    transform: translateY(0);
+}
+
+// FILTER PROPERTIES PAGE
+
+.filter__hero {
+    height: 100%;
+    width: 100%;
+
+    .filter__hero__bg {
+        height: 100%;
+
+        &::before {
+            content: "";
+            opacity: 0.4;
+            z-index: -1;
+            min-height: 110vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("./../images/nav_menu_background_villa.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 0 0 0 10rem;
+
+            @include media(768px) {
+                width: 65%;
+                left: auto;
+            }
+        }
+    }
+}
+
+.filter__hero--text {
+    @include flex-preset(column, flex-start, flex-start);
+    gap: 3.5rem;
+
+    .title__primary {
+        text-transform: none;
+    }
+
+    @include media(768px) {
+        max-width: 64rem;
+
+        a {
+            max-width: 26rem;
+        }
+    }
+}
+
+.filter__filter {
+    @include flex-preset(column, flex-start, center);
+    margin-top: 15rem;
+    width: 100%;
+
+    @include media(768px) {
+        margin-top: 18rem;
+    }
+}
+
+.filter__properties {
+    display: grid;
+    grid-template-areas: 
 }
 
 // ADMIN PAGE
@@ -311,6 +571,7 @@
 
     img {
         width: 100%;
+        height: inherit;
         object-fit: cover;
         object-position: center;
     }
@@ -357,8 +618,8 @@
     width: 100%;
 
     a {
-            max-width: 60rem;
-        }
+        max-width: 60rem;
+    }
 
     @include media(880px) {
         @include flex-preset(row, center, center);
@@ -377,8 +638,53 @@
     }
 }
 
+// USERS LIST
+
+.users {
+    @include flex-preset(column, center, center);
+    gap: 2.5rem;
+    width: 100%;
+    margin-bottom: 3.5rem;
+
+    @include media(700px) {
+        width: auto;
+        display: grid;
+        grid-template-columns: repeat((2, 1fr));
+        justify-content: center;
+        justify-items: center;
+    }
+
+    @include media(950px) {
+        grid-template-columns: repeat((3, 1fr));
+    }
+}
+
+.users__container {
+    @include flex-preset(column, flex-start, center);
+    gap: 1.5rem;
+    padding: 2.5rem;
+    width: 100%;
+    border: 0.1rem solid css-var(text);
+    border-radius: 0 2rem 0 2rem;
+}
+
+.users__specs {
+    @include flex-preset(row, center, center);
+    gap: 0.5rem;
+}
+
 // PAGE 404
 
 .error__find {
     gap: 4rem;
+}
+
+// GROW TEXT BUTTON
+
+#growBtn {
+    bottom: 12rem;
+
+    svg {
+        fill: css-var(bg);
+    }
 }

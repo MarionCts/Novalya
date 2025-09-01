@@ -4,6 +4,8 @@
 
 // ******* REUSABLE BUTTONS COMPONENTS *******
 
+// This section uses the mixins presets from the folder abstracts/mixins.scss
+
 .button__primary {
     @include button-preset(button);
     @include button-preset(button__primary);
@@ -14,6 +16,15 @@
 
     .logout {
         width: auto;
+    }
+}
+
+.button__primary__opposite {
+    @include button-preset(button);
+    @include button-preset(button__primary__opposite);
+
+    &:hover {
+        @include button-hover-preset(button__primary);
     }
 }
 

@@ -42,6 +42,10 @@ errorPage:
   message: "Cette page n'existe pas ou est introuvable."
   button: "Retour à l'accueil" 
 
+# DATE FORMAT
+
+date: 'd/m/Y'
+
 
 # ADD BUTTON
 
@@ -63,6 +67,11 @@ updateBtn: "Modifier"
 deleteBtn: "Supprimer"
 
 
+# CONTACT BUTTON
+
+contactBtn: "Nous contacter"
+
+
 # RETURN TO ADMIN PANEL BUTTON
 
 adminBtn: "Retour au panel Admin"
@@ -81,9 +90,56 @@ homePage:
     mainAccent: "Novalya Prestige"
     firstP: "Nous vous offrons un service personnalisé et confidentiel pour vous aider à trouver la résidence de vos rêves."
     secondP: "Notre sélection se compose de propriétés alliant raffinement, élégance, emplacement privilégié et discrétion."
+  properties:
+    mainTitle: "Nos dernières"
+    mainAccent: "propriétés d'exception"
+    button: "Voir toutes les propriétés"
+  services:
+    mainTitle: "Nos services"
+    mainAccent: "supplémentaires"
+    description: "Assurer votre accès à la propriété dans les règles de l'art"
+    firstMainTitle: "Votre demeure"
+    firstMainAccent: "à la carte"
+    firstSecondTitle: "Conception sur-mesure"
+    firstSecondAccent: "de votre projet"
+    firstdescription: "Nous vous accompagnons dans la conception architecturale et l’aménagement de votre résidence selon vos désirs. Du plan initial aux finitions, notre réseau d’architectes et designers d’intérieur veille à refléter votre art de vivre jusque dans les moindres détails."
+    secondMainTitle: "Assistance"
+    secondMainAccent: "juridique"
+    secondSecondTitle: "Une expertise juridique"
+    secondSecondAccent: "à votre service"
+    seconddescription: "Obtenez un accompagnement juridique sur mesure, adapté à vos besoins personnels ou professionnels. Nos experts vous conseillent et vous orientent afin de sécuriser vos démarches et protéger vos intérêts."
+    thirdMainTitle: "Gestion de"
+    thirdMainAccent: "location"
+    thirdSecondTitle: "Une gestion sereine"
+    thirdSecondAccent: "de votre bien"
+    thirddescription: "Confiez-nous la gestion complète de vos biens immobiliers. De la recherche de locataires fiables au suivi administratif, nous optimisons votre rentabilité tout en vous offrant une tranquillité d’esprit."
+    fourthMainTitle: "Conciergerie"
+    fourthMainAccent: "automobile"
+    fourthSecondTitle: "Un service haut de gamme"
+    fourthSecondAccent: "pour votre véhicule"
+    fourthdescription: "Profitez d’un service exclusif pour votre véhicule : entretien, livraison, mise à disposition et démarches administratives. Nous prenons soin de votre voiture comme si c’était la nôtre."
+    bedrooms: "chambres"
 
 
-# PAGE "PROPERTIES LIST"
+# PAGE VISITOR "PROPERTIES LIST"
+
+propertyFilter:
+  pageTitle: "Découvrez notre catalogue"
+  mainTitle: "Découvrez"
+  mainAccent: "notre catalogue"
+  descriptionOne: "Notre agence se targue de posséder un catalogue riche en biens d’exception : appartements, maisons, villas, domaines... nulle doute que vous trouverez votre bonheur parmi notre sélection."
+  descriptionTwo: "Nous possédons également un catalogue de biens off-market : prenez directement contact avec nous en savoir plus."
+  choose: "Choisir"
+  filterOne: "Vous souhaitez"
+  filterTwo: "Type de propriété"
+  filterThree: "Localisation"
+  filterFour: "Budget"
+  results: "Résultats"
+  resultCount: "correspondent à votre recherche"
+  loadMoreBtn: "Charger plus"
+
+
+# PAGE ADMIN "PROPERTIES LIST"
 
 propertyIndex:
   pageTitle: "Liste des propriétés"
@@ -162,6 +218,23 @@ updateCategoryPage:
 
 deleteCategoryPage:
   flashSuccess: "Catégorie supprimée avec succès !"
+
+
+# PAGE "USERS LIST"
+
+userIndex:
+  pageTitle: "Liste des utilisateurs"
+  mainTitle: "Liste des"
+  mainAccent: "utilisateurs"
+  noRecord: "Aucune utilisateur."
+  name: "Nom :"
+  firstName: "Prénom :"
+  status: "Statut :"
+  active: "Actif"
+  notActive: "Inactif"
+  registerDate: "Date d'inscription :"
+  deactivatedDate: "Date de désactivation :"
+  toDelete: "À supprimer le :"
 
 
 # INDIVIDUAL PROPERTY PAGE

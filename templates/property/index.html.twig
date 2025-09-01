@@ -11,63 +11,65 @@
 			<span class="title title__secondary accent">{{ 'propertyIndex.mainAccent'|trans }}</span>
 		</h1>
 
-			<div class="properties__container">
+		<div class="properties__container">
 
-				{% for property in properties %}
+			{% for property in properties %}
 
-					<div class="properties__specs">
-						{% for image in property.propertyImages %}
+				<div class="properties__specs">
+					{% for image in property.propertyImages %}
 
-							{# Selects only the featured image among all the pictures related to this property #}
-							{% if image.property.id == property.id and image.isFeatured == false %}
-								<div class="properties__image">
-									<img src="{{ asset(image.url) }}" alt=""></div>
+						{# Selects only the featured image among all the pictures related to this property #}
+						{% if image.property.id == property.id and image.isFeatured == false %}
+							<div class="properties__image">
+								<img src="{{ asset(image.url) }}" alt=""></div>
+						{% endif %}
+					{% endfor %}
+
+					<h4 class="title panel__titles">{{ property.name }}</h4>
+					<div class="properties__content">
+						<div class="content">
+							<p class="paragraph__xsmall__bold">{{ 'propertyIndex.status'|trans }}</p>
+							<p class="paragraph__xsmall">{{ property.status.value }}</p>
+						</div>
+						<div class="content">
+							<p class="paragraph__xsmall__bold">{{ 'propertyIndex.creation'|trans }}</p>
+							<p class="paragraph__xsmall">{{ property.createdAt ? property.createdAt|date('date'|trans) : '' }}</p>
+						</div>
+						<div class="content">
+							<p class="paragraph__xsmall__bold">{{ 'propertyIndex.update'|trans }}</p>
+							{% if property.modifiedAt %}
+								<p class="paragraph__xsmall">{{ property.modifiedAt ? property.modifieddAt|date('date'|trans) : '' }}</p>
+							{% else %}
+								<p class="paragraph__xsmall">/</p>
 							{% endif %}
-						{% endfor %}
-
-						<h4 class="title panel__titles">{{ property.name }}</h4>
-						<div class="properties__content">
-							<div class="content">
-								<p class="paragraph__xsmall__bold">{{ 'propertyIndex.status'|trans }}</p>
-								<p class="paragraph__xsmall">{{ property.status.value }}</p>
-							</div>
-							<div class="content">
-								<p class="paragraph__xsmall__bold">{{ 'propertyIndex.creation'|trans }}</p>
-								<p class="paragraph__xsmall">{{ property.createdAt ? property.createdAt|date('d/m/Y') : '' }}</p>
-							</div>
-							<div class="content">
-								<p class="paragraph__xsmall__bold">{{ 'propertyIndex.update'|trans }}</p>
-								{% if property.modifiedAt %}
-									<p class="paragraph__xsmall">{{ property.modifiedAt ? property.modifieddAt|date('d/m/Y') : '' }}</p>
-								{% else %}
-									<p class="paragraph__xsmall">/</p>
-								{% endif %}
-							</div>
-
 						</div>
-						<div class="properties__buttons">
-							<div>
-								{# udpate button #}
-								<a href="{{ path('app_property_edit', {'id': property.id}) }}" class="button button__primary">{{ 'updateBtn'|trans }}</a>
-								{# show button #}
-								<a href="{{ path('app_property_show', {'id': property.id}) }}" class="button button__secondary">{{ 'showBtn'|trans }}</a>
-							</div>
-							{# delete button #}
-							{{ include('property/_delete_form.html.twig') }}
-						</div>
+
 					</div>
+					<div class="properties__buttons">
+						<div>
+							{# udpate button #}
+							<a href="{{ path('app_property_edit', {'id': property.id}) }}" class="button button__primary">{{ 'updateBtn'|trans }}</a>
+							{# show button #}
+							<a href="{{ path('app_property_show', {'id': property.id}) }}" class="button button__secondary">{{ 'showBtn'|trans }}</a>
+						</div>
+						{# delete button #}
+						{{ include('property/_delete_form.html.twig') }}
+					</div>
+				</div>
 
-				{% else %}
+			{% else %}
 
-					<p>{{ 'propertyIndex.noRecord'|trans }}</p>
+				<p>{{ 'propertyIndex.noRecord'|trans }}</p>
 
-				{% endfor %}
+			{% endfor %}
 
-			</div>
+		</div>
 
 		<div class="properties__controls  mt-55">
 			<a href="{{ path('app_property_new') }}" class="button button__primary">{{ 'propertyIndex.addBtn'|trans }}</a>
 			<a href="{{ path('app_admin') }}" class="button button__secondary">{{ 'adminBtn'|trans }}</a>
 		</div>
 
-	{% endblock %}
+	</main>
+
+{% endblock %}

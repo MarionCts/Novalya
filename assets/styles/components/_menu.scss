@@ -9,7 +9,7 @@
 
     @include media(768px) {
         display: block;
-        background-image: url("./../../images/nav_menu_background_villa.webp");
+        background-image: css-var(menu-background);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

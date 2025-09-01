@@ -43,6 +43,11 @@ errorPage:
   button: "Back to home" 
 
 
+# DATE FORMAT
+
+date: "m/d/Y"
+
+
 # ADD BUTTON
 
 addBtn: "Add"
@@ -63,6 +68,11 @@ updateBtn: "Update"
 deleteBtn: "Delete"
 
 
+# CONTACT BUTTON
+
+contactBtn: "Contact us"
+
+
 # RETURN TO ADMIN PANEL BUTTON
 
 adminBtn: "Back to Admin panel"
@@ -81,9 +91,56 @@ homePage:
     mainAccent: "Novalya Prestige"
     firstP: "We offer you a personalized and confidential service to help you find the residence of your dreams."
     secondP: "Our selection features properties that combine refinement, elegance, prime locations, and discretion."
+  properties:
+    mainTitle: "Our last"
+    mainAccent: "exceptional properties"
+    button: "See all properties"
+  services:
+    mainTitle: "Our additional"
+    mainAccent: "services"
+    description: "Ensuring your access to homeownership with the highest standards"
+    firstMainTitle: "Your bespoke"
+    firstMainAccent: "residence"
+    firstSecondTitle: "Reliable support"
+    firstSecondAccent: "for your project"
+    firstdescription: "We support you in the architectural design and layout of your residence according to your wishes. From the initial plans to the finishing touches, our network of architects and interior designers ensures that your lifestyle is reflected in every detail."
+    secondMainTitle: "Legal"
+    secondMainAccent: "assistance"
+    secondSecondTitle: "Legal expertise"
+    secondSecondAccent: "at your service"
+    seconddescription: "Benefit from tailored legal support, designed to meet your personal or professional needs. Our experts provide guidance and advice to secure your procedures and protect your interests."
+    thirdMainTitle: "Property"
+    thirdMainAccent: "management"
+    thirdSecondTitle: "Stress-free"
+    thirdSecondAccent: "property management"
+    thirddescription: "Entrust us with the complete management of your rental properties. From finding reliable tenants to handling administrative tasks, we optimize your returns while ensuring peace of mind."
+    fourthMainTitle: "Automotive"
+    fourthMainAccent: "concierge"
+    fourthSecondTitle: "Premium service"
+    fourthSecondAccent: "dedicated to your vehicle"
+    fourthdescription: "Enjoy an exclusive service for your car: maintenance, delivery, availability, and administrative procedures. We take care of your vehicle as if it were our own."
+    bedrooms: "bedrooms"
 
 
-# PAGE "PROPERTIES LIST"
+# PAGE VISITOR "PROPERTIES LIST"
+
+propertyFilter:
+  pagetitle: "Discover our catalog"
+  mainTitle: "Discover"
+  mainAccent: "our catalog"
+  descriptionOne: "Our agency prides itself on offering a rich catalog of exceptional properties: apartments, houses, villas, estates... no doubt you’ll find your dream property among our selection."
+  descriptionTwo: "We also have an off-market catalog: contact us directly to learn more."
+  choose: "Choose"
+  filterOne: "You are looking for"
+  filterTwo: "Property type"
+  filterThree: "Location"
+  filterFour: "Budget"
+  results: "Results"
+  resultCount: "match your search"
+  loadMoreBtn: "Load more"
+
+
+# PAGE ADMIN "PROPERTIES LIST"
 
 propertyIndex:
   pageTitle: "Properties list"
@@ -161,6 +218,23 @@ updateCategoryPage:
 
 deleteCategoryPage:
   flashSuccess: "Category deleted successfully!"
+
+
+# PAGE "USERS LIST"
+
+userIndex:
+  pageTitle: "Users list"
+  mainTitle: "Users"
+  mainAccent: "list"
+  noRecord: "No user found."
+  name: "Name:"
+  firstName: "First name:"
+  status: "Status:"
+  active: "Active"
+  notActive: "Not active"
+  registerDate: "Registration date:"
+  deactivatedDate: "Deactivation date:"
+  toDelete: "To delete on:"
 
 
 # INDIVIDUAL PROPERTY PAGE

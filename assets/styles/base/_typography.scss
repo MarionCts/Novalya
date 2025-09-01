@@ -3,7 +3,9 @@
 @use '../abstracts' as *;
 
 
-// **************** TYPGRAPHY ****************
+// **************** TYPOGRAPHY ****************
+
+// This section uses the mixins presets from the folder abstracts/mixins.scss
 
 // ----- GENERAL -----
 
@@ -58,6 +60,16 @@ a {
     @include text-preset(title__tertiary);
 }
 
+.title__fourth {
+    @include text-preset(title);
+    @include text-preset(title__fourth);
+}
+
+.section__intro {
+    @include text-preset(title);
+    @include text-preset(section__intro);
+}
+
 .error__page {
     @include text-preset(title);
     @include text-preset(error__page);
@@ -73,6 +85,11 @@ a {
     @include text-preset(title__specs);
 }
 
+.card__price {
+    @include text-preset(title);
+    @include text-preset(card__price);
+}
+
 .panel__titles {
     @include text-preset(paragraph);
     @include text-preset(panel__titles);
@@ -80,6 +97,11 @@ a {
 
 .accent {
     @include text-preset(accent); // Sets the text in italic
+}
+
+.accent__number {
+    @include text-preset(title);
+    @include text-preset(accent__number); // Sets the text in italic
 }
 
 // ----- PARAGRAPHS & OTHER TEXTS -----

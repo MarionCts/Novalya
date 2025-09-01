@@ -26,6 +26,14 @@ final class PropertyController extends AbstractController
         ]);
     }
 
+    #[Route('/filter', name: 'app_property_filter', methods: ['GET'])]
+    public function filter(PropertyRepository $propertyRepository): Response
+    {
+            return $this->render('property/filter.html.twig', [
+            'properties' => $propertyRepository->findBy([], ['createdAt' => 'DESC']),
+        ]);
+    }
+
     #[Route('/new', name: 'app_property_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator, SluggerInterface $slugger): Response
     {

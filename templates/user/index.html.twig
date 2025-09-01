@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novalya |
+	{{ 'userIndex.pageTitle'|trans }}
+{% endblock %}
+
+{% block body %}
+
+	<main class="admin-pages__container px-100">
+
+		<h1 class="title title__secondary mb-55">{{ 'userIndex.mainTitle'|trans }}
+			<span class="title title__secondary accent">{{ 'userIndex.mainAccent'|trans }}</span>
+		</h1>
+
+		<div class="users">
+			{% for user in users %}
+
+				<div class="users__container">
+
+					<div class="users__specs">
+						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.name'|trans }}</h4>
+						<p class="paragraph__xsmall">
+							{{ user.name }}</p>
+					</div>
+
+					<div class="users__specs">
+						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.firstName'|trans }}</h4>
+						<p class="paragraph__xsmall">
+							{{ user.firstName }}</p>
+					</div>
+
+					<div class="users__specs">
+						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.status'|trans }}</h4>
+						{% if user.isActive %}
+							<p class="paragraph__xsmall">
+								{{ 'userIndex.active'|trans }}</p>
+						{% else %}
+							<p class="paragraph__xsmall">
+								{{ 'userIndex.notActive'|trans }}</p>
+						{% endif %}
+					</div>
+
+					<div class="users__specs">
+						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.registerDate'|trans }}</h4>
+						<p class="paragraph__xsmall">
+							{{ user.createdAt ? user.createdAt|date('date'|trans) : '' }}</p>
+					</div>
+
+					<div class="users__specs">
+						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.deactivatedDate'|trans }}</h4>
+						{% if user.deactivatedAt %}
+							<p class="paragraph__xsmall">
+								{{ user.deactivationDate ? user.deactivationDate|date('date'|trans) : '' }}</p>
+						{% else %}
+							<p class="paragraph__xsmall">
+								/</p>
+						{% endif %}
+					</div>
+
+					<div class="users__specs">
+						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.toDelete'|trans }}</h4>
+						{% if not user.isActive %}
+							<p class="paragraph__xsmall">
+								{{ user.deactivatedAt ? user.deactivatedAt|date_modify('+30 days')|date('date'|trans) : '' }}</p>
+						{% else %}
+							<p class="paragraph__xsmall">
+								/</p>
+						{% endif %}
+					</div>
+
+				</div>
+
+
+			{% else %}
+
+				<p>{{ 'userIndex.noRecord'|trans }}</p>
+
+			{% endfor %}
+            
+		</div>
+
+		<a href="{{ path('app_admin') }}" class="button button__secondary">{{ 'adminBtn'|trans }}</a>
+
+	</main>
+{% endblock %}

@@ -50,6 +50,14 @@
         font-weight: 700;
         font-size: 3.2rem;
 
+    } @else if $type == title__fourth {
+        font-weight: 700;
+        font-size: 2.2rem;
+
+    } @else if $type == section__intro {
+        font-weight: 600;
+        font-size: 1.8rem;
+
     } @else if $type == error__page {
         font-weight: 500;
         font-size: 15rem;
@@ -65,6 +73,10 @@
 
     } @else if $type == accent {
         font-style: italic;
+        font-weight: 500;
+
+    } @else if $type == accent__number {
+        font-size: 6.4rem;
         font-weight: 500;
 
     } @else if $type == paragraph {
@@ -93,6 +105,10 @@
         &:hover {
             color: css-var(link);
         }
+
+    } @else if $type == card__price {
+        font-size: 2.5rem;
+        font-weight: 600;
 
     } @else if $type == panel__titles {
         font-weight: 600;
@@ -130,7 +146,7 @@
         font-family: $poppins;
         border: none;
         border-radius: 0 2rem 0 2rem;
-        padding: 1.4rem 1.3rem;
+        padding: 1.4rem 2.2rem;
         font-weight: 600;
         font-size: 1.4rem;
         text-transform: uppercase;
@@ -143,6 +159,11 @@
         border: none;
         background-color: css-var(primary-btn-bg);
         color: css-var(primary-btn-text);
+
+    } @else if $type == button__primary__opposite {
+        border: none;
+        background-color: css-var(primary-btn-text);
+        color: css-var(primary-btn-bg);
 
     } @else if $type == button__secondary {
         background-color: transparent;
