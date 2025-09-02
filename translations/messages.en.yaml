@@ -165,6 +165,19 @@ about:
   roleSix: "Consultant"
 
 
+  # PAGE "CONTACT US"
+
+contactPage:
+  pageTitle: "Contact us"
+  mainTitle: "First steps"
+  mainAccent: "towards the dream"
+  description: "Your dream home awaits you. Get in touch with us today and let our team of real estate experts guide you towards your next property."
+  secondTitle: "Get in touch"
+  secondAccent: "with us"
+  contactMessage: "To schedule an appointment or for any questions regarding a property, please fill out the form below and let us know your availability:"
+  sendBtn: "Send"
+
+
 # PAGE ADMIN "PROPERTIES LIST"
 
 propertyIndex:

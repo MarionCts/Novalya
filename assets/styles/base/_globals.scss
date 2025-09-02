@@ -11,6 +11,17 @@
     transition: all 0.2s linear;
 }
 
+// Custom colors when selecting a text with the mouse
+
+::-moz-selection{
+  background-color : css-var(text);
+  color : css-var(bg);
+}
+::selection{
+  background-color : css-var(text);
+  color : css-var(bg);
+}
+
 // ----- BODY -----
 
 body {

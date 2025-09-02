@@ -147,7 +147,7 @@ about:
   mainAccent: "Novalya"
   sample: "Née il y a 20 ans d’une passion pour les biens d’exception, notre agence s’est donnée pour mission de dénicher les propriétés les plus incroyables et de les proposer en exclusivité à notre clientèle privilégiée."
   storyTitle: "Notre histoire"
-  descriptionOne: "Novalya est née d’une conviction simple : l’immobilier de prestige mérite une nouvelle vision – plus humaine, plus esthétique, plus alignée avec l’art de vivre d’aujourd’hui."
+  descriptionOne: "Novalya est née d’une conviction simple : l’immobilier de prestige mérite une nouvelle vision plus humaine, plus esthétique, plus alignée avec l’art de vivre d’aujourd’hui."
   descriptionTwo: "Nous sélectionnons des biens d’exception, rares et inspirants, pour une clientèle qui cherche plus qu’un espace : une émotion, un lieu de connexion, une harmonie."
   descriptionThree: "Indépendante, exigeante, tournée vers l’avenir, Novalya incarne une nouvelle génération d’agences : digitales, élégantes, confidentielles."
   descriptionFourAccent: "Notre promesse ?"
@@ -162,6 +162,19 @@ about:
   roleFour: "Experte Viticole"
   roleFive: "Attaché Commercial"
   roleSix: "Consultante"
+
+
+  # PAGE "CONTACT US"
+
+contactPage:
+  pageTitle: "Contactez-nous"
+  mainTitle: "Premiers pas"
+  mainAccent: "vers le rêve"
+  description: "Votre demeure de rêve vous attend, contactez nous dès aujourd’hui et laissez-vous guider par notre équipe d’experts immobiliers."
+  secondTitle: "Prenez contact"
+  secondAccent: "avec nous"
+  contactMessage: "Pour prendre rendez-vous ou pour toute question au sujet d’un bien immobilier, veuillez remplir le formulaire ci-dessous et nous préciser vos disponibilités :"
+  sendBtn: "Envoyer"
 
 
 # PAGE ADMIN "PROPERTIES LIST"

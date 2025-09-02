@@ -339,28 +339,7 @@
     }
 }
 
-// ABOUT US PAGE
-
-.about__hero {
-    .about__bg {
-        &::before {
-            background-image: url("./../images/talking_office.webp");
-            opacity: 0.2;
-            max-height: 80rem;
-
-            @media only screen and (min-device-width: 820px) and (max-device-width: 820px) {
-                max-height: 70rem;
-            }
-
-            @include media(768px) {
-                opacity: 0.4;
-            }
-
-            @include media(960px) {
-                max-height: 70rem;
-            }
-        }
-    }
+.about__hero, .contact__hero {
 
     svg {
         z-index: -1;
@@ -375,6 +354,30 @@
 
         @include media(1300px) {
             display: block;
+        }
+    }
+}
+
+// ABOUT US PAGE
+
+.about__hero {
+    .about__bg {
+        &::before {
+            background-image: url("./../images/office.webp");
+            opacity: 0.2;
+            max-height: 80rem;
+
+            @media only screen and (min-device-width: 820px) and (max-device-width: 820px) {
+                max-height: 70rem;
+            }
+
+            @include media(768px) {
+                opacity: 0.4;
+            }
+
+            @include media(960px) {
+                max-height: 70rem;
+            }
         }
     }
 }
@@ -453,6 +456,73 @@
         gap: 0.5rem;
     }
 }
+
+
+// CONTACT PAGE
+
+.contact__hero {
+    @include flex-preset(row, center, flex-end);
+}
+
+.contact__hero {
+    .contact__bg {
+        &::before {
+            background-image: url("./../images/talking_office.webp");
+            opacity: 0.2;
+            max-height: 60rem;
+            border-radius: 0 0 10rem 0;
+
+            @include media(768px) {
+                width: 65%;
+                left: 0;
+                right: auto;
+            }
+
+            @media only screen and (min-device-width: 820px) and (max-device-width: 820px) {
+                max-height: 55rem;
+            }
+
+            @include media(768px) {
+                opacity: 0.4;
+            }
+
+            @include media(960px) {
+                max-height: 60rem;
+            }
+        }
+    }
+}
+
+.contact__content {
+    margin-top: 18rem;
+    padding: 6rem 0;
+
+    @include media(768px) {
+        @include flex-preset(row, center, flex-start);
+    }
+}
+
+.contact__image {
+    display: none;
+    height: 73rem;
+    width: 100%;
+    margin-right: -9rem;
+    max-width: 71rem;
+    border-radius: 20rem 0 0 0;
+    overflow: hidden;
+
+    @include media(768px) {
+        display: block;
+    }
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
 
 // FILTER PROPERTIES PAGE
 
