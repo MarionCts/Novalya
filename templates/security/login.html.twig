@@ -9,9 +9,6 @@
 	<main class="px-100">
 
 		<form method="post" class="form auth__form">
-			{% if error %}
-				<div class="form__constraint constraint-bg-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-			{% endif %}
 
 			{% if app.user %}
 				<p>
@@ -29,13 +26,17 @@
 
 				<div class="form__choices">
 					<label for="username" class="paragraph__small">{{ 'login.email'|trans }}</label>
-					<input type="email" class="form__input" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+					<input type="email" class="form__input" value="{{ last_username }}" name="_username" id="username" autocomplete="email" autofocus>
 				</div>
 				<div class="form__choices">
 					<label for="password" class="paragraph__small">{{ 'login.password'|trans }}</label>
-					<input type="password" class="form__input" name="_password" id="password" autocomplete="current-password" required>
+					<input type="password" class="form__input" name="_password" id="password" autocomplete="current-password">
 				</div>
 				<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+
+				{% if error %}
+					<div class="form__constraint constraint-bg-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
 
 				<button class="button button__primary full-w" type="submit">
 					{{ 'login.button'|trans }}

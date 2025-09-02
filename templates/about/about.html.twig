@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novalya |
+	{{ 'about.pageTitle'|trans }}
+{% endblock %}
+
+{% block body %}
+	<main class="admin-pages__container px-100">
+
+		<section class="template__hero about__hero">
+			<div class="template__hero__bg about__bg"></div>
+			<div class="template__hero--text">
+				<h1 class="title title__primary">{{ 'about.mainTitle'|trans }}
+					<span class="title title__primary accent line-jump">
+						{{ 'about.mainAccent'|trans }}</span>
+				</h1>
+				<p>{{ 'about.sample'|trans }}</p>
+			</div>
+			<svg viewbox="0 0 1440 1126" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M1561.43 352.805C1490.43 405.86 1258.29 530.241 786.429 427.305C304.766 322.232 -84.0121 737.697 -168.212 1072.08"/>
+				<path d="M1459.93 174.805C1440.43 219.748 1166.43 539.305 761.429 454.305C340.929 366.052 87.4287 396.863 -69.5713 667.863"/>
+			</svg>
+
+		</section>
+
+		<section class="about__content">
+			<h2 class="title title__secondary">
+				{{ 'about.storyTitle'|trans }}</h2>
+			<div class="about__content--text">
+				<p>{{ 'about.descriptionOne'|trans }}</p>
+				<p>{{ 'about.descriptionTwo'|trans }}</p>
+				<p>{{ 'about.descriptionThree'|trans }}</p>
+				<p>
+					<span>{{ 'about.descriptionFourAccent'|trans }}
+					</span>
+					{{ 'about.descriptionFour'|trans }}</p>
+			</div>
+			<a href="http://" class="button button__primary about__link">{{ 'about.propertiesBtn'|trans }}</a>
+		</section>
+
+		<section class="about__people">
+			<h2 class="title title__secondary center mb-35">
+				{{ 'about.jobsMainTitle'|trans }}
+				<span class="title title__secondary accent line-jump">{{ 'about.jobsMainAccent'|trans }}</span>
+			</h2>
+			<p class="mb-55 center">{{ 'about.jobsDescription'|trans }}</p>
+
+			<div
+				class="about__people__container">
+
+				{# FIRST CARD #}
+				<div class="about__people--card">
+					<div class="people__image">
+						<img src="{{ asset('images/role_one.webp') }}" alt=""></div>
+					<div class="people__text">
+						<h4 class="title title__fourth">Antoine
+							<span class="title title__fourth accent">Darren</span>
+						</h4>
+						<p class="paragraph__small">{{ 'about.roleOne'|trans }}</p>
+					</div>
+				</div>
+
+				{# SECOND CARD #}
+				<div class="about__people--card">
+					<div class="people__image">
+						<img src="{{ asset('images/role_two.webp') }}" alt=""></div>
+					<div class="people__text">
+						<h4 class="title title__fourth">Rebecca
+							<span class="title title__fourth accent">Williams</span>
+						</h4>
+						<p class="paragraph__small">{{ 'about.roleTwo'|trans }}</p>
+					</div>
+				</div>
+
+				{# THIRD CARD #}
+				<div class="about__people--card">
+					<div class="people__image">
+						<img src="{{ asset('images/role_three.webp') }}" alt=""></div>
+					<div class="people__text">
+						<h4 class="title title__fourth">Andy
+							<span class="title title__fourth accent">Serkis</span>
+						</h4>
+						<p class="paragraph__small">{{ 'about.roleThree'|trans }}</p>
+					</div>
+				</div>
+
+				{# FOURTH CARD #}
+				<div class="about__people--card">
+					<div class="people__image">
+						<img src="{{ asset('images/role_four.webp') }}" alt=""></div>
+					<div class="people__text">
+						<h4 class="title title__fourth">Natalia
+							<span class="title title__fourth accent">Lebossé</span>
+						</h4>
+						<p class="paragraph__small">{{ 'about.roleFour'|trans }}</p>
+					</div>
+				</div>
+
+				{# FIVE CARD #}
+				<div class="about__people--card">
+					<div class="people__image">
+						<img src="{{ asset('images/role_five.webp') }}" alt=""></div>
+					<div class="people__text">
+						<h4 class="title title__fourth">David
+							<span class="title title__fourth accent">Ghenam</span>
+						</h4>
+						<p class="paragraph__small">{{ 'about.roleFive'|trans }}</p>
+					</div>
+				</div>
+
+				{# SIXTH CARD #}
+				<div class="about__people--card">
+					<div class="people__image">
+						<img src="{{ asset('images/role_six.webp') }}" alt=""></div>
+					<div class="people__text">
+						<h4 class="title title__fourth">Sophie
+							<span class="title title__fourth accent">Nguyen</span>
+						</h4>
+						<p class="paragraph__small">{{ 'about.roleSix'|trans }}</p>
+					</div>
+				</div>
+			</div>
+
+
+		</section>
+		<a href="{{ path('app_contact_contact') }}" class="button button__primary mt-35 about__link">{{ 'contactBtn'|trans }}</a>
+
+	</main>
+
+	{# FOOTER #}
+	{% block footer %}
+		{% include 'layout/footer.html.twig' %}
+	{% endblock %}
+{% endblock %}

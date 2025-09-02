@@ -30,7 +30,7 @@ final class PropertyController extends AbstractController
     public function filter(PropertyRepository $propertyRepository): Response
     {
             return $this->render('property/filter.html.twig', [
-            'properties' => $propertyRepository->findBy([], ['createdAt' => 'DESC']),
+            'properties' => $propertyRepository->findBy([], ['createdAt' => 'DESC'], 7),
         ]);
     }
 

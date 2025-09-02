@@ -283,26 +283,24 @@
     transform: translateY(0);
 }
 
-// FILTER PROPERTIES PAGE
+// HERO TEMPLATE FOR ABOUT PAGE, CONTACT PAGE & PROPERTIES PAGE
 
-.filter__hero {
+.template__hero {
     height: 100%;
     width: 100%;
 
-    .filter__hero__bg {
+    .template__hero__bg {
         height: 100%;
 
         &::before {
             content: "";
-            opacity: 0.4;
             z-index: -1;
-            min-height: 110vh;
+            max-height: 80rem;
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url("./../images/nav_menu_background_villa.webp");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -312,12 +310,20 @@
                 width: 65%;
                 left: auto;
             }
+
+            @media only screen and (min-device-width: 820px) and (max-device-width: 853px) {
+                max-height: 75rem;
+            }
+
+            @include media(960px) {
+                max-height: 75rem;
+            }
         }
     }
 }
 
-.filter__hero--text {
-    @include flex-preset(column, flex-start, flex-start);
+.template__hero--text {
+    @include flex-preset(column, flex-start, center);
     gap: 3.5rem;
 
     .title__primary {
@@ -333,10 +339,139 @@
     }
 }
 
+// ABOUT US PAGE
+
+.about__hero {
+    .about__bg {
+        &::before {
+            background-image: url("./../images/talking_office.webp");
+            opacity: 0.2;
+            max-height: 80rem;
+
+            @media only screen and (min-device-width: 820px) and (max-device-width: 820px) {
+                max-height: 70rem;
+            }
+
+            @include media(768px) {
+                opacity: 0.4;
+            }
+
+            @include media(960px) {
+                max-height: 70rem;
+            }
+        }
+    }
+
+    svg {
+        z-index: -1;
+        display: none;
+        position: absolute;
+        top: 20vh;
+        left: 0;
+        right: 0;
+        stroke: css-var(text);
+        opacity: 0.3;
+        overflow: hidden;
+
+        @include media(1300px) {
+            display: block;
+        }
+    }
+}
+
+.about__content {
+    @include flex-preset(column, center, center);
+    gap: 3.8rem;
+    margin-top: 26rem;
+    width: 100%;
+
+    @include media(505px) {
+        margin-top: 32rem;
+    }
+
+    @include media(768px) {
+        margin-top: 28rem;
+    }
+
+    .about__content--text {
+        @include flex-preset(column, center, center);
+        gap: 2rem;
+        max-width: 71rem;
+    }
+}
+
+.about__people__container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    gap: 3.1rem;
+
+    @include media(768px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.about__people {
+    padding: 6rem 0 2rem;
+
+    @include media(768px) {
+        padding: 9rem 0 2.5rem;
+    }
+}
+
+.admin-pages__container {
+    .about__link {
+        max-width: 26rem;
+    }
+}
+
+.about__people--card {
+    @include flex-preset(column, center, center);
+    width: 100%;
+    max-width: 33rem;
+    gap: 2.5rem;
+    padding: 2.5rem 4.5rem;
+    border: 0.1rem solid css-var(text);
+    border-radius: 0 5rem 0 5rem;
+
+    .people__image {
+        height: 13rem;
+        width: 13rem;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .people__text {
+        @include flex-preset(column, center, center);
+        gap: 0.5rem;
+    }
+}
+
+// FILTER PROPERTIES PAGE
+
+.filter__bg {
+    &::before {
+        background-image: url("./../images/nav_menu_background_villa.webp");
+        opacity: 0.4;
+    }
+}
+
 .filter__filter {
     @include flex-preset(column, flex-start, center);
     margin-top: 15rem;
     width: 100%;
+
+    span {
+        font-style: italic;
+        font-weight: 700;
+    }
 
     @include media(768px) {
         margin-top: 18rem;
@@ -344,11 +479,35 @@
 }
 
 .filter__properties {
-    display: grid;
-    grid-template-areas: 
+    .cards {
+        @include media(1200px) {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-auto-flow: dense;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .cards > * {
+        grid-column: span 1;
+    }
+
+    .cards > *:nth-child(7n + 1) {
+        grid-column: span 2;
+    }
+    .cards > *:nth-child(7n + 2) {
+        grid-column: span 1;
+    }
+
+    .cards > *:nth-child(7n + 6) {
+        grid-column: span 1;
+    }
+    .cards > *:nth-child(7n + 7) {
+        grid-column: span 2;
+    }
 }
 
-// ADMIN PAGE
+// ADMIN PAGES
 
 .admin {
     @include flex-preset(column, center, center);
@@ -362,6 +521,43 @@
     @include media(768px) {
         width: 35rem;
         margin-top: 9rem;
+    }
+}
+
+// --- ADMIN PAGES CONTAINER ---
+
+.admin-pages__container {
+    @include flex-preset(column, center, center);
+    width: 100%;
+}
+
+.admin-pages__container {
+    form {
+        width: 100%;
+
+        @include media(768px) {
+            max-width: 60rem;
+        }
+
+        .form {
+            gap: 2rem;
+            position: relative;
+
+            @include media(768px) {
+                max-width: 60rem;
+            }
+        }
+    }
+}
+
+.admin-pages__container {
+    button,
+    a {
+        width: 100%;
+
+        @include media(768px) {
+            max-width: 60rem;
+        }
     }
 }
 
@@ -445,21 +641,27 @@
 }
 
 .hero__features {
-    @include flex-preset(column, flex-start, center);
+    @include flex-preset(column, flex-start, flex-start);
     gap: 1.5rem;
 
     @include media(768px) {
         @include flex-preset(row, center, center);
     }
+}
 
-    .hero__features--items {
+.hero__features--items {
+    @include flex-preset(row, center, flex-start);
+    gap: 1.5rem;
+
+    @include media(768px) {
         @include flex-preset(row, center, center);
-        gap: 1.5rem;
     }
 }
 
 .hero__features--items {
     svg {
+        max-width: 3.5rem;
+
         path {
             fill: css-var(text);
         }

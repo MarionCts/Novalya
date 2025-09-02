@@ -85,7 +85,7 @@ homePage:
   mainTitle: "Luxury" 
   mainAccent: "real estate" 
   description: "Discover our collection of exceptional properties"
-  button: "See our properties"
+  button: "View our properties"
   intro:
     mainTitle: "Find your next luxurious home with"
     mainAccent: "Novalya Prestige"
@@ -94,7 +94,7 @@ homePage:
   properties:
     mainTitle: "Our last"
     mainAccent: "exceptional properties"
-    button: "See all properties"
+    button: "View all properties"
   services:
     mainTitle: "Our additional"
     mainAccent: "services"
@@ -138,6 +138,31 @@ propertyFilter:
   results: "Results"
   resultCount: "match your search"
   loadMoreBtn: "Load more"
+
+
+# PAGE "ABOUT US"
+
+about:
+  pageTitle: "Discover Novalya"
+  mainTitle: "Discover"
+  mainAccent: "Novalya"
+  sample: "Born 20 years ago from a passion for exceptional properties, our agency set itself the mission of finding the most incredible estates and offering them exclusively to our privileged clientele."
+  storyTitle: "Our Story"
+  descriptionOne: "Novalya was born from a simple conviction: prestige real estate deserves a new vision – more human, more aesthetic, more aligned with today’s art of living."
+  descriptionTwo: "We select exceptional, rare, and inspiring properties for a clientele seeking more than just a space: an emotion, a place of connection, a harmony."
+  descriptionThree: "Independent, demanding, and future-oriented, Novalya embodies a new generation of agencies: digital, elegant, discreet."
+  descriptionFourAccent: "Our Promise?"
+  descriptionFour: "To transform every search into an experience, every property into an obvious choice."
+  propertiesBtn: "View Properties"
+  jobsMainTitle: "Our Experts"
+  jobsMainAccent: "in Exceptional Properties"
+  jobsDescription: "Discover our agency and the agents who have built its reputation."
+  roleOne: "Agency Director"
+  roleTwo: "Senior Consultant"
+  roleThree: "Senior Consultant"
+  roleFour: "Wine Estate Expert"
+  roleFive: "Sales Representative"
+  roleSix: "Consultant"
 
 
 # PAGE ADMIN "PROPERTIES LIST"
@@ -260,10 +285,10 @@ panelAdmin:
   mainAccent: "panel"
   userManage: "Manage users"
   propertyManage: "Manage properties"
-  seeProperties: "See all properties"
+  seeProperties: "View all properties"
   addProperties: "Add a property"
   categoryManage: "Manage categories"
-  seeCategories: "See all categories"
+  seeCategories: "View all categories"
   addCategories: "Add a category"
 
 

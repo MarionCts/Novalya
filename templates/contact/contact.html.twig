@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novalya |
+	{{ 'about.pageTitle'|trans }}
+{% endblock %}
+
+{% block body %}
+	<main class="admin-pages__container px-100">
+
+		<section class="filter__hero">
+			<div class="filter__hero__bg"></div>
+			<div class="filter__hero--text">
+				<h1 class="title title__primary">{{ 'about.mainTitle'|trans }}
+					<span class="title title__primary accent line-jump">{{ 'about.mainAccent'|trans }}</span>
+				</h1>
+				<p>{{ 'about.descriptionOne'|trans }}</p>
+				<p>{{ 'about.descriptionTwo'|trans }}</p>
+				<a href="#" class="button button__primary">{{ 'contactBtn'|trans }}</a>
+			</div>
+		</section>
+
+{% endblock %}

@@ -139,6 +139,31 @@ propertyFilter:
   loadMoreBtn: "Charger plus"
 
 
+# PAGE "ABOUT US"
+
+about:
+  pageTitle: "Découvrez Novalya"
+  mainTitle: "Découvrez"
+  mainAccent: "Novalya"
+  sample: "Née il y a 20 ans d’une passion pour les biens d’exception, notre agence s’est donnée pour mission de dénicher les propriétés les plus incroyables et de les proposer en exclusivité à notre clientèle privilégiée."
+  storyTitle: "Notre histoire"
+  descriptionOne: "Novalya est née d’une conviction simple : l’immobilier de prestige mérite une nouvelle vision – plus humaine, plus esthétique, plus alignée avec l’art de vivre d’aujourd’hui."
+  descriptionTwo: "Nous sélectionnons des biens d’exception, rares et inspirants, pour une clientèle qui cherche plus qu’un espace : une émotion, un lieu de connexion, une harmonie."
+  descriptionThree: "Indépendante, exigeante, tournée vers l’avenir, Novalya incarne une nouvelle génération d’agences : digitales, élégantes, confidentielles."
+  descriptionFourAccent: "Notre promesse ?"
+  descriptionFour: "Transformer chaque recherche en expérience, chaque bien en évidence."
+  propertiesBtn: "Voir les propriétés"
+  jobsMainTitle: "Nos experts"
+  jobsMainAccent: "en biens d'exception"
+  jobsDescription: "Découvrez notre agence et les agents qui en constituent la renommée."
+  roleOne: "Directeur d'agence"
+  roleTwo: "Consultante Senior"
+  roleThree: "Consultant Senior"
+  roleFour: "Experte Viticole"
+  roleFive: "Attaché Commercial"
+  roleSix: "Consultante"
+
+
 # PAGE ADMIN "PROPERTIES LIST"
 
 propertyIndex:

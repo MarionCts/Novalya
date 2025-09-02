@@ -194,6 +194,10 @@ footer {
     margin-top: 3.5rem;
 }
 
+.mb-35 {
+    margin-bottom: 3.5rem;
+}
+
 .mt-55 {
     margin-top: 5.5rem;
 }
@@ -235,39 +239,3 @@ footer {
     align-self: start;
 }
 
-// --- ADMIN PAGES CONTAINER ---
-
-.admin-pages__container {
-    @include flex-preset(column, center, center);
-    width: 100%;
-}
-
-.admin-pages__container {
-    form {
-        width: 100%;
-
-        @include media(768px) {
-            max-width: 60rem;
-        }
-
-        .form {
-            gap: 2rem;
-            position: relative;
-
-            @include media(768px) {
-                max-width: 60rem;
-            }
-        }
-    }
-}
-
-.admin-pages__container {
-    button,
-    a {
-        width: 100%;
-
-        @include media(768px) {
-            max-width: 60rem;
-        }
-    }
-}
