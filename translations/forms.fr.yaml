@@ -7,10 +7,26 @@ register:
     label: "Prénom :"
   password:
     label: "Mot de passe :"
+    newPassword: "Nouveau mot de passe :"
   email:
     label: "Email :"
   checkbox:
     label: "Accepter les conditions d'utilisation :"
+
+
+# CONTACT FORM
+
+contact:
+  plName: "Nom *"
+  plFirstName: "Prénom *"
+  plEmail: "Email *"
+  plPhone: "Téléphone"
+  plRequest: "Votre requête concerne..."
+  plMessage: "Message"
+  optionOne: "Prendre rendez-vous pour un bien"
+  optionTwo: "Obtenir des renseignements"
+  optionThree: "Question sur un service"
+
 
 # PROPERTY FORM
 

@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novalya |
+	{{ 'contactPage.pageTitle'|trans }}
+{% endblock %}
+
+{% block body %}
+	<main class="admin-pages__container px-100">
+
+		<section class="template__hero contact__hero">
+			<div class="template__hero__bg contact__bg"></div>
+			<div class="template__hero--text">
+				<h1 class="title title__primary">{{ 'contactPage.mainTitle'|trans }}
+					<span class="title title__primary accent line-jump">{{ 'contactPage.mainAccent'|trans }}</span>
+				</h1>
+				<p>{{ 'contactPage.description'|trans }}</p>
+			</div>
+			<svg viewbox="0 0 1440 1126" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M1561.43 352.805C1490.43 405.86 1258.29 530.241 786.429 427.305C304.766 322.232 -84.0121 737.697 -168.212 1072.08"/>
+				<path d="M1459.93 174.805C1440.43 219.748 1166.43 539.305 761.429 454.305C340.929 366.052 87.4287 396.863 -69.5713 667.863"/>
+			</svg>
+		</section>
+
+		<section class="contact__content">
+			<div class="contact__form">
+				<h2 class="title title__secondary mb-15">{{ 'contactPage.secondTitle'|trans }}
+					<span class="title title__secondary accent line-jump">{{ 'contactPage.secondAccent'|trans }}</span>
+				</h2>
+				<p class="mb-35">{{ 'contactPage.contactMessage'|trans }}</p>
+
+				<div class="form__choices">
+					{{ form_start(contactForm) }}
+
+					{# INPUT FIELD NAME #}
+					{{ form_label(contactForm.name) }}
+					{{ form_widget(contactForm.name) }}
+					{% for error in contactForm.name.vars.errors %}
+						<div class="form__constraint">{{ error.message }}</div>
+					{% endfor %}
+
+					{# INPUT FIELD FIRST NAME #}
+					{{ form_label(contactForm.firstName) }}
+					{{ form_widget(contactForm.firstName) }}
+					{% for error in contactForm.firstName.vars.errors %}
+						<div class="form__constraint">{{ error.message }}</div>
+					{% endfor %}
+
+					{# INPUT FIELD EMAIL #}
+					{{ form_label(contactForm.email) }}
+					{{ form_widget(contactForm.email) }}
+					{% for error in contactForm.email.vars.errors %}
+						<div class="form__constraint">{{ error.message }}</div>
+					{% endfor %}
+
+					{# INPUT FIELD PHONE #}
+					{{ form_label(contactForm.phone) }}
+					{{ form_widget(contactForm.phone) }}
+					{% for error in contactForm.phone.vars.errors %}
+						<div class="form__constraint">{{ error.message }}</div>
+					{% endfor %}
+
+					{# INPUT FIELD SELECT #}
+					{{ form_label(contactForm.request) }}
+					{{ form_widget(contactForm.request) }}
+					{% for error in contactForm.request.vars.errors %}
+						<div class="form__constraint">{{ error.message }}</div>
+					{% endfor %}
+
+					{# INPUT FIELD TEXTAREA #}
+					{{ form_label(contactForm.message) }}
+					{{ form_widget(contactForm.message) }}
+					{% for error in contactForm.message.vars.errors %}
+						<div class="form__constraint">{{ error.message }}</div>
+					{% endfor %}
+
+					<button type="submit" class="button button__primary full-w">{{ 'contactPage.sendBtn'|trans }}</button>
+
+					{{ form_end(contactForm) }}
+				</div>
+
+			</div>
+			<div class="contact__image">
+				<img src="{{ asset('images/working_office.webp') }}" alt=""></div>
+		</section>
+
+	</main>
+
+	{# FOOTER #}
+	{% block footer %}
+		{% include 'layout/footer.html.twig' %}
+	{% endblock %}
+{% endblock %}

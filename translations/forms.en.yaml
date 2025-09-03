@@ -7,6 +7,7 @@ register:
     label: "First name:"
   password:
     label: "Password:"
+    newPassword: "New Password:"
   email:
     label: "Email:"
   checkbox:
@@ -47,6 +48,20 @@ property:
     label: "Category:"
   images:
     label: "Please choose one or more photos:"
+
+
+# CONTACT FORM
+
+contact:
+  plName: "Name*"
+  plFirstName: "First name*"
+  plEmail: "Email*"
+  plPhone: "Phone number"
+  plRequest: "Your request is about..."
+  plMessage: "Message"
+  optionOne: "Setting an appointment"
+  optionTwo: "Getting more information"
+  optionThree: "Asking about a service"
 
 
 # ENUM OF THE PROPERTY FORM

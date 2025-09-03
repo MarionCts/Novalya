@@ -78,6 +78,7 @@
 // transition when the menu is clicked to open it
 .menu-overlay.is-open {
     opacity: 1;
+    z-index: 1;
     visibility: visible;
     transform: translateY(0);
 

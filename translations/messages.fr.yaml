@@ -5,6 +5,7 @@ mainMenu:
   properties: "Propriétés"
   contact: "Contact"
   admin: "Panel Admin"
+  account: "Mon compte"
   logout: "Se déconnecter"
   login: "Se connecter"
   register: "S'inscrire"
@@ -175,6 +176,7 @@ contactPage:
   secondAccent: "avec nous"
   contactMessage: "Pour prendre rendez-vous ou pour toute question au sujet d’un bien immobilier, veuillez remplir le formulaire ci-dessous et nous préciser vos disponibilités :"
   sendBtn: "Envoyer"
+  flashSuccess: "Votre message a été envoyé avec succès !"
 
 
 # PAGE ADMIN "PROPERTIES LIST"
@@ -288,6 +290,26 @@ indivudualPropertyPage:
   bedrooms: "Chambres"
   energy: "Classe énergétique"
   climate: "Classe climatique"
+
+
+# PAGE "MY ACCOUNT"
+
+account:
+  pageTitle: "Mon compte"
+  hello: "Bonjour"
+  accountTitle: "Gestion du compte"
+  manageInfos: "Modifier les informations personnelles"
+  deleteAccount: "Supprimer le compte"
+  favoriteTitle: "Mes favoris"
+  viewFavorites: "Voir les favoris"
+  informationTitle: "Mes informations"
+  deleteTitle: "Suppression du compte"
+  deleteMessage: "En demandant la suppression de votre compte, celui-ci sera inactif et sera supprimé définitivement au bout de 30 jours. Si vous vous reconnectez avant ce délai, votre compte sera réactivé."
+  logout: "Se déconnecter"
+  flashSuccess:
+    info: "Vos informations ont été modifiées avec succès !"
+    delete: "Votre compte a bien été désactivé, et il sera supprimé sous 30 jours sauf si vous vous reconnectez entre temps."
+    reactivate: "Votre compte a bien été réactivé !"
 
 
 # ADMINISTRATOR PANEL

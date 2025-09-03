@@ -44,14 +44,19 @@
 
 			<ul>
 				<li>
-					<a href="{{ path('app_about_about') }}" class="link__menu">{{ 'mainMenu.about'|trans }}</a>
+					<a href="{{ path('app_about_index') }}" class="link__menu">{{ 'mainMenu.about'|trans }}</a>
 				</li>
 				<li>
 					<a href="{{ path('app_property_filter') }}" class="link__menu">{{ 'mainMenu.properties'|trans }}</a>
 				</li>
 				<li>
-					<a href="{{ path('app_contact_contact') }}" class="link__menu">{{ 'mainMenu.contact'|trans }}</a>
+					<a href="{{ path('app_contact_index') }}" class="link__menu">{{ 'mainMenu.contact'|trans }}</a>
 				</li>
+				{% if app.user %}
+					<li>
+						<a href="{{ path('app_user_account', {'id': app.user.id}) }}" class="link__menu">{{ 'mainMenu.account'|trans }}</a>
+					</li>
+				{% endif %}
 				{% if app.user and is_granted('ROLE_ADMIN') %}
 					<li>
 						<a href="{{ path('app_admin') }}" class="link__menu">{{ 'mainMenu.admin'|trans }}</a>

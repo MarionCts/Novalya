@@ -2,15 +2,15 @@
 
 @use "../abstracts" as *;
 
-// ********** ADMIN DROPDOWN MENU ***********
+// ***** ADMIN & ACCOUNT DROPDOWN MENU ******
 
-.admin__panel {
+.control-template__panel {
     border: 0.1rem solid css-var(text);
     border-radius: 0 2rem 0 2rem;
     padding: 4rem;
 }
 
-.admin__panel--dropdown {
+.control-template__panel--dropdown {
     margin-top: 2rem;
     background: none;
     border: none;
@@ -36,6 +36,7 @@
     opacity: 1;
     display: block;
     visibility: visible;
+    z-index: 0;
     transform: translateY(0);
     margin-top: 2.5rem;
     @include flex-preset(column, flex-start, center);
@@ -43,13 +44,12 @@
 }
 
 .dropdown-icon {
-
     path {
-    fill: currentColor;
-    transition: fill .2s linear; 
-  }
+        fill: currentColor;
+        transition: fill 0.2s linear;
+    }
 
-  &:is(:hover, :focus-visible) {
-    color: css-var(link);
-  }
+    &:is(:hover, :focus-visible) {
+        color: css-var(link);
+    }
 }

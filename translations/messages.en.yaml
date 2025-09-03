@@ -4,6 +4,7 @@ mainMenu:
   about: "About"
   properties: "Properties"
   contact: "Contact"
+  account: "My account"
   admin: "Admin Panel"
   logout: "Log Out"
   login: "Log In"
@@ -176,6 +177,7 @@ contactPage:
   secondAccent: "with us"
   contactMessage: "To schedule an appointment or for any questions regarding a property, please fill out the form below and let us know your availability:"
   sendBtn: "Send"
+  flashSuccess: "Your message has been sent successfully!"
 
 
 # PAGE ADMIN "PROPERTIES LIST"
@@ -288,6 +290,26 @@ indivudualPropertyPage:
   bedrooms: "Bedrooms"
   energy: "Energy class"
   climate: "Climate class"
+
+
+  # PAGE "MY ACCOUNT"
+
+account:
+  pageTitle: "My account"
+  hello: "Hello"
+  accountTitle: "Account management"
+  manageInfos: "Update personal information"
+  deleteAccount: "Delete account"
+  favoriteTitle: "My favorites"
+  viewFavorites: "View all favorites"
+  informationTitle: "My information"
+  deleteTitle: "Delete account"
+  deleteMessage: "By requesting the deletion of your account, it will be deactivated and permanently deleted after 30 days. If you sign in again before this period, your account will be reactivated."
+  logout: "Logout"
+  flashSuccess:
+    info: "Your information have been updated successfully!"
+    delete: "Your account has been successfully deactivated, and it will be deleted in 30 days unless you sign in again before then."
+    reactivate: "Your account has been successfully reactivated!"
 
 
 # ADMINISTRATOR PANEL

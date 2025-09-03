@@ -495,17 +495,17 @@
 
 .contact__content {
     margin-top: 18rem;
-    padding: 6rem 0;
+    padding: 6rem 0 0;
 
     @include media(768px) {
-        @include flex-preset(row, center, flex-start);
+        @include flex-preset(row, stretch, stretch);
+        gap: 10rem;
+        width: auto;
     }
 }
 
 .contact__image {
     display: none;
-    height: 73rem;
-    width: 100%;
     margin-right: -9rem;
     max-width: 71rem;
     border-radius: 20rem 0 0 0;
@@ -520,6 +520,13 @@
         width: 100%;
         object-fit: cover;
         object-position: center;
+    }
+}
+
+.contact__form {
+
+    input::placeholder, select::placeholder, textarea::placeholder {
+        color: css-var(text);
     }
 }
 
@@ -577,20 +584,23 @@
     }
 }
 
-// ADMIN PAGES
+// ADMIN & ACCOUNT PAGES TEMPLATES
 
-.admin {
+.control-template {
     @include flex-preset(column, center, center);
     width: 100%;
+
+    @include media(1024px) {
+        @include flex-preset(row, flex-start, space-between);
+        gap: 10rem;
+    }
 }
 
-.admin__aside {
+.control-template__aside {
     width: 100%;
-    margin-top: 6rem;
 
-    @include media(768px) {
-        width: 35rem;
-        margin-top: 9rem;
+    @include media(1024px) {
+        max-width: 39rem;
     }
 }
 
@@ -628,6 +638,35 @@
         @include media(768px) {
             max-width: 60rem;
         }
+    }
+}
+
+// PAGE "MY ACCOUNT"
+
+
+.account__main {
+    width: 100%;
+
+    h2 {
+        width: 100%;
+        margin: 4rem 0;
+        background-color: css-var(text);
+        color: css-var(bg);
+        border-radius: 0 2rem 0 2rem;
+        padding: 1.5rem 0;
+
+        @include media(1024px) {
+            margin: 0 0 6rem;
+        }
+    }
+}
+
+.edit__container {
+    @include flex-preset(column, center, center);
+
+    form {
+        width: 100%;
+        max-width: 40rem;
     }
 }
 

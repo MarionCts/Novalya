@@ -35,7 +35,7 @@
 					</span>
 					{{ 'about.descriptionFour'|trans }}</p>
 			</div>
-			<a href="http://" class="button button__primary about__link">{{ 'about.propertiesBtn'|trans }}</a>
+			<a href="{{ path('app_property_filter') }}" class="button button__primary about__link">{{ 'about.propertiesBtn'|trans }}</a>
 		</section>
 
 		<section class="about__people">
@@ -123,7 +123,7 @@
 
 
 		</section>
-		<a href="{{ path('app_contact_contact') }}" class="button button__primary mt-35 about__link">{{ 'contactBtn'|trans }}</a>
+		<a href="{{ path('app_contact_index') }}" class="button button__primary mt-35 about__link">{{ 'contactBtn'|trans }}</a>
 
 	</main>
 
