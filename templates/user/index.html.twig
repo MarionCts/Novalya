@@ -12,74 +12,55 @@
 			<span class="title title__secondary accent">{{ 'userIndex.mainAccent'|trans }}</span>
 		</h1>
 
-		<div class="users">
-			{% for user in users %}
+		<table class="users">
+			<thead>
+				<tr>
+					<th id="h-name" class="paragraph__xsmall__bold" scope="col">{{ 'userIndex.name'|trans }}</th>
+					<th id="h-email" class="paragraph__xsmall__bold" scope="col">{{ 'userIndex.status'|trans }}</th>
+					<th id="h-role" class="paragraph__xsmall__bold" scope="col">{{ 'userIndex.role'|trans }}</th>
+					<th id="h-to-delete" class="paragraph__xsmall__bold" scope="col">{{ 'userIndex.toDelete'|trans }}</th>
+					<th id="h-actions" class="paragraph__xsmall__bold" scope="col">{{ 'userIndex.actions'|trans }}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td class="paragraph__xsmall__bold" data-label="Name" headers="h-name">{{ user.firstName }}
+							{{ user.name }}</td>
+						<td class="paragraph__xsmall" data-label="Email" headers="h-email">
+							{% if user.isActive %}
+								{{ 'userIndex.active'|trans }}
+							{% else %}
 
-				<div class="users__container">
-
-					<div class="users__specs">
-						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.name'|trans }}</h4>
-						<p class="paragraph__xsmall">
-							{{ user.name }}</p>
-					</div>
-
-					<div class="users__specs">
-						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.firstName'|trans }}</h4>
-						<p class="paragraph__xsmall">
-							{{ user.firstName }}</p>
-					</div>
-
-					<div class="users__specs">
-						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.status'|trans }}</h4>
-						{% if user.isActive %}
-							<p class="paragraph__xsmall">
-								{{ 'userIndex.active'|trans }}</p>
-						{% else %}
-							<p class="paragraph__xsmall">
-								{{ 'userIndex.notActive'|trans }}</p>
-						{% endif %}
-					</div>
-
-					<div class="users__specs">
-						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.registerDate'|trans }}</h4>
-						<p class="paragraph__xsmall">
-							{{ user.createdAt ? user.createdAt|date('date'|trans) : '' }}</p>
-					</div>
-
-					<div class="users__specs">
-						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.deactivatedDate'|trans }}</h4>
-						{% if user.deactivatedAt %}
-							<p class="paragraph__xsmall">
-								{{ user.deactivationDate ? user.deactivationDate|date('date'|trans) : '' }}</p>
-						{% else %}
-							<p class="paragraph__xsmall">
-								/</p>
-						{% endif %}
-					</div>
-
-					<div class="users__specs">
-						<h4 class="paragraph__xsmall__bold">{{ 'userIndex.toDelete'|trans }}</h4>
-						{% if not user.isActive %}
-							<p class="paragraph__xsmall">
-								{{ user.deactivatedAt ? user.deactivatedAt|date_modify('+30 days')|date('date'|trans) : '' }}</p>
-						{% else %}
-							<p class="paragraph__xsmall">
-								/</p>
-						{% endif %}
-					</div>
-
-				</div>
+								{{ 'userIndex.notActive'|trans }}
+							{% endif %}
+						</td>
+						<td class="paragraph__xsmall" data-label="role" headers="h-role">
+							{% if 'ROLE_ADMIN' in user.roles %}
+								<span class="role__admin">{{ 'userIndex.admin'|trans }}</span>
+							{% else %}
+								<span class="role__user">{{ 'userIndex.user'|trans }}</span>
+							{% endif %}
+						</td>
+						<td class="paragraph__xsmall" data-label="ToDelete" headers="h-to-delete">{{ user.deactivatedAt ? user.deactivatedAt|date_modify('+30 days')|date('date'|trans) : '' }}</td>
+						<td class="paragraph__xsmall" data-label="Actions" headers="h-actions">
+							<div class="row-actions">
+								{% if 'ROLE_ADMIN' not in user.roles %}
+									{# Prevents the delete button from showing if the user is the admin #}
+									<form method="post" action="{{ path('app_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+										<input type="hidden" name="_token" value="{{ csrf_token('deleteUser' ~ user.id) }}">
+										<button class="button button__delete">{{ 'deleteBtn'|trans }}</button>
+									</form>
+								{% endif %}
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
 
-			{% else %}
-
-				<p>{{ 'userIndex.noRecord'|trans }}</p>
-
-			{% endfor %}
-            
-		</div>
-
-		<a href="{{ path('app_admin') }}" class="button button__secondary">{{ 'adminBtn'|trans }}</a>
+		<a href="{{ path('app_admin') }}" class="button button__secondary mt-55">{{ 'adminBtn'|trans }}</a>
 
 	</main>
 {% endblock %}

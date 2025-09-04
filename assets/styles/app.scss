@@ -339,8 +339,8 @@
     }
 }
 
-.about__hero, .contact__hero {
-
+.about__hero,
+.contact__hero {
     svg {
         z-index: -1;
         display: none;
@@ -457,7 +457,6 @@
     }
 }
 
-
 // CONTACT PAGE
 
 .contact__hero {
@@ -524,12 +523,12 @@
 }
 
 .contact__form {
-
-    input::placeholder, select::placeholder, textarea::placeholder {
+    input::placeholder,
+    select::placeholder,
+    textarea::placeholder {
         color: css-var(text);
     }
 }
-
 
 // FILTER PROPERTIES PAGE
 
@@ -604,6 +603,65 @@
     }
 }
 
+.account__main {
+    width: 100%;
+
+    h2 {
+        width: 100%;
+        margin: 4rem 0;
+        background-color: css-var(text);
+        color: css-var(bg);
+        border-radius: 0 2rem 0 2rem;
+        padding: 1.5rem 0;
+
+        @include media(1024px) {
+            margin: 0 0 6rem;
+        }
+    }
+}
+
+.admin-pages__container {
+    .account__main--delete {
+        @include flex-preset(column, center, center);
+        gap: 3rem;
+
+        form {
+            max-width: 40rem;
+        }
+    }
+}
+
+.active {
+    color: css-var(link);
+    font-weight: 600;
+}
+
+.edit__container {
+    @include flex-preset(column, center, center);
+
+    form {
+        width: 100%;
+        max-width: 40rem;
+    }
+}
+
+.favorite__container {
+    .cards,
+    .card__container {
+        @include flex-preset(column, center, center);
+
+        @include media(768px) {
+            @include flex-preset(column, center, center);
+        }
+    }
+}
+
+.favorite__container {
+    .button__favorite {
+        width: auto;
+    }
+}
+
 // --- ADMIN PAGES CONTAINER ---
 
 .admin-pages__container {
@@ -638,35 +696,6 @@
         @include media(768px) {
             max-width: 60rem;
         }
-    }
-}
-
-// PAGE "MY ACCOUNT"
-
-
-.account__main {
-    width: 100%;
-
-    h2 {
-        width: 100%;
-        margin: 4rem 0;
-        background-color: css-var(text);
-        color: css-var(bg);
-        border-radius: 0 2rem 0 2rem;
-        padding: 1.5rem 0;
-
-        @include media(1024px) {
-            margin: 0 0 6rem;
-        }
-    }
-}
-
-.edit__container {
-    @include flex-preset(column, center, center);
-
-    form {
-        width: 100%;
-        max-width: 40rem;
     }
 }
 
@@ -749,6 +778,14 @@
     max-width: 60rem;
 }
 
+.property__hero--content {
+    .button__favorite {
+        svg {
+            fill: css-var(text);
+        }
+    }
+}
+
 .hero__features {
     @include flex-preset(column, flex-start, flex-start);
     gap: 1.5rem;
@@ -826,16 +863,18 @@
 }
 
 .property__map {
-    margin: 6rem 0;
+    margin-top: 6rem;
     width: 100%;
 
+
     @include media(768px) {
-        margin: 9rem 0;
+        margin-top: 9rem;
     }
 
     iframe {
-        width: 100%;
         height: 40rem;
+        display: block;
+        width: 100%
     }
 }
 
@@ -952,36 +991,58 @@
 // USERS LIST
 
 .users {
-    @include flex-preset(column, center, center);
-    gap: 2.5rem;
-    width: 100%;
-    margin-bottom: 3.5rem;
+    border-collapse: collapse;
+    word-wrap: break-word;
 
-    @include media(700px) {
-        width: auto;
-        display: grid;
-        grid-template-columns: repeat((2, 1fr));
-        justify-content: center;
-        justify-items: center;
+    th {
+        color: css-var(bg);
+        padding: 1.5rem;
+        text-align: left;
     }
 
-    @include media(950px) {
-        grid-template-columns: repeat((3, 1fr));
+    th:first-child {
+        border-radius: 0 0 0 2rem;
+        padding: 1.5rem 1.5rem 1.5rem 3rem;
+    }
+
+    th:last-child {
+        border-radius: 0 2rem 0 0;
+        padding: 1.5rem 3rem 1.5rem 1.5rem;
+    }
+
+    thead {
+        background-color: css-var(text);
+    }
+
+    td {
+        color: css-var(text);
+        padding: 1.5rem 1.5rem;
+        text-align: left;
+        border-bottom: 0.1rem solid css-var(text);
+    }
+
+    tr:last-child {
+        td {
+            border-bottom: none;
+        }
+    }
+
+    td:first-child {
+        padding: 1.5rem 3rem 1.5rem 3rem;
     }
 }
 
-.users__container {
-    @include flex-preset(column, flex-start, center);
-    gap: 1.5rem;
-    padding: 2.5rem;
-    width: 100%;
-    border: 0.1rem solid css-var(text);
-    border-radius: 0 2rem 0 2rem;
+.role__admin {
+    background-color: css-var(text);
+    color: css-var(bg);
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+    display: block;
+    border-radius: 0 1rem 0 1rem;
 }
 
-.users__specs {
-    @include flex-preset(row, center, center);
-    gap: 0.5rem;
+.role__user {
+    padding: 1rem 1.5rem;
 }
 
 // PAGE 404

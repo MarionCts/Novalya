@@ -24,11 +24,9 @@
 // ----- TEXT PRESETS -----
 
 @mixin text-preset($type) {
-
     @if $type == title {
         font-family: $playfair;
         line-height: 110%;
-
     } @else if $type == title__primary {
         font-weight: 500;
         text-transform: uppercase;
@@ -38,7 +36,6 @@
         @include media(768px) {
             font-size: 8rem;
         }
-
     } @else if $type == title__secondary {
         font-weight: 700;
         font-size: 2.8rem;
@@ -49,52 +46,40 @@
     } @else if $type == title__tertiary {
         font-weight: 700;
         font-size: 3.2rem;
-
     } @else if $type == title__fourth {
         font-weight: 700;
         font-size: 2.2rem;
-
     } @else if $type == section__intro {
         font-weight: 600;
         font-size: 1.8rem;
-
     } @else if $type == error__page {
         font-weight: 500;
         font-size: 15rem;
         font-style: italic;
-
     } @else if $type == title__city {
         font-weight: 500;
         font-size: 2.4rem;
-
     } @else if $type == title__specs {
         font-weight: 700;
         font-size: 1.7rem;
-
     } @else if $type == accent {
         font-style: italic;
         font-weight: 500;
-
     } @else if $type == accent__number {
         font-size: 6.4rem;
         font-weight: 500;
-
     } @else if $type == paragraph {
         font-family: $poppins;
         font-weight: 400;
         font-size: 1.8rem;
         letter-spacing: 0.05rem;
-
     } @else if $type == paragraph__small {
         font-size: 1.5rem;
-
     } @else if $type == paragraph__xsmall {
         font-size: 1.3rem;
-
     } @else if $type == paragraph__xsmall__bold {
         font-size: 1.3rem;
         font-weight: 600;
-
     } @else if $type == link__menu {
         font-size: 2rem;
         font-weight: 400;
@@ -105,17 +90,14 @@
         &:hover {
             color: css-var(link);
         }
-
     } @else if $type == card__price {
         font-size: 2.5rem;
         font-weight: 600;
-
     } @else if $type == panel__titles {
         font-weight: 600;
         font-size: 1.6rem;
         text-transform: uppercase;
         letter-spacing: 0.03rem;
-
     } @else if $type == link__small {
         border-bottom: css-var(text) 0.1rem solid;
         transition: all 0.1s linear;
@@ -124,25 +106,22 @@
             color: css-var(link);
             border-bottom: css-var(link) 0.1rem solid;
         }
-
     } @else if $type == footer__links {
         font-size: 1.3rem;
         font-weight: 600;
-
-    }@else if $type == legal__mentions {
+    } @else if $type == legal__mentions {
         font-size: 1.2rem;
         text-transform: uppercase;
         letter-spacing: 0.1rem;
         font-weight: 600;
-
     }
 }
 
 // ----- BUTTON PRESETS -----
 
 @mixin button-preset($type) {
-
     @if $type == button {
+        background-color: transparent;
         font-family: $poppins;
         border: none;
         border-radius: 0 2rem 0 2rem;
@@ -154,39 +133,36 @@
         cursor: pointer;
         transition: all 0.2s linear;
         text-align: center;
-
     } @else if $type == button__primary {
         border: none;
         background-color: css-var(primary-btn-bg);
         color: css-var(primary-btn-text);
-
     } @else if $type == button__primary__opposite {
         border: none;
         background-color: css-var(primary-btn-text);
         color: css-var(primary-btn-bg);
-
     } @else if $type == button__secondary {
         background-color: transparent;
         border: 0.1rem solid css-var(text);
         color: css-var(secondary-btn-text);
-
     } @else if $type == button__delete {
         border: none;
         background-color: css-var(delete-btn-bg);
         color: css-var(delete-btn-text);
+    } @else if $type == button__favorite {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
     }
 }
 
 @mixin button-hover-preset($type) {
-
     @if $type == button__primary {
         background-color: css-var(primary-btn-bg-hover);
         color: css-var(primary-btn-text-hover);
-
     } @else if $type == button__secondary {
         background-color: css-var(secondary-btn-bg-hover);
         color: css-var(secondary-btn-text-hover);
-
     } @else if $type == button__delete {
         background-color: css-var(delete-btn-bg-hover);
     }

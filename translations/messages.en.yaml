@@ -1,3 +1,7 @@
+# HTML ATTRIBUTE "LANG"
+
+lang: "en-EN"
+
 # HEADER MAIN MENU
 
 mainMenu:
@@ -272,9 +276,12 @@ userIndex:
   status: "Status:"
   active: "Active"
   notActive: "Not active"
-  registerDate: "Registration date:"
-  deactivatedDate: "Deactivation date:"
+  role: "Roles:"
+  user: "User"
+  admin: "Admin"
   toDelete: "To delete on:"
+  actions: "Actions:"
+  deleteMessage: "The user has been successfully deleted!"
 
 
 # INDIVIDUAL PROPERTY PAGE
@@ -339,6 +346,7 @@ login:
   notRegistered: "Not registered yet ?"
   createAccount: "Create your account"
   alreadyLogged: "You are already logged in as"
+  "flashSuccessLogout" : "You have been successfully logged out."
   
 
 # REGISTER PAGE

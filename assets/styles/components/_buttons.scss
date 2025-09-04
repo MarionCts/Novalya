@@ -46,6 +46,30 @@
     }
 }
 
+// Specific to favorite buttons
+
+.button__favorite {
+    @include button-preset(button__favorite);
+}
+
+.favorite-none,
+.favorite-done {
+    height: 2.5rem;
+    display: none;
+}
+
+.favorite-none {
+    fill: css-var(bg);
+}
+
+.favorite-done {
+    fill: css-var(favorite);
+}
+
+.favorite-toggle {
+    display: block;
+}
+
 // ************* ONY ONE USE BUTTONS **************
 
 // MAIN NAV HAMBURGER MENU

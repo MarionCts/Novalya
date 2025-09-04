@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils, TranslatorInterface $translator, User $user, Request $request): Response
+    public function login(AuthenticationUtils $authenticationUtils, TranslatorInterface $translator, Request $request): Response
     {
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -22,7 +22,7 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         if ($request->query->get('logout') === '1') {
-            $this->addFlash('success', 'Vous avez bien été déconnecté.');
+            $this->addFlash('success', $translator->trans('login.flashSuccessLogout'));
         }
 
         return $this->render('security/login.html.twig', [

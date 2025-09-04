@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use App\Repository\FavoriteRepository;
 
 #[Route('/property')]
 final class PropertyController extends AbstractController
@@ -21,16 +22,30 @@ final class PropertyController extends AbstractController
     #[Route(name: 'app_property_index', methods: ['GET'])]
     public function index(PropertyRepository $propertyRepository): Response
     {
+
         return $this->render('property/index.html.twig', [
             'properties' => $propertyRepository->findAll(),
         ]);
     }
 
     #[Route('/filter', name: 'app_property_filter', methods: ['GET'])]
-    public function filter(PropertyRepository $propertyRepository): Response
+    public function filter(PropertyRepository $propertyRepository, FavoriteRepository $favoriteRepository): Response
     {
-            return $this->render('property/filter.html.twig', [
+        // we create an array "favoriteIds" which will fetch all of the properties IDs
+        // of the currently logged in user
+        $favoriteIds = [];
+
+        if ($this->getUser()) {
+            $userFavorites = $favoriteRepository->findBy(['user' => $this->getUser()]);
+            $favoriteIds = array_map(
+                static fn(\App\Entity\Favorite $f) => $f->getProperty()->getId(),
+                $userFavorites
+            );
+        }
+
+        return $this->render('property/filter.html.twig', [
             'properties' => $propertyRepository->findBy([], ['createdAt' => 'DESC'], 7),
+            'favoriteIds' => $favoriteIds,
         ]);
     }
 
@@ -79,13 +94,26 @@ final class PropertyController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_property_show', methods: ['GET'])]
-    public function show(Property $property): Response
+    public function show(Property $property, FavoriteRepository $favoriteRepository): Response
     {
         $status = $property->getStatus();
+
+        // we create an array "favoriteIds" which will fetch all of the properties IDs
+        // of the currently logged in user
+        $favoriteIds = [];
+        
+        if ($this->getUser()) {
+            $userFavorites = $favoriteRepository->findBy(['user' => $this->getUser()]);
+            $favoriteIds = array_map(
+                static fn(\App\Entity\Favorite $f) => $f->getProperty()->getId(),
+                $userFavorites
+            );
+        }
 
         if ($status === Status::Published || $this->isGranted('ROLE_ADMIN')) {
             return $this->render('property/show.html.twig', [
                 'property' => $property,
+                'favoriteIds' => $favoriteIds,
             ]);
         }
         return $this->redirectToRoute('app_error_error', [], Response::HTTP_SEE_OTHER);

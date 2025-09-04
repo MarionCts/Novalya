@@ -76,20 +76,6 @@
         background: transparent;
         border: none;
         height: 2.5rem;
-
-        .favorite-none {
-            fill: css-var(bg);
-            display: none;
-        }
-
-        .favorite-done {
-            fill: css-var(favorite);
-            display: none;
-        }
-
-        .favorite-toggle {
-            display: block;
-        }
     }
     .card__content--text {
         width: 100%;

@@ -35,16 +35,16 @@
 						</li>
 						<li>
 							<button id="favorites-dropdown" class="control-template__panel--dropdown panel__titles" aria-expanded="false" aria-controls="dropdown-menu">{{ 'account.favoriteTitle'|trans }}
-								<svg id="favorites-icon-open" class="dropdown-icon" width="18" height="15" viewbox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<svg id="favorites-icon-open" class="dropdown-icon hidden" width="18" height="15" viewbox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 4.69771C16.3032 4.24392 15.5711 4.24871 15.1225 4.70839L9.00806 10.9738L2.89358 4.70839C2.44496 4.24871 1.71288 4.24392 1.25847 4.69771C0.804028 5.1515 0.79928 5.892 1.2479 6.35168L8.18524 13.4602C8.40245 13.6828 8.69882 13.8082 9.00806 13.8082C9.31725 13.8082 9.61363 13.6828 9.83088 13.4602L16.7682 6.35168C17.2168 5.892 17.212 5.1515 16.7576 4.69771Z"/>
 								</svg>
-								<svg id="favorites-icon-close" class="dropdown-icon hidden" width="18" height="15" viewbox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<svg id="favorites-icon-close" class="dropdown-icon" width="18" height="15" viewbox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 10.3023C16.3032 10.7561 15.5711 10.7513 15.1225 10.2916L9.00806 4.02623L2.89358 10.2916C2.44496 10.7513 1.71288 10.7561 1.25847 10.3023C0.804028 9.8485 0.79928 9.108 1.2479 8.64832L8.18524 1.53976C8.40245 1.31716 8.69882 1.19184 9.00806 1.19184C9.31725 1.19184 9.61363 1.31716 9.83088 1.53976L16.7682 8.64832C17.2168 9.108 17.212 9.8485 16.7576 10.3023Z"/>
 								</svg>
 							</button>
-							<ul id="favorites-dropdown-menu" class="dropdown__menu">
+							<ul id="favorites-dropdown-menu" class="dropdown__menu opens">
 								<li>
-									<a href="#view-favorites" id="favorite-btn" class="paragraph__small">{{ 'account.viewFavorites'|trans }}</a>
+									<a href="#view-favorites" id="favorite-btn" class="paragraph__small active">{{ 'account.viewFavorites'|trans }}</a>
 								</li>
 							</ul>
 						</li>
@@ -57,7 +57,7 @@
 			</aside>
 
 			{# ACCOUNT INFORMATION #}
-			<section id="account-info" class="account__main">
+			<section id="account-info" class="account__main hidden">
 				<h2 class="title title__tertiary center">{{ 'account.informationTitle'|trans }}
 				</h2>
 
@@ -88,7 +88,7 @@
 						<div class="form__constraint">{{ error.message }}</div>
 					{% endfor %}
 
-					<button class="button button__primary">{{ 'updateBtn'|trans }}</button>
+					<button class="button button__primary mt-15">{{ 'updateBtn'|trans }}</button>
 
 					{{ form_end(form) }}
 				</div>
@@ -100,7 +100,7 @@
 				<h2 class="title title__tertiary center">{{ 'account.deleteTitle'|trans }}
 				</h2>
 
-				<div>
+				<div class="account__main--delete">
 					<p>{{ 'account.deleteMessage'|trans }}</p>
 					<form method="post" action="{{ path('app_user_account_deactivate', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
 						<input type="hidden" name="_token" value="{{ csrf_token('deactivate' ~ user.id) }}">
@@ -110,15 +110,60 @@
 			</section>
 
 			{# ACCOUNT FAVORITES #}
-			<section id="favorites" class="account__main hidden">
+			<section id="favorites" class="account__main">
 
 				<h2 class="title title__tertiary center">{{ 'account.favoriteTitle'|trans }}
 				</h2>
 
 				<div class="favorite__container">
-					{% for property in properties %}
-						<p>{{ property.name }}</p>
-					{% endfor %}
+					<div class="cards">
+						{% for favorite in favorites %}
+							{% if favorite.property.status.value == "Published"  %}
+								<div class="card__container">
+									<div class="card__image">
+										{% for image in favorite.property.propertyImages %}
+											{# Selects only the featured image among all the pictures related to this property #}
+											{% if image.property.id == favorite.property.id and image.isFeatured == false %}
+												<img src="{{ asset(image.url) }}" alt=""></div>
+										{% endif %}
+									{% endfor %}
+									<div class="card__content">
+
+										{# Favorite button & form #}
+										<form method="post" class="favorite-form" action="{{ path('app_favorite_new', {'property': favorite.property.id}) }}" data-id="{{ favorite.property.id }}">
+											<input type="hidden" name="_token" value="{{ csrf_token('favoriteBtn' ~ favorite.property.id) }}">
+											<button type="submit" class="button__favorite">
+												<svg xmlns="http://www.w3.org/2000/svg" id="favorite-none-{{ favorite.property.id }}" class="favorite-none" viewbox="0 0 30 27" aria-hidden="true" focusable="false">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M21.696,0.85l0.001,-0.15l0.147,-0l0.001,0.003l0.003,0.001c4.122,0.081 7.452,3.44 7.452,7.562c0,3.587 -1.76,6.376 -4.356,9.098c-1.285,1.349 -2.78,2.687 -4.371,4.104c-1.586,1.412 -3.269,2.904 -4.942,4.57c-0.351,0.349 -0.92,0.349 -1.27,-0c-2.068,-2.059 -4.15,-3.853 -6.045,-5.558c-1.902,-1.711 -3.617,-3.335 -4.928,-5.035c-1.83,-2.374 -2.688,-4.659 -2.688,-7.179c-0,-4.173 3.408,-7.566 7.597,-7.566c1.757,-0 3.11,0.425 4.223,1.206c0.982,0.689 1.767,1.651 2.476,2.826c0.709,-1.175 1.494,-2.137 2.476,-2.826c1.113,-0.781 2.466,-1.206 4.223,-1.206l0,0.15l0.001,-0Zm-0.001,1.642c-1.366,-0 -2.407,0.278 -3.313,0.965c-0.923,0.7 -1.723,1.829 -2.583,3.542c-0.331,0.659 -1.275,0.658 -1.606,-0c-0.86,-1.713 -1.66,-2.842 -2.582,-3.542c-0.907,-0.687 -1.948,-0.965 -3.314,-0.965c-3.199,0 -5.8,2.59 -5.8,5.774c-0,3.014 1.529,5.426 3.876,7.886c1.186,1.243 2.575,2.491 4.077,3.83c1.442,1.284 2.985,2.65 4.546,4.165c1.563,-1.517 3.108,-2.884 4.551,-4.169c1.503,-1.339 2.894,-2.587 4.08,-3.83c2.348,-2.459 3.876,-4.869 3.876,-7.882c0,-3.183 -2.605,-5.774 -5.808,-5.774Z"/>
+												</svg>
+												<svg xmlns="http://www.w3.org/2000/svg" id="favorite-done-{{ favorite.property.id }}" class="favorite-done favorite-toggle" viewbox="0 0 30 27" aria-hidden="true" focusable="false">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M21.696,0.85l0.001,-0.15l0.147,-0l0.001,0.003l0.003,0.001c4.122,0.081 7.452,3.44 7.452,7.562c0,3.587 -1.76,6.376 -4.356,9.098c-1.285,1.349 -2.78,2.687 -4.371,4.104c-1.586,1.412 -3.269,2.904 -4.942,4.57c-0.351,0.349 -0.92,0.349 -1.27,-0c-2.068,-2.059 -4.15,-3.853 -6.045,-5.558c-1.902,-1.711 -3.617,-3.335 -4.928,-5.035c-1.83,-2.374 -2.688,-4.659 -2.688,-7.179c-0,-4.173 3.408,-7.566 7.597,-7.566c1.757,-0 3.11,0.425 4.223,1.206c0.982,0.689 1.767,1.651 2.476,2.826c0.709,-1.175 1.494,-2.137 2.476,-2.826c1.113,-0.781 2.466,-1.206 4.223,-1.206l0,0.15l0.001,-0Z"/>
+												</svg>
+											</button>
+										</form>
+
+										<div class="card__content--text">
+											<h4 class="title title__tertiary">{{ favorite.property.name }}</h4>
+											<div class="text__specs">
+												<p class="paragraph__small">{{ favorite.property.city }}</p>
+												<p class="paragraph__small">{{ favorite.property.bedroomNumber }}
+													{{ 'homePage.services.bedrooms'|trans }}
+													|
+													{{ favorite.property.indoorSurface }}
+													m²</p>
+											</div>
+											<div class="text__price">
+												<p class="card__price">{{ favorite.property.price|format_currency('EUR', {fraction_digit: 0}) }}</p>
+												<a href="{{ path('app_property_show', {'id': favorite.property.id}) }}" class="button button__primary__opposite">
+													<svg width="100%" height="100%" viewbox="0 0 18 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path d="M1,7l13.586,0l-4.657,-4.657c-0.391,-0.39 -0.391,-1.024 -0,-1.414c0.39,-0.391 1.024,-0.391 1.414,-0l6.364,6.364c0.391,0.39 0.391,1.024 0,1.414l-6.364,6.364c-0.39,0.391 -1.024,0.391 -1.414,0c-0.391,-0.391 -0.391,-1.024 -0,-1.414l4.657,-4.657l-13.586,-0c-0.552,-0 -1,-0.448 -1,-1c0,-0.552 0.448,-1 1,-1Z"/></svg>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
 				</div>
 
 			</section>

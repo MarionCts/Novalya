@@ -1,39 +1,46 @@
 <?php
 
+namespace App\Security;
+
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\User\UserCheckerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
 
-class AppAuthenticator extends AbstractLoginFormAuthenticator
+final class AppAuthenticator implements UserCheckerInterface
 {
     public function __construct(
         private EntityManagerInterface $em,
-    ) {
-        $this->em = $em;
+        private ?RequestStack $requestStack = null,
+        private TranslatorInterface $translator,
+    ) {}
+
+    public function checkPreAuth(UserInterface $user): void
+    {
+        if (!$user instanceof User) {
+            return;
+        }
     }
 
-    public function onAuthenticationSuccess(Request $request, User $user, TranslatorInterface $translator, TokenInterface $token, string $firewallName): Response
+    public function checkPostAuth(UserInterface $user): void
     {
-        $user = $token->getUser();
+        $this->checkPreAuth($user);
 
-        if ($user instanceof \User && !$user->isActive()) {
-            $user->setActive(true);
+        if (!$user instanceof User) {
+            return;
+        }
+
+        if ($user->isActive() === false) {
+            $user->setIsActive(true);
             $user->setDeactivatedAt(null);
             $this->em->flush();
 
-            $request->getSession()->getFlashBag()->add(
+            $this->requestStack?->getSession()?->getFlashBag()->add(
                 'success',
-                $this->$translator->trans('account.flashSuccess.reactivate')
+                $this->translator->trans('account.flashSuccess.reactivate')
             );
         }
-
-        return $this->redirectToRoute('app_home');
     }
 }
-
-?>

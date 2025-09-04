@@ -15,12 +15,10 @@ class Favorite
 
     #[ORM\ManyToOne(inversedBy: 'favorites')]
     #[ORM\JoinColumn(nullable: true, onDelete: "CASCADE")]
-    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'favorites')]
     #[ORM\JoinColumn(nullable: true, onDelete: "CASCADE")]
-    #[ORM\JoinColumn(nullable: false)]
     private ?Property $property = null;
 
     public function getId(): ?int

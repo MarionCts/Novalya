@@ -93,7 +93,10 @@ const favoriteBtn = document.getElementById("favorite-btn");
 if (favorites) {
     favoriteBtn.addEventListener("click", (e) => {
         favorites.classList.remove("hidden");
+        favoriteBtn.classList.add("active");
+        infoBtn.classList.remove("active");
         info.classList.add("hidden");
+        deleteBtn.classList.remove("active");
         deleteAccount.classList.add("hidden");
     });
 }
@@ -101,8 +104,11 @@ if (favorites) {
 if (info) {
     infoBtn.addEventListener("click", (e) => {
         info.classList.remove("hidden");
+        infoBtn.classList.add("active");
         favorites.classList.add("hidden");
+        favoriteBtn.classList.remove("active");
         deleteAccount.classList.add("hidden");
+        deleteBtn.classList.remove("active");
     });
 }
 
@@ -110,7 +116,10 @@ if (info) {
 if (deleteAccount) {
     deleteBtn.addEventListener("click", (e) => {
         deleteAccount.classList.remove("hidden");
+        deleteBtn.classList.add("active");
         info.classList.add("hidden");
+        infoBtn.classList.remove("active");
         favorites.classList.add("hidden");
+        favoriteBtn.classList.remove("active");
     });
 }

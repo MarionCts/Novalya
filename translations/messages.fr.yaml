@@ -1,3 +1,7 @@
+# HTML ATTRIBUTE "LANG"
+
+lang: "fr-FR"
+
 # HEADER MAIN MENU
 
 mainMenu:
@@ -272,9 +276,12 @@ userIndex:
   status: "Statut :"
   active: "Actif"
   notActive: "Inactif"
-  registerDate: "Date d'inscription :"
-  deactivatedDate: "Date de désactivation :"
+  role: "Rôles :"
+  user: "Utilisateur"
+  admin: "Administrateur"
   toDelete: "À supprimer le :"
+  actions: "Actions :"
+  deleteMessage: "L'utilisateur a bien été supprimé !"
 
 
 # INDIVIDUAL PROPERTY PAGE
@@ -339,6 +346,7 @@ login:
   notRegistered: "Pas encore inscrit ?"
   createAccount: "Créez votre compte"
   alreadyLogged: "Vous êtes déjà connecté avec l'adresse"
+  "flashSuccessLogout" : "Vous avez bien été déconnecté."
 
 
 # REGISTER PAGE
