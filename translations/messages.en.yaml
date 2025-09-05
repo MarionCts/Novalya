@@ -215,7 +215,7 @@ addPropertyPage:
   perf: "Performances"
   status: "Publication status"
   getBack: "Back to properties"
-  flashSuccess: "Property added successfully!"
+  flashSuccess: "Property successfully added!"
 
 
 # PAGE "UPDATE A PROPERTY"
@@ -225,13 +225,13 @@ updatePropertyPage:
   mainTitle: "Update a" 
   mainAccent: "property"
   getBack: "Back to properties"
-  flashSuccess: "Property updated successfully!"
+  flashSuccess: "Property successfully updated!"
 
 
   # PAGE "DELETE A PROPERTY"
 
 deletePropertyPage:
-  flashSuccess: "Property deleted successfully!"
+  flashSuccess: "Property successfully deleted!"
 
 
 # PAGE "CATEGORIES LIST"
@@ -250,7 +250,7 @@ addCategoryPage:
   mainTitle: "Add a" 
   mainAccent: "category"
   getBack: "Back to categories"
-  flashSuccess: "Category added successfully!"
+  flashSuccess: "Category successfully added!"
 
 
 # PAGE "UPDATE A CATEGORY"
@@ -260,12 +260,49 @@ updateCategoryPage:
   mainTitle: "Update a" 
   mainAccent: "category"
   getBack: "Back to categories"
+  flashSuccess: "Category successfully updated!"
 
 
 # PAGE "DELETE A CATEGORY"
 
 deleteCategoryPage:
-  flashSuccess: "Category deleted successfully!"
+  flashSuccess: "Category successfully deleted!"
+
+
+# PAGE "ADD A TAG"
+
+addTagPage:
+  pageTitle: "Add a tag"
+  mainTitle: "Add a" 
+  mainAccent: "tag"
+  getBack: "Back to tags"
+  flashSuccess: "Tag successfully added!"
+
+
+# PAGE "TAGS LIST"
+
+tagIndex:
+  pageTitle: "All tags"
+  mainTitle: "Tags"
+  mainAccent: "list"
+  addBtn: "Add a tag"
+  noRecord: "No tag found."
+
+
+# PAGE "UPDATE A TAG"
+
+updateTagPage:
+  pageTitle: "Update a tag"
+  mainTitle: "Update a" 
+  mainAccent: "tag"
+  getBack: "Back to tags"
+  flashSuccess: "Tag successfully updated!"
+
+
+# PAGE "DELETE A TAG"
+
+deleteTagPage:
+  flashSuccess: "Tag successfully deleted!"
 
 
 # PAGE "USERS LIST"

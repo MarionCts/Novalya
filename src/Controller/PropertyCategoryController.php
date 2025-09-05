@@ -53,7 +53,7 @@ final class PropertyCategoryController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_property_category_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, PropertyCategory $propertyCategory, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, PropertyCategory $propertyCategory, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         $form = $this->createForm(PropertyCategoryType::class, $propertyCategory);
         $form->handleRequest($request);
@@ -61,6 +61,7 @@ final class PropertyCategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $this->addFlash('success', $translator->trans('updateCategoryPage.flashSuccess'));
             return $this->redirectToRoute('app_property_category_index', [], Response::HTTP_SEE_OTHER);
         }
 

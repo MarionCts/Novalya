@@ -1,11 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Tag{% endblock %}
+{% block title %}Novalya |
+	{{ 'addTagPage.pageTitle'|trans }}
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Tag</h1>
 
-    {{ include('tag/_form.html.twig') }}
+	<main class="admin-pages__container px-100">
 
-    <a href="{{ path('app_tag_index') }}">back to list</a>
+		<h1 class="title title__secondary mb-55">{{ 'addTagPage.mainTitle'|trans }}
+			<span class="title title__secondary accent">{{ 'addTagPage.mainAccent'|trans }}</span>
+		</h1>
+
+		{{ form_start(form) }}
+
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name) }}
+		{% for error in form.name.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# ADD BUTTON #}
+		<button class="button button__primary mt-30">{{ 'addBtn'|trans }}</button>
+
+		{# GET BACK TO PROPERTIES BUTTON #}
+		<a class="button button__secondary" href="{{ path('app_tag_index') }}">{{ 'addCategoryPage.getBack'|trans }}</a>
+
+		{{ form_end(form) }}
+
+	</main>
+
 {% endblock %}

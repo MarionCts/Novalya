@@ -1,35 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tag index{% endblock %}
+{% block title %}Novalya |
+	{{ 'tagIndex.pageTitle'|trans }}
+{% endblock %}
 
 {% block body %}
-    <h1>Tag index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for tag in tags %}
-            <tr>
-                <td>{{ tag.id }}</td>
-                <td>{{ tag.name }}</td>
-                <td>
-                    <a href="{{ path('app_tag_show', {'id': tag.id}) }}">show</a>
-                    <a href="{{ path('app_tag_edit', {'id': tag.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<main class="admin-pages__container px-100">
 
-    <a href="{{ path('app_tag_new') }}">Create new</a>
+		<h1 class="title title__secondary mb-55">{{ 'tagIndex.mainTitle'|trans }}
+			<span class="title title__secondary accent">{{ 'tagIndex.mainAccent'|trans }}</span>
+		</h1>
+
+		<section class="categories">
+			{% for tag in tags %}
+				<div
+					class="categories__item">
+
+					{# tag name #}
+					<h3 class="title panel__titles">{{ tag.name }}</h3>
+
+					<div class="categories__buttons">
+						{# udpate button #}
+						<a href="{{ path('app_tag_edit', {'id': tag.id}) }}" class="button button__secondary">{{ 'updateBtn'|trans }}</a>
+						{# delete button #}
+						{{ include('tag/_delete_form.html.twig') }}
+					</div>
+				</div>
+
+			{% else %}
+
+				{# message if there is no tag to be found #}
+				<h3 class="paragraph__small">{{ 'tagIndex.noRecord'|trans }}</h3>
+
+			{% endfor %}
+		</section>
+
+		<a href="{{ path('app_tag_new') }}" class="button button__primary mt-35">{{ 'tagIndex.addBtn'|trans }}</a>
+		<a href="{{ path('app_admin') }}" class="button button__secondary mt-15">{{ 'adminBtn'|trans }}</a>
+
+	</main>
+
 {% endblock %}

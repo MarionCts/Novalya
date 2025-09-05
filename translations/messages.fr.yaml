@@ -268,6 +268,41 @@ deleteCategoryPage:
   flashSuccess: "Catégorie supprimée avec succès !"
 
 
+# PAGE "TAGS LIST"
+
+tagIndex:
+  pageTitle: "Liste des tags"
+  mainTitle: "Liste des"
+  mainAccent: "tags"
+  addBtn: "Ajouter un tag"
+  noRecord: "Aucun tag."
+
+
+# PAGE "ADD A TAG"
+
+addTagPage:
+  pageTitle: "Ajouter un tag"
+  mainTitle: "Ajouter un" 
+  mainAccent: "tag"
+  getBack: "Retour aux tags"
+  flashSuccess: "Tag ajouté avec succès !"
+
+
+# PAGE "UPDATE A TAG"
+
+updateTagPage:
+  pageTitle: "Modifier un tag"
+  mainTitle: "Modifier un" 
+  mainAccent: "tag"
+  getBack: "Retour aux tags"
+
+
+# PAGE "DELETE A TAG"
+
+deleteTagPage:
+  flashSuccess: "Tag supprimé avec succès !"
+
+
 # PAGE "USERS LIST"
 
 userIndex:

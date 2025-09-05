@@ -1,13 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Tag{% endblock %}
+{% block title %}Novalya |
+	{{ 'updateTagPage.pageTitle'|trans }}
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Tag</h1>
 
-    {{ include('tag/_form.html.twig', {'button_label': 'Update'}) }}
+	<main class="admin-pages__container px-100">
 
-    <a href="{{ path('app_tag_index') }}">back to list</a>
+		<h1 class="title title__secondary mb-55">{{ 'updateTagPage.mainTitle'|trans }}
+			<span class="title title__secondary accent">{{ 'updateTagPage.mainAccent'|trans }}</span>
+		</h1>
 
-    {{ include('tag/_delete_form.html.twig') }}
+		{{ form_start(form) }}
+
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name) }}
+		{% for error in form.name.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# UPDATE BUTTON #}
+		<div class="flex-responsive">
+			<button class="button button__primary">{{ 'updateBtn'|trans }}</button>
+
+			{{ form_end(form) }}
+
+			{# DELETE BUTTON #}
+			{{ include('tag/_delete_form.html.twig') }}
+		</div>
+
+		{# GET BACK TO PROPERTIES BUTTON #}
+		<a class="button button__secondary get-back" href="{{ path('app_tag_index') }}">{{ 'updateTagPage.getBack'|trans }}</a>
+
+
+	</main>
+
+
 {% endblock %}
