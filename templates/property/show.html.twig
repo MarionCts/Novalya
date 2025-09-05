@@ -93,6 +93,7 @@
 		{# <div class="property__carousel"></div> #}
 		<h2 class="title title__secondary accent">Description</h2>
 		<p>{{ property.description }}</p>
+		<p class="title title__fourth">{{ 'indivudualPropertyPage.price'|trans }} {{ property.price|format_currency('EUR', {fraction_digit: 0}) }}</p>
 	</section>
 
 	{# SPECIAL FEATURES OF THE PROPERTY #}

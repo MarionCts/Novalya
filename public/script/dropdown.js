@@ -38,6 +38,25 @@ if (categoriesDropdown) {
     });
 }
 
+// DROPDOWN BEHAVIOR FOR TAGS
+
+const tagsDropdown = document.getElementById("tags-dropdown");
+const tagsMenu = document.getElementById("tags-dropdown-menu");
+const tagsOpenIcon = document.getElementById("tags-icon-open");
+const tagsCloseIcon = document.getElementById("tags-icon-close");
+
+if (tagsDropdown) {
+    // Function to open or close the dropdown when the link is clicked
+    tagsDropdown.addEventListener("click", (e) => {
+        e.preventDefault();
+        const isOpen = tagsMenu.classList.toggle("opens");
+
+        tagsDropdown.setAttribute("aria-expanded", String(isOpen));
+        tagsOpenIcon.classList.toggle("hidden", isOpen);
+        tagsCloseIcon.classList.toggle("hidden", !isOpen);
+    });
+}
+
 // ---------------- ACCOUNT PAGE ----------------
 
 // DROPDOWN BEHAVIOR FOR ACCOUNT MANAGEMENT

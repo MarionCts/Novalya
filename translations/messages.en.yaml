@@ -2,6 +2,10 @@
 
 lang: "en-EN"
 
+# AJAX ERROR MESSAGE
+
+ajaxError: "An error occured while adding the property to favorites."
+
 # HEADER MAIN MENU
 
 mainMenu:
@@ -297,6 +301,7 @@ indivudualPropertyPage:
   bedrooms: "Bedrooms"
   energy: "Energy class"
   climate: "Climate class"
+  price: "Price:"
 
 
   # PAGE "MY ACCOUNT"
@@ -332,6 +337,9 @@ panelAdmin:
   categoryManage: "Manage categories"
   seeCategories: "View all categories"
   addCategories: "Add a category"
+  tagsManage: "Manage tags"
+  seeTags: "View all tags"
+  addTags: "Add a tag"
 
 
   # LOGIN PAGE

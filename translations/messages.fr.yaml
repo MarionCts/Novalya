@@ -2,6 +2,10 @@
 
 lang: "fr-FR"
 
+# AJAX ERROR MESSAGE
+
+ajaxError: "Une erreur est survenue lors de l'ajout du bien en favori."
+
 # HEADER MAIN MENU
 
 mainMenu:
@@ -297,6 +301,7 @@ indivudualPropertyPage:
   bedrooms: "Chambres"
   energy: "Classe énergétique"
   climate: "Classe climatique"
+  price: "Prix :"
 
 
 # PAGE "MY ACCOUNT"
@@ -332,6 +337,9 @@ panelAdmin:
   categoryManage: "Gérer les catégories"
   seeCategories: "Voir les catégories"
   addCategories: "Ajouter une catégorie"
+  tagsManage: "Gérer les tags"
+  seeTags: "Voir les tags"
+  addTags: "Ajouter un tag"
 
 
 # LOGIN PAGE
