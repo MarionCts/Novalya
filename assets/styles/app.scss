@@ -833,6 +833,16 @@
 .property__description {
     @include flex-preset(column, flex-start, center);
     gap: 4.1rem;
+
+    @include media(768px) {
+        @include flex-preset(row-reverse, flex-start, center);
+    }
+
+    .property__text {
+        @include flex-preset(column, flex-start, center);
+        gap: 4.1rem;
+
+    }
 }
 
 .property__specs {
