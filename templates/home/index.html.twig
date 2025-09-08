@@ -59,7 +59,7 @@
 							<div class="card__image">
 								{% for image in property.propertyImages %}
 									{# Selects only the featured image among all the pictures related to this property #}
-									{% if image.property.id == property.id and image.isFeatured == false %}
+									{% if image.property.id == property.id and image.isFeatured == true %}
 										<img src="{{ asset(image.url) }}" alt="">
 								{% endif %}
 							{% endfor %}

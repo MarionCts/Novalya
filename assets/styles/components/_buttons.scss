@@ -46,6 +46,53 @@
     }
 }
 
+.button__delete--icon {
+    @include button-preset(button);
+    width: 2.5rem;
+
+    svg {
+        @include button-preset(button__delete__icon);
+
+        &:hover {
+            @include button-hover-preset(button__delete__icon);
+        }
+    }
+}
+
+// INPUT TYPE FILE
+
+.admin-pages__container {
+    .image-file {
+        @include flex-preset(row, center, space-between);
+        width: 100%;
+    }
+}
+
+.image-file {
+
+    input[type="file"] {
+        color: css-var(text);
+        padding: 8px;
+        width: 100%;
+    }
+
+    .button__delete--icon {
+        width: auto;
+    }
+}
+
+.admin-pages__container {
+    input[type="file"]::file-selector-button {
+        @include button-preset(button);
+        @include button-preset(button__secondary);
+        margin-right: 2rem;
+
+        &:hover {
+            @include button-hover-preset(button__secondary);
+        }
+    }
+}
+
 // Specific to favorite buttons
 
 .button__favorite {

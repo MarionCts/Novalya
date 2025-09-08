@@ -213,9 +213,11 @@ addPropertyPage:
   roomsTotal: "Rooms number"
   surface: "Surface area"
   perf: "Performances"
+  isFeatured: "Is this the featured image?"
   status: "Publication status"
   getBack: "Back to properties"
   flashSuccess: "Property successfully added!"
+  addImage: "+ Add a photo"
 
 
 # PAGE "UPDATE A PROPERTY"
@@ -328,6 +330,7 @@ userIndex:
 # INDIVIDUAL PROPERTY PAGE
 
 indivudualPropertyPage:
+  tags: "Tags:"
   rooms: "Rooms"
   bathrooms: "Bathrooms"
   specsTitle: "Features"

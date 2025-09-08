@@ -2,10 +2,11 @@
 
 namespace App\Form;
 
-use App\Entity\Property;
 use App\Entity\PropertyImage;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,10 +15,22 @@ class PropertyImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('url')
-            ->add('property', EntityType::class, [
-                'class' => Property::class,
-                'choice_label' => 'id',
+            ->add('file', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5000k',
+                        'mimeTypes' => ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+                    ]),
+                ],
+            ])
+            ->add('isFeatured', CheckboxType::class, [
+                'label'    => 'property.isFeatured',
+                'required' => false,
+                'row_attr' => [
+                    'class' => 'is-featured__flex'
+                ],
             ])
         ;
     }
@@ -26,6 +39,9 @@ class PropertyImageType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => PropertyImage::class,
+            'attr' => ['class' => 'form'],
+            'required' => false,
+            'translation_domain' => 'forms',
         ]);
     }
 }

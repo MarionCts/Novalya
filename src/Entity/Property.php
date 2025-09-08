@@ -77,7 +77,7 @@ class Property
     /**
      * @var Collection<int, PropertyImage>
      */
-    #[ORM\OneToMany(targetEntity: PropertyImage::class, mappedBy: 'property')]
+    #[ORM\OneToMany(targetEntity: PropertyImage::class, mappedBy: 'property', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $propertyImages;
 
     /**

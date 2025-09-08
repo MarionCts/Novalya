@@ -19,7 +19,7 @@
 					{% for image in property.propertyImages %}
 
 						{# Selects only the featured image among all the pictures related to this property #}
-						{% if image.property.id == property.id and image.isFeatured == false %}
+						{% if image.property.id == property.id and image.isFeatured == true %}
 							<div class="properties__image">
 								<img src="{{ asset(image.url) }}" alt=""></div>
 						{% endif %}
@@ -38,7 +38,7 @@
 						<div class="content">
 							<p class="paragraph__xsmall__bold">{{ 'propertyIndex.update'|trans }}</p>
 							{% if property.modifiedAt %}
-								<p class="paragraph__xsmall">{{ property.modifiedAt ? property.modifieddAt|date('date'|trans) : '' }}</p>
+								<p class="paragraph__xsmall">{{ property.modifiedAt ? property.modifiedAt|date('date'|trans) : '' }}</p>
 							{% else %}
 								<p class="paragraph__xsmall">/</p>
 							{% endif %}

@@ -62,6 +62,9 @@ property:
     label: "Catégorie :"
   images:
     label: "Choisissez une ou plusieurs photos :"
+  tags:
+    label: "Choisissez un ou plusieurs tags :"
+  isFeatured: "Photo de couverture :"
 
 
 # ENUM OF THE PROPERTY FORM

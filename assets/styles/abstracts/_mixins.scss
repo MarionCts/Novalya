@@ -149,6 +149,12 @@
         border: none;
         background-color: css-var(delete-btn-bg);
         color: css-var(delete-btn-text);
+    } @else if $type == button__delete__icon {
+        border: none;
+        width: 2.5rem;
+        background-color: transparent;
+        transition: all 0.2s linear;
+        fill: css-var(delete-btn-icon);
     } @else if $type == button__favorite {
         border: none;
         background-color: transparent;
@@ -165,5 +171,7 @@
         color: css-var(secondary-btn-text-hover);
     } @else if $type == button__delete {
         background-color: css-var(delete-btn-bg-hover);
-    }
+    } @else if $type == button__delete__icon {
+        fill: css-var(delete-btn-icon-hover);
+    } 
 }

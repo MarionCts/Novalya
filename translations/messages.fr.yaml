@@ -213,8 +213,10 @@ addPropertyPage:
   surface: "Surface totale"
   perf: "Performances"
   status: "Statut de publication"
+  isFeatured: "Est-ce la couverture ?"
   getBack: "Retour aux propriétés"
   flashSuccess: "Propriété ajoutée avec succès !"
+  addImage: "+ Ajouter une photo"
 
 
 # PAGE "UPDATE A PROPERTY"
@@ -326,6 +328,7 @@ userIndex:
 # INDIVIDUAL PROPERTY PAGE
 
 indivudualPropertyPage:
+  tags: "Tags :"
   rooms: "Pièces"
   bathrooms: "Salles de bain"
   specsTitle: "Caractéristiques"

@@ -733,6 +733,22 @@
 
 // INDIVIDUAL PROPERTY PAGE
 
+.tags {
+    @include flex-preset(row, center, flex-start);
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    white-space: nowrap;
+}
+
+.tag__badge {
+    width: min-content;
+    white-space: nowrap;
+    background-color: css-var(text);
+    color: css-var(bg);
+    padding: 0.5rem 1rem;
+    border-radius: 3rem;
+}
+
 .property {
     padding-bottom: 6rem;
     @include flex-preset(column, center, center);
@@ -866,7 +882,6 @@
     margin-top: 6rem;
     width: 100%;
 
-
     @include media(768px) {
         margin-top: 9rem;
     }
@@ -874,7 +889,7 @@
     iframe {
         height: 40rem;
         display: block;
-        width: 100%
+        width: 100%;
     }
 }
 
@@ -1060,3 +1075,7 @@
         fill: css-var(bg);
     }
 }
+
+// EDIT PAGE PROPERTY
+
+

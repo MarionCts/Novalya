@@ -21,7 +21,7 @@ class PropertyImage
     private ?Property $property = null;
 
     #[ORM\Column]
-    private ?bool $isFeatured = null;
+    private ?bool $isFeatured = false;
 
     public function getId(): ?int
     {

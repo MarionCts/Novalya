@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Property;
+use App\Entity\Tag;
 use App\Enum\Status;
 use App\Enum\ClimateClass;
 use App\Enum\EnergyClass;
@@ -15,10 +16,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class PropertyType extends AbstractType
@@ -29,7 +29,7 @@ class PropertyType extends AbstractType
 
         $builder
 
-        // PROPERTY NAME
+            // PROPERTY NAME
             ->add('name', null, [
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.name.label',
@@ -47,19 +47,71 @@ class PropertyType extends AbstractType
                 ],
             ])
 
-            // PROPERTY FEATURED PHOTO
-            ->add('images', FileType::class, [
-                'label' => 'property.images.label',
-                'mapped' => false,
-                'required' => false,
+            // PROPERTY PRICE
+            ->add('price', IntegerType::class, [
+                'attr'  => ['class' => 'form__input'],
+                'label' => 'property.price.label',
+                'invalid_message' => 'property.price.number',
                 'constraints' => [
-                    new File([
-                        'maxSize' => '5000k',
-                        'maxSizeMessage' => 'property.images.maxSizeMessage',
-                        'mimeTypes' => ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
-                        'mimeTypesMessage' => 'property.images.mimeTypesMessage',
+                    new NotBlank([
+                        'message' => 'property.price.not_blank',
+                    ]),
+                    new Assert\Positive([
+                        'message' => 'property.price.positive',
+                    ]),
+                    new Assert\Type([
+                        'type' => 'integer',
                     ]),
                 ],
+            ])
+
+            // PROPERTY CATEGORY
+            ->add('category', EntityType::class, [
+                'class' => PropertyCategory::class,
+                'choice_label' => 'name',
+                'attr'  => ['class' => 'form__input'],
+                'label' => 'property.category.label',
+            ])
+
+            // TAGS CATEGORY
+            ->add('tags', EntityType::class, [
+                'class' => Tag::class,
+                'required' => false,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'by_reference' => false,
+                'expanded' => true,
+                'attr'  => ['class' => 'form__input checkbox'],
+                'label' => 'property.tags.label',
+            ])
+
+            // PROPERTY DESCRIPTION
+            ->add('description', TextareaType::class, [
+                'attr'  => ['class' => 'form__input', 'rows' => 8],
+                'label' => 'property.description.label',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.description.not_blank',
+                    ]),
+                    new Length([
+                        'min' => 100,
+                        'max' => 5000,
+                        'minMessage' => 'property.description.length_min',
+                        'maxMessage' => 'property.description.length_max',
+                        'normalizer' => 'trim',
+                    ]),
+                ],
+            ])
+
+            // PROPERTY FEATURED PHOTO
+
+            // Adding another form named "propertyImages" to manage the upload of multiple photos
+            ->add('propertyImages', CollectionType::class, [
+                'label' => false,
+                'entry_type' => PropertyImageType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
             ])
 
             // PROPERTY CITY
@@ -80,20 +132,17 @@ class PropertyType extends AbstractType
                 ],
             ])
 
-            // PROPERTY DESCRIPTION
-            ->add('description', TextareaType::class, [
-                'attr'  => ['class' => 'form__input', 'rows' => 8],
-                'label' => 'property.description.label',
+            // PROPERTY GOOGLE MAP URL
+            ->add('mapUrl', UrlType::class, [
+                'attr'  => ['class' => 'form__input'],
+                'label' => 'property.map_url.label',
+                'invalid_message' => 'property.map_url.invalid',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'property.description.not_blank',
+                        'message' => 'property.mapUrl.not_blank',
                     ]),
-                    new Length([
-                        'min' => 100,
-                        'max' => 5000,
-                        'minMessage' => 'property.description.length_min',
-                        'maxMessage' => 'property.description.length_max',
-                        'normalizer' => 'trim',
+                    new Assert\Url([
+                        'message' => 'property.mapUrl.valid',
                     ]),
                 ],
             ])
@@ -116,24 +165,6 @@ class PropertyType extends AbstractType
                 ],
             ])
 
-            // PROPERTY BATHROOMS
-            ->add('bathroomNumber', IntegerType::class, [
-                'attr'  => ['class' => 'form__input'],
-                'label' => 'property.bathrooms.label',
-                'invalid_message' => 'property.bathrooms.number',
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'property.bathrooms.not_blank',
-                    ]),
-                    new Assert\Positive([
-                        'message' => 'property.bathrooms.positive',
-                    ]),
-                    new Assert\Type([
-                        'type' => 'integer',
-                    ]),
-                ],
-            ])
-
             // PROPERTY BEDROOMS
             ->add('bedroomNumber', IntegerType::class, [
                 'attr'  => ['class' => 'form__input'],
@@ -145,6 +176,24 @@ class PropertyType extends AbstractType
                     ]),
                     new Assert\Positive([
                         'message' => 'property.bedrooms.positive',
+                    ]),
+                    new Assert\Type([
+                        'type' => 'integer',
+                    ]),
+                ],
+            ])
+
+            // PROPERTY BATHROOMS
+            ->add('bathroomNumber', IntegerType::class, [
+                'attr'  => ['class' => 'form__input'],
+                'label' => 'property.bathrooms.label',
+                'invalid_message' => 'property.bathrooms.number',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.bathrooms.not_blank',
+                    ]),
+                    new Assert\Positive([
+                        'message' => 'property.bathrooms.positive',
                     ]),
                     new Assert\Type([
                         'type' => 'integer',
@@ -203,39 +252,6 @@ class PropertyType extends AbstractType
                 'choice_translation_domain' => 'forms',
             ])
 
-            // PROPERTY GOOGLE MAP URL
-            ->add('mapUrl', UrlType::class, [
-                'attr'  => ['class' => 'form__input'],
-                'label' => 'property.map_url.label',
-                'invalid_message' => 'property.map_url.invalid',
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'property.mapUrl.not_blank',
-                    ]),
-                    new Assert\Url([
-                        'message' => 'property.mapUrl.valid',
-                    ]),
-                ],
-            ])
-
-            // PROPERTY PRICE
-            ->add('price', IntegerType::class, [
-                'attr'  => ['class' => 'form__input'],
-                'label' => 'property.price.label',
-                'invalid_message' => 'property.price.number',
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'property.price.not_blank',
-                    ]),
-                    new Assert\Positive([
-                        'message' => 'property.price.positive',
-                    ]),
-                    new Assert\Type([
-                        'type' => 'integer',
-                    ]),
-                ],
-            ])
-
             // PROPERTY PUBLICATION STATUS
             ->add('status', EnumType::class, [
                 'attr'  => ['class' => 'form__input'],
@@ -243,14 +259,6 @@ class PropertyType extends AbstractType
                 'class' => Status::class,
                 'choice_label' => fn(Status $s) => 'enum.status.' . $s->name,
                 'choice_translation_domain' => 'forms',
-            ])
-
-            // PROPERTY CATEGORY
-            ->add('category', EntityType::class, [
-                'class' => PropertyCategory::class,
-                'choice_label' => 'name',
-                'attr'  => ['class' => 'form__input'],
-                'label' => 'property.category.label',
             ]);
     }
 

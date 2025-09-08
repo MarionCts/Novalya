@@ -48,6 +48,9 @@ property:
     label: "Category:"
   images:
     label: "Please choose one or more photos:"
+  tags:
+    label: "Please choose one or more tags:"
+  isFeatured: "Featured photo:"
 
 
 # CONTACT FORM

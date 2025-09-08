@@ -58,30 +58,39 @@ final class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // ⚠️ Parcours des sous-formulaires de la collection
+            foreach ($form->get('propertyImages') as $imageForm) {
+                /** @var \Symfony\Component\HttpFoundation\File\UploadedFile|null $file */
+                $file = $imageForm->get('file')->getData();
+                if (!$file) {
+                    continue;
+                }
+
+                // Générer le nom de fichier
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = (string) $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
+
+                // Déplacer le fichier
+                $file->move($this->getParameter('images_directory'), $newFilename);
+
+                // Récupérer l'entité PropertyImage mappée par le sous-form
+                /** @var PropertyImage $img */
+                $img = $imageForm->getData();
+
+                // Renseigner l'URL / path (adapte selon ton besoin)
+                $img->setUrl('/uploads/images/' . $newFilename);
+
+                // Associer au parent (normalement déjà fait via by_reference=false + add)
+                $img->setProperty($property);
+                $property->addPropertyImage($img);
+            }
+
+            // Grâce à cascade: ['persist'], persister seulement le parent suffit
             $entityManager->persist($property);
             $entityManager->flush();
 
-            $imageFile = $form->get('images')->getData();
-
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-                $media = new PropertyImage;
-                $media->setUrl('/uploads/images/' . $newFilename);
-                $media->setProperty($property);
-                $media->setIsFeatured(false);
-
-                $entityManager->persist($media);
-                $entityManager->flush();
-                $property->addPropertyImage($media);
-            }
-
-            $entityManager->flush();
 
             $this->addFlash('success', $translator->trans('addPropertyPage.flashSuccess'));
             return $this->redirectToRoute('app_property_index', [], Response::HTTP_SEE_OTHER);
@@ -101,7 +110,7 @@ final class PropertyController extends AbstractController
         // we create an array "favoriteIds" which will fetch all of the properties IDs
         // of the currently logged in user
         $favoriteIds = [];
-        
+
         if ($this->getUser()) {
             $userFavorites = $favoriteRepository->findBy(['user' => $this->getUser()]);
             $favoriteIds = array_map(
@@ -126,28 +135,29 @@ final class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
 
-            $imageFile = $form->get('images')->getData();
+            // First, we set the date we are modifying the property
+            $property->setModifiedAt(new \DateTimeImmutable());
 
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-                $media = new PropertyImage;
-                $media->setUrl('/uploads/images/' . $newFilename);
-                $media->setProperty($property);
-                $media->setIsFeatured(false);
+            foreach ($form->get('propertyImages') as $imageForm) {
 
-                $entityManager->persist($media);
-                $entityManager->flush();
-                $property->addPropertyImage($media);
+                $img = $imageForm->getData();
+                if (!$img) {
+                    continue;
+                }
+
+                $file = $imageForm->get('file')->getData();
+
+                if ($file) {
+                    $newFilename = bin2hex(random_bytes(8)) . '.' . $file->guessExtension();
+                    $file->move($this->getParameter('images_directory'), $newFilename);
+                    $img->setUrl('/uploads/images/' . $newFilename);
+                }
+
+                $img->setProperty($property);
             }
 
+            $entityManager->persist($property);
             $entityManager->flush();
 
             $this->addFlash('success', $translator->trans('updatePropertyPage.flashSuccess'));
