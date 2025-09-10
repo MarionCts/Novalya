@@ -49,23 +49,34 @@
             margin-left: -3rem;
         }
     }
+}
+
+.admin-pages__container {
 
     .flex-responsive {
-        margin-top: 2rem;
-        gap: 1rem;
+    @include flex-preset(column, center, center);
+    margin-top: 2rem;
+    gap: 2rem;
+    width: 100%;
 
-        @include media(768px) {
-            @include flex-preset(row, center, center);
+    @include media(768px) {
+        @include flex-preset(row, center, center);
+        max-width: 60rem;
 
-            button:first-child {
-                border-radius: 2rem 0 2rem 0;
-            }
-
-            button:last-child {
-                border-radius: 0 2rem 0 2rem;
-            }
+        button {
+            border-radius: 2rem 0 2rem 0;
         }
+
+        a {
+            border-radius: 0 2rem 0 2rem;
+        }
+
+        form, button, a {
+            width: 100%;
+        }
+
     }
+}
 }
 
 .form__text {

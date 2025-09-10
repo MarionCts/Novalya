@@ -68,6 +68,7 @@ final class PropertyController extends AbstractController
         $result = $entityManager->getRepository(Property::class)
             ->createQueryBuilder('p')
             ->where('p.status = :status')
+            ->orderBy('p.createdAt', 'DESC')
             ->setParameter('status', 'Published');
 
         if ($form->isSubmitted() && $form->isValid()) {

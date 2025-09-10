@@ -14,11 +14,11 @@
 			class="property__hero">
 
 			{# If there is no property set to favorite yet, "favoriteIds" will
-																					display an empty array #}
+																								display an empty array #}
 			{% set favoriteIds = favoriteIds|default([]) %}
 
 			{# we set the parameters of "isFavorited" which will fetch wether 
-																					the property has been set to favorite or not #}
+																								the property has been set to favorite or not #}
 			{% set isFavorited = app.user and (property.id in favoriteIds) %}
 
 			{% for image in property.propertyImages %}
@@ -64,121 +64,124 @@
 							m²</p>
 					</div>
 				</div>
-				<form method="post" class="favorite-form" action="{{ path('app_favorite_new', {'property': property.id}) }}" data-id="{{ property.id }}" aria-pressed="{{ isFavorited ? 'true' : 'false' }}">
+				<form method="post" class="favorite-form" action="{{ path('app_favorite_new', {'property': property.id}) }}" data-id="{{ property.id }}">
 					<input type="hidden" name="_token" value="{{ csrf_token('favoriteBtn' ~ property.id) }}">
 
 					<button
 						type="submit" class="button__favorite">
 
 						{# If the property is not yet a user's favorite, 
-																																										we display the empty heart icon thanks to the 
-																																										"favorite-toggle" CSS class, otherwise we hide it  #}
+																																																we display the empty heart icon thanks to the 
+																																																"favorite-toggle" CSS class, otherwise we hide it  #}
 						<svg id="favorite-none-{{ property.id }}" class="favorite-none {{ isFavorited ? '' : 'favorite-toggle' }}" viewbox="0 0 30 27" aria-hidden="true" focusable="false">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M21.696,0.85l0.001,-0.15l0.147,-0l0.001,0.003l0.003,0.001c4.122,0.081 7.452,3.44 7.452,7.562c0,3.587 -1.76,6.376 -4.356,9.098c-1.285,1.349 -2.78,2.687 -4.371,4.104c-1.586,1.412 -3.269,2.904 -4.942,4.57c-0.351,0.349 -0.92,0.349 -1.27,-0c-2.068,-2.059 -4.15,-3.853 -6.045,-5.558c-1.902,-1.711 -3.617,-3.335 -4.928,-5.035c-1.83,-2.374 -2.688,-4.659 -2.688,-7.179c-0,-4.173 3.408,-7.566 7.597,-7.566c1.757,-0 3.11,0.425 4.223,1.206c0.982,0.689 1.767,1.651 2.476,2.826c0.709,-1.175 1.494,-2.137 2.476,-2.826c1.113,-0.781 2.466,-1.206 4.223,-1.206l0,0.15l0.001,-0Zm-0.001,1.642c-1.366,-0 -2.407,0.278 -3.313,0.965c-0.923,0.7 -1.723,1.829 -2.583,3.542c-0.331,0.659 -1.275,0.658 -1.606,-0c-0.86,-1.713 -1.66,-2.842 -2.582,-3.542c-0.907,-0.687 -1.948,-0.965 -3.314,-0.965c-3.199,0 -5.8,2.59 -5.8,5.774c-0,3.014 1.529,5.426 3.876,7.886c1.186,1.243 2.575,2.491 4.077,3.83c1.442,1.284 2.985,2.65 4.546,4.165c1.563,-1.517 3.108,-2.884 4.551,-4.169c1.503,-1.339 2.894,-2.587 4.08,-3.83c2.348,-2.459 3.876,-4.869 3.876,-7.882c0,-3.183 -2.605,-5.774 -5.808,-5.774Z"/>
 						</svg>
 						{# If the property is already a user's favorite, 
-																																										we display the full heart icon thanks to the 
-																																										"favorite-toggle" CSS class, otherwise we hide it  #}
+																																																we display the full heart icon thanks to the 
+																																																"favorite-toggle" CSS class, otherwise we hide it  #}
 						<svg id="favorite-done-{{ property.id }}" class="favorite-done {{ isFavorited ? 'favorite-toggle' : '' }}" viewbox="0 0 30 27" aria-hidden="true" focusable="false">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M21.696,0.85l0.001,-0.15l0.147,-0l0.001,0.003l0.003,0.001c4.122,0.081 7.452,3.44 7.452,7.562c0,3.587 -1.76,6.376 -4.356,9.098c-1.285,1.349 -2.78,2.687 -4.371,4.104c-1.586,1.412 -3.269,2.904 -4.942,4.57c-0.351,0.349 -0.92,0.349 -1.27,-0c-2.068,-2.059 -4.15,-3.853 -6.045,-5.558c-1.902,-1.711 -3.617,-3.335 -4.928,-5.035c-1.83,-2.374 -2.688,-4.659 -2.688,-7.179c-0,-4.173 3.408,-7.566 7.597,-7.566c1.757,-0 3.11,0.425 4.223,1.206c0.982,0.689 1.767,1.651 2.476,2.826c0.709,-1.175 1.494,-2.137 2.476,-2.826c1.113,-0.781 2.466,-1.206 4.223,-1.206l0,0.15l0.001,-0Z"/>
 						</svg>
 					</button>
 				</form>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	{# IMAGE CAROUSEL & DESCRIPTION OF THE PROPERTY #}
-	<section class="property__description p-section">
+		{# IMAGE CAROUSEL & DESCRIPTION OF THE PROPERTY #}
+		<section class="property__description p-section">
 
-		<div class="property__carousel">
-			<div class="carousel-container">
-				{% for image in property.propertyImages %}
-					<div class="carousel-slide{% if loop.first %} active{% endif %}">
-						<img src="{{ asset(image.url) }}" alt="{{ property.name }} image {{ loop.index }}">
+			<div class="property__carousel">
+				<div class="carousel-container">
+					{% for image in property.propertyImages %}
+						<div class="carousel-slide{% if loop.first %} active{% endif %}">
+							<img src="{{ asset(image.url) }}" alt="{{ property.name }} image {{ loop.index }}">
+						</div>
+					{% endfor %}
+					<button class="carousel-btn prev">
+						<svg viewbox="0 0 15 18" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M10.3023 1.24322C10.7561 1.69766 10.7513 2.4297 10.2916 2.87832L4.02623 8.9928L10.2916 15.1073C10.7513 15.5559 10.7561 16.288 10.3023 16.7424C9.8485 17.1968 9.108 17.2016 8.64832 16.753L1.53976 9.81562C1.31716 9.59841 1.19184 9.30203 1.19184 8.9928C1.19184 8.6836 1.31716 8.38723 1.53976 8.16998L8.64832 1.23268C9.108 0.784064 9.8485 0.788813 10.3023 1.24322Z"/>
+						</svg>
+					</button>
+					<button class="carousel-btn next">
+						<svg viewbox="0 0 15 18" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.69759 16.7568C4.24379 16.3023 4.24859 15.5703 4.70827 15.1217L10.9736 9.0072L4.70827 2.89273C4.24859 2.44411 4.24379 1.71202 4.69759 1.25762C5.15138 0.803173 5.89187 0.798426 6.35155 1.24704L13.4601 8.18438C13.6827 8.40159 13.808 8.69796 13.808 9.0072C13.808 9.3164 13.6827 9.61277 13.4601 9.83002L6.35156 16.7673C5.89187 17.2159 5.15138 17.2112 4.69759 16.7568Z"/>
+						</svg>
+					</button>
+				</div>
+			</div>
+
+			<div class="property__text">
+				{% if property.tags|length > 0 %}
+					<div class="tags">
+						<p>{{ 'indivudualPropertyPage.tags'|trans }}</p>
+
+						{% for tag in property.tags %}
+							<p class="paragraph__xsmall__bold tag__badge">{{ tag.name }}</p>
+						{% endfor %}
 					</div>
-				{% endfor %}
-				<button class="carousel-btn prev">
-					<svg viewbox="0 0 15 18" fill="none">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M10.3023 1.24322C10.7561 1.69766 10.7513 2.4297 10.2916 2.87832L4.02623 8.9928L10.2916 15.1073C10.7513 15.5559 10.7561 16.288 10.3023 16.7424C9.8485 17.1968 9.108 17.2016 8.64832 16.753L1.53976 9.81562C1.31716 9.59841 1.19184 9.30203 1.19184 8.9928C1.19184 8.6836 1.31716 8.38723 1.53976 8.16998L8.64832 1.23268C9.108 0.784064 9.8485 0.788813 10.3023 1.24322Z"/>
-					</svg>
-				</button>
-				<button class="carousel-btn next">
-					<svg viewbox="0 0 15 18" fill="none">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M4.69759 16.7568C4.24379 16.3023 4.24859 15.5703 4.70827 15.1217L10.9736 9.0072L4.70827 2.89273C4.24859 2.44411 4.24379 1.71202 4.69759 1.25762C5.15138 0.803173 5.89187 0.798426 6.35155 1.24704L13.4601 8.18438C13.6827 8.40159 13.808 8.69796 13.808 9.0072C13.808 9.3164 13.6827 9.61277 13.4601 9.83002L6.35156 16.7673C5.89187 17.2159 5.15138 17.2112 4.69759 16.7568Z"/>
-					</svg>
-				</button>
+				{% endif %}
+
+				<h2 class="title title__secondary accent">Description</h2>
+				<p>{{ property.description }}</p>
+				<p class="title title__fourth">{{ 'indivudualPropertyPage.price'|trans }}
+					{{ property.price|format_currency('EUR', {fraction_digit: 0}) }}</p>
 			</div>
+		</section>
+
+		{# SPECIAL FEATURES OF THE PROPERTY #}
+		<section class="property__specs">
+			<h3 class="title title__secondary accent">{{ 'indivudualPropertyPage.specsTitle'|trans }}</h3>
+			<div class="specs">
+				<div class="specs__items">
+					<h4 class="title__specs">{{ 'indivudualPropertyPage.category'|trans }}</h4>
+					<p class="name">{{ property.category.name }}</p>
+				</div>
+				<div class="specs__items">
+					<h4 class="title__specs">{{ 'indivudualPropertyPage.location'|trans }}</h4>
+					<p class="name">{{ property.city }}</p>
+				</div>
+				<div class="specs__items">
+					<h4 class="title__specs">{{ 'indivudualPropertyPage.indoor'|trans }}</h4>
+					<p class="name">{{ property.indoorSurface }}
+						m²</p>
+				</div>
+				<div class="specs__items">
+					<h4 class="title__specs">{{ 'indivudualPropertyPage.outdoor'|trans }}</h4>
+					<p class="name">{{ property.outdoorSurface }}
+						m²</p>
+				</div>
+				<div class="specs__items">
+					<h4 class="title__specs">{{ 'indivudualPropertyPage.bedrooms'|trans }}</h4>
+					<p class="name">{{ property.bedroomNumber }}</p>
+				</div>
+				<div class="specs__items">
+					<h4 class="title__specs">{{ 'indivudualPropertyPage.rooms'|trans }}</h4>
+					<p class="name">{{ property.roomsTotal }}</p>
+				</div>
+				<div class="specs__items">
+					<h4 class="title__specs">{{ 'indivudualPropertyPage.bathrooms'|trans }}</h4>
+					<p class="name">{{ property.bathroomNumber }}</p>
+				</div>
+				<div class="specs__items">
+					<h4 class="title__specs">{{ 'indivudualPropertyPage.energy'|trans }}</h4>
+					<p class="name">{{ property.energyClass.value }}</p>
+				</div>
+				<div class="specs__items">
+					<h4 class="title__specs">{{ 'indivudualPropertyPage.climate'|trans }}</h4>
+					<p class="name">{{ property.climateClass.value }}</p>
+				</div>
+			</div>
+		</section>
+
+		{# GOOGLE MAP OF THE PROPERTY #}
+		<div class="property__map">
+			<iframe src="{{ property.mapUrl }}"></iframe>
 		</div>
 
-		<div class="property__text">
-			<div class="tags">
-				<p>{{ 'indivudualPropertyPage.tags'|trans }}</p>
-				{% for tag in property.tags %}
-					<p class="paragraph__xsmall__bold tag__badge">{{ tag.name }}</p>
-				{% endfor %}
-			</div>
+	</main>
 
-			<h2 class="title title__secondary accent">Description</h2>
-			<p>{{ property.description }}</p>
-			<p class="title title__fourth">{{ 'indivudualPropertyPage.price'|trans }}
-				{{ property.price|format_currency('EUR', {fraction_digit: 0}) }}</p>
-		</div>
-	</section>
-
-	{# SPECIAL FEATURES OF THE PROPERTY #}
-	<section class="property__specs">
-		<h3 class="title title__secondary accent">{{ 'indivudualPropertyPage.specsTitle'|trans }}</h3>
-		<div class="specs">
-			<div class="specs__items">
-				<h4 class="title__specs">{{ 'indivudualPropertyPage.category'|trans }}</h4>
-				<p class="name">{{ property.category.name }}</p>
-			</div>
-			<div class="specs__items">
-				<h4 class="title__specs">{{ 'indivudualPropertyPage.location'|trans }}</h4>
-				<p class="name">{{ property.city }}</p>
-			</div>
-			<div class="specs__items">
-				<h4 class="title__specs">{{ 'indivudualPropertyPage.indoor'|trans }}</h4>
-				<p class="name">{{ property.indoorSurface }}
-					m²</p>
-			</div>
-			<div class="specs__items">
-				<h4 class="title__specs">{{ 'indivudualPropertyPage.outdoor'|trans }}</h4>
-				<p class="name">{{ property.outdoorSurface }}
-					m²</p>
-			</div>
-			<div class="specs__items">
-				<h4 class="title__specs">{{ 'indivudualPropertyPage.bedrooms'|trans }}</h4>
-				<p class="name">{{ property.bedroomNumber }}</p>
-			</div>
-			<div class="specs__items">
-				<h4 class="title__specs">{{ 'indivudualPropertyPage.rooms'|trans }}</h4>
-				<p class="name">{{ property.roomsTotal }}</p>
-			</div>
-			<div class="specs__items">
-				<h4 class="title__specs">{{ 'indivudualPropertyPage.bathrooms'|trans }}</h4>
-				<p class="name">{{ property.bathroomNumber }}</p>
-			</div>
-			<div class="specs__items">
-				<h4 class="title__specs">{{ 'indivudualPropertyPage.energy'|trans }}</h4>
-				<p class="name">{{ property.energyClass.value }}</p>
-			</div>
-			<div class="specs__items">
-				<h4 class="title__specs">{{ 'indivudualPropertyPage.climate'|trans }}</h4>
-				<p class="name">{{ property.climateClass.value }}</p>
-			</div>
-		</div>
-	</section>
-
-	{# GOOGLE MAP OF THE PROPERTY #}
-	<section class="property__map">
-		<iframe src="{{ property.mapUrl }}" frameborder="0"></iframe>
-	</section>
-
-</main>
-
-{# FOOTER #}
-{% block footer %}
-	{% include 'layout/footer.html.twig' %}
-{% endblock %}{% endblock %}
+	{# FOOTER #}
+	{% block footer %}
+		{% include 'layout/footer.html.twig' %}
+	{% endblock %}
+{% endblock %}

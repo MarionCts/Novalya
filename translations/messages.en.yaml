@@ -150,6 +150,7 @@ propertyFilter:
   resultCount: "match your search"
   filterBtn: "Search"
   loadMoreBtn: "Load more"
+  new: "New"
 
 
 # PAGE "ABOUT US"
@@ -202,6 +203,7 @@ propertyIndex:
   status: "Status:"
   creation: "Creation date:"
   update: "Last update:"
+  tags: "Tags number:"
 
 
 # PAGE "ADD A PROPERTY"
