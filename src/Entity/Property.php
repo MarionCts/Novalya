@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Enum\ClimateClass;
 use App\Enum\EnergyClass;
 use App\Enum\Status;
+use App\Enum\Value;
 use App\Repository\PropertyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -85,6 +86,9 @@ class Property
      */
     #[ORM\ManyToMany(targetEntity: Tag::class, mappedBy: 'property')]
     private Collection $tags;
+
+    #[ORM\Column(enumType: Value::class)]
+    private ?Value $value = null;
 
     public function __construct()
     {
@@ -373,6 +377,18 @@ class Property
         if ($this->tags->removeElement($tag)) {
             $tag->removeProperty($this);
         }
+
+        return $this;
+    }
+
+    public function getValue(): ?Value
+    {
+        return $this->value;
+    }
+
+    public function setValue(Value $value): static
+    {
+        $this->value = $value;
 
         return $this;
     }

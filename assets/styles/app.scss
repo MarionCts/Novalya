@@ -541,8 +541,15 @@
 
 .filter__filter {
     @include flex-preset(column, flex-start, center);
-    margin-top: 15rem;
+    margin-top: 10rem;
     width: 100%;
+
+    .form {
+        @include media(768px) {
+            max-width: 100%;
+            @include flex-preset(row, center, space-between);
+        }
+    }
 
     span {
         font-style: italic;
@@ -550,11 +557,34 @@
     }
 
     @include media(768px) {
-        margin-top: 18rem;
+        margin-top: 9rem;
+    }
+
+    .filter__button--icon {
+        display: none;
+
+        @include media(768px) {
+            display: block;
+            width: auto;
+
+            svg {
+                height: 1.5rem;
+                width: 1.5rem;
+                margin-bottom: -0.2rem;
+            }
+        }
+    }
+
+    .filter__button--text {
+        @include media(768px) {
+            display: none;
+        }
     }
 }
 
 .filter__properties {
+    width: 100%;
+
     .cards {
         @include media(1200px) {
             display: grid;
@@ -841,7 +871,6 @@
     .property__text {
         @include flex-preset(column, flex-start, center);
         gap: 4.1rem;
-
     }
 }
 
@@ -1087,5 +1116,3 @@
 }
 
 // EDIT PAGE PROPERTY
-
-

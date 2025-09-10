@@ -144,8 +144,11 @@ propertyFilter:
   filterTwo: "Property type"
   filterThree: "Location"
   filterFour: "Budget"
+  result: "Result"
   results: "Results"
+  resultCountOne: "match your search"
   resultCount: "match your search"
+  filterBtn: "Search"
   loadMoreBtn: "Load more"
 
 

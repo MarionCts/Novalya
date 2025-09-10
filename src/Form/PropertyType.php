@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Property;
 use App\Entity\Tag;
 use App\Enum\Status;
+use App\Enum\Value;
 use App\Enum\ClimateClass;
 use App\Enum\EnergyClass;
 use App\Entity\PropertyCategory;
@@ -45,6 +46,15 @@ class PropertyType extends AbstractType
                         'normalizer' => 'trim',
                     ]),
                 ],
+            ])
+
+            // PROPERTY VALUE
+            ->add('value', EnumType::class, [
+                'attr'  => ['class' => 'form__input'],
+                'label' => 'property.value.label',
+                'class' => Value::class,
+                'choice_label' => fn(Value $c) => 'enum.value.' . $c->name,
+                'choice_translation_domain' => 'forms',
             ])
 
             // PROPERTY PRICE

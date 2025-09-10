@@ -6,6 +6,7 @@ use App\Entity\Property;
 use App\Enum\Status;
 use App\Entity\PropertyImage;
 use App\Form\PropertyType;
+use App\Form\FilterType;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,8 +30,10 @@ final class PropertyController extends AbstractController
     }
 
     #[Route('/filter', name: 'app_property_filter', methods: ['GET'])]
-    public function filter(PropertyRepository $propertyRepository, FavoriteRepository $favoriteRepository): Response
+    public function filter(EntityManagerInterface $entityManager, PropertyRepository $propertyRepository, Request $request, FavoriteRepository $favoriteRepository): Response
     {
+        // ***** SHOWING FULL HEART ICON ON FAVORITED PROPERTIES *****
+
         // we create an array "favoriteIds" which will fetch all of the properties IDs
         // of the currently logged in user
         $favoriteIds = [];
@@ -43,9 +46,56 @@ final class PropertyController extends AbstractController
             );
         }
 
+        // ***** MAKING THE FILTER BAR *****
+
+        // We fetch all of the cities that exist in the database thanks to the properties
+        $allCities = $entityManager->getRepository(Property::class)
+            ->createQueryBuilder('p')
+            ->select('DISTINCT p.city')
+            ->where('p.city IS NOT NULL')
+            ->orderBy('p.city', 'ASC')
+            ->getQuery()
+            ->getScalarResult();
+
+        // We convert the cities into an array for the render
+        $cities = array_map(fn($r) => $r['city'], $allCities);
+        $choices = array_combine($cities, $cities) ?: [];
+
+        $form = $this->createForm(FilterType::class, null, ['cities' => $choices]);
+        $form->handleRequest($request);
+
+        // Before using the filters, we make it mandatory that the properties found are published
+        $result = $entityManager->getRepository(Property::class)
+            ->createQueryBuilder('p')
+            ->where('p.status = :status')
+            ->setParameter('status', 'Published');
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            if (!empty($data['category'])) {
+                $result->andWhere('p.category = :category')
+                    ->setParameter('category', $data['category']);
+            }
+
+            if (!empty($data['value'])) {
+                $result->andWhere('p.value = :value')
+                    ->setParameter('value', $data['value']);
+            }
+
+            $city = $form->get('city')->getData();
+            if (!empty($city)) {
+                $result->andWhere('p.city = :city')
+                    ->setParameter('city', $city);
+            }
+        }
+
+        $filteredProperties = $result->getQuery()->getResult();
+
         return $this->render('property/filter.html.twig', [
-            'properties' => $propertyRepository->findBy([], ['createdAt' => 'DESC'], 7),
             'favoriteIds' => $favoriteIds,
+            'form' => $form->createView(),
+            'filteredProperties' => $filteredProperties,
         ]);
     }
 

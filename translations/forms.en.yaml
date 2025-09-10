@@ -19,8 +19,12 @@ register:
 property:
   name:
     label: "Name:"
+  value:
+    label: "To sell or to rent:"
+    placeholder: "You want"
   city:
     label: "City:"
+    placeholder: "Location"
   description:
     label: "Description:"
   rooms_total:
@@ -46,6 +50,7 @@ property:
     label: "Status:"
   category:
     label: "Category:"
+    placeholder: "Property type"
   images:
     label: "Please choose one or more photos:"
   tags:
@@ -74,6 +79,9 @@ enum:
     Draft: "Draft"
     Published: "Published"
     Archived: "Archived"
+  value:
+    Rent: "to rent"
+    Sell: "to sell"
   energy_class:
     A: "A"
     B: "B"

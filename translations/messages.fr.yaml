@@ -143,8 +143,11 @@ propertyFilter:
   filterTwo: "Type de propriété"
   filterThree: "Localisation"
   filterFour: "Budget"
+  result: "Résultat"
   results: "Résultats"
+  resultCountOne: "correspond à votre recherche"
   resultCount: "correspondent à votre recherche"
+  filterBtn: "Rechercher"
   loadMoreBtn: "Charger plus"
 
 

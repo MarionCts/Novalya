@@ -33,8 +33,12 @@ contact:
 property:
   name:
     label: "Nom :"
+  value:
+    label: "Vente ou location :"
+    placeholder: "Vous souhaitez"
   city:
     label: "Ville :"
+    placeholder: "Localisation"
   description:
     label: "Description :"
   rooms_total:
@@ -60,6 +64,7 @@ property:
     label: "Statut :"
   category:
     label: "Catégorie :"
+    placeholder: "Type de propriété"
   images:
     label: "Choisissez une ou plusieurs photos :"
   tags:
@@ -74,6 +79,9 @@ enum:
     Draft: "Brouillon"
     Published: "Publié"
     Archived: "Archivé"
+  value:
+    Rent: "Louer"
+    Sell: "Vendre"
   energy_class:
     A: "A"
     B: "B"

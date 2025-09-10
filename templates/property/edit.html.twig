@@ -23,6 +23,13 @@
 			<div class="form__constraint">{{ error.message }}</div>
 		{% endfor %}
 
+		{# VALUE FIELD #}
+		{{ form_label(form.value) }}
+		{{ form_widget(form.value) }}
+		{% for error in form.value.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
 		{# PRICE FIELD #}
 		{{ form_label(form.price) }}
 		{{ form_widget(form.price) }}
@@ -66,8 +73,10 @@
 
 						{# If current exists #}
 						{% if current and current.id %}
-							<div class="image mb-10">
-								<img src="{{ current.url }}" alt="">
+							<div class="mb-10">
+								<div class="image">
+									<img src="{{ current.url }}" alt="">
+								</div>
 								<div class="delete-feature">
 									<div class="image-featured mt-10">
 										{{ form_row(imageForm.isFeatured) }}
