@@ -91,12 +91,28 @@ final class PropertyController extends AbstractController
             }
         }
 
+        // Pagination: defining a limit number of properties to be shown (7) per page
+
+        $limit = 7;
+        $page = max(1, (int) $request->query->get('page', 1));
+        $offset = ($page - 1) * $limit;
+
+        $countResult = clone $result;
+        $countResult->select('COUNT(p.id)');
+        $totalResult = (int) $countResult->getQuery()->getSingleScalarResult();
+
+        $result->setFirstResult($offset)
+            ->setMaxResults($limit);
+
         $filteredProperties = $result->getQuery()->getResult();
+        $totalPages = (int) ceil($totalResult / $limit);
 
         return $this->render('property/filter.html.twig', [
             'favoriteIds' => $favoriteIds,
             'form' => $form->createView(),
             'filteredProperties' => $filteredProperties,
+            'currentPage' => $page,
+            'totalPages' => $totalPages,
         ]);
     }
 

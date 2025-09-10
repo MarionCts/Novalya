@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Favorite;
 use App\Entity\User;
+use App\Entity\Property;
 use App\Repository\UserRepository;
 use App\Form\UserType;
 use App\Repository\FavoriteRepository;
@@ -59,10 +61,38 @@ class UserController extends AbstractController
             ], Response::HTTP_SEE_OTHER);
         }
 
+        // Pagination: defining a limit number of properties to be shown (7) per page
+
+        $result = $entityManager->getRepository(Property::class)
+            ->createQueryBuilder('p')
+            ->select('DISTINCT p')
+            ->innerJoin(Favorite::class, 'f', 'WITH', 'f.property = p')
+            ->where('f.user = :user')
+            ->andWhere('p.status = :status')
+            ->setParameter('user', $user)
+            ->setParameter('status', 'Published')
+            ->orderBy('p.createdAt', 'DESC');
+
+        $countResult = clone $result;
+        $countResult->select('COUNT(DISTINCT p.id)');
+        $totalResult = (int) $countResult->getQuery()->getSingleScalarResult();
+
+        $limit = 4;
+        $page = max(1, (int) $request->query->get('page', 1));
+        $offset = ($page - 1) * $limit;
+
+        $result->setFirstResult($offset)
+            ->setMaxResults($limit);
+
+        $properties = $result->getQuery()->getResult();
+        $totalPages = (int) ceil($totalResult / $limit);
+
         return $this->render('user/account.html.twig', [
             'user' => $user,
             'form' => $form,
-            'favorites' => $favoriteRepository->findBy(['user' => $user]),
+            'favorites' => $properties,
+            'currentPage' => $page,
+            'totalPages' => $totalPages,
         ]);
     }
 
