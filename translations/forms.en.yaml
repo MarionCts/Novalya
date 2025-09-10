@@ -20,7 +20,7 @@ property:
   name:
     label: "Name:"
   value:
-    label: "To sell or to rent:"
+    label: "To buy or to rent:"
     placeholder: "You want"
   city:
     label: "City:"
@@ -81,7 +81,7 @@ enum:
     Archived: "Archived"
   value:
     Rent: "to rent"
-    Sell: "to sell"
+    Buy: "to buy"
   energy_class:
     A: "A"
     B: "B"

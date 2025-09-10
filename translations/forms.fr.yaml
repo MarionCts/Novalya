@@ -34,7 +34,7 @@ property:
   name:
     label: "Nom :"
   value:
-    label: "Vente ou location :"
+    label: "Achat ou location :"
     placeholder: "Vous souhaitez"
   city:
     label: "Ville :"
@@ -81,7 +81,7 @@ enum:
     Archived: "Archivé"
   value:
     Rent: "Louer"
-    Sell: "Vendre"
+    Buy: "Acheter"
   energy_class:
     A: "A"
     B: "B"

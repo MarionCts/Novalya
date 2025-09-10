@@ -251,7 +251,7 @@ input[type="checkbox" i] {
             border-radius: 0 5rem 0 5rem;
 
             @include media(768px) {
-                max-height: 25rem;
+                height: 25rem;
             }
 
             img {
