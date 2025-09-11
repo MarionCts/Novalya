@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 form.setAttribute("aria-pressed", "false");
             }
         } catch (error) {
-            alert("An error occured while adding the property to favorites.");
+            alert("You need to be logged in to add the property to your favorites.");
         } finally {
             btn?.removeAttribute("disabled"); // The 'submit' button that was disabled because of the spam is abled again
         }
