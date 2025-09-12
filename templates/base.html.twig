@@ -59,7 +59,7 @@
 			</div>
 		{% endblock %}
 
-		{# FENETRE MODALE SUPPRESSION #}
+		{# Modal window for delete buttons #}
 		<div id="deleteConfirmationModal" class="hides-modal modal">
 			<h3 id="modalDeleteTitle" class="title title__fourth"></h3>
 			<p id="modalDeleteMessage"></p>
@@ -71,6 +71,14 @@
 					{{ 'cancelBtn'|trans }}
 				</button>
 			</div>
+		</div>
+
+		{# Modal window for users who try to add a favorite property if they are not logged in #}
+		<div id="favoriteModal" class="hides-modal modal">
+			<p id="modalFavoriteMessage"></p>
+			<button id="closeBtn" class="button button__secondary">
+					{{ 'closeBtn'|trans }}
+				</button>
 		</div>
 
 		{% block body %}{% endblock %}

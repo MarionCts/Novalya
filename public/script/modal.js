@@ -14,19 +14,21 @@ let formToSubmit = null;
 
 const translations = {
     fr: {
-        "modal.delete": "Confirmer la suppression",
-        "modal.message":
+        "delete.title": "Confirmer la suppression",
+        "delete.message":
             "Êtes-vous sûr de vouloir supprimer ? Cette action est irréversible.",
     },
     en: {
-        "modal.delete": "Confirm deletion",
-        "modal.message":
+        "modal.title": "Confirm deletion",
+        "delete.message":
             "Are you sure you want to delete? This action is irreversible.",
     },
 };
 
+// Fetching the value of the local language that is set (= 'FR' or 'EN', by default 'fr')
 const locale = document.documentElement.dataset.lang || window.currentLocale || "fr";
 
+// Creating a function to customize the translation regarding the locale (= 'key')
 function translation(key) {
 
     if (key) {
@@ -48,9 +50,9 @@ deleteButtons.forEach((button) => {
 
         // Writes the custom translations of the title and the message for each case (deletion, newsletter, etc)
         if (propertyId || categoryId || tagId || userId) {
-            let title = translation("modal.delete");
+            let title = translation("delete.title");
             modalTitle.textContent = title;
-            let message = translation("modal.message");
+            let message = translation("delete.message");
             modalMessage.textContent = message;
         }
 

@@ -92,6 +92,11 @@ confirmBtn: "Confirm"
 cancelBtn: "Cancel"
 
 
+# CLOSE BUTTON
+
+closeBtn: "Close"
+
+
 # RETURN TO ADMIN PANEL BUTTON
 
 adminBtn: "Back to Admin panel"

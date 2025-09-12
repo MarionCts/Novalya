@@ -20,6 +20,7 @@
     visibility: visible;
     transition: all 0.3s linear;
     gap: 3.5rem;
+    z-index: 1;
 
     .modal__buttons {
         @include flex-preset(column, center, center);
