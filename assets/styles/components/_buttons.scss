@@ -46,6 +46,16 @@
     }
 }
 
+.button__property {
+    @include button-preset(button);
+    @include button-preset(button__property);
+
+    &:hover {
+        @include button-hover-preset(button__property);
+    }
+
+    }
+
 .button__delete--icon {
     @include button-preset(button);
     width: 2.5rem;

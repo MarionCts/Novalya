@@ -159,6 +159,14 @@
         border: none;
         background-color: transparent;
         cursor: pointer;
+    } @else if $type == button__property {
+        border: none;
+        background-color: css-var(card-button-bg);
+        cursor: pointer;
+
+        path {
+            fill: css-var(card-button-text);
+        }
     }
 }
 
@@ -173,5 +181,11 @@
         background-color: css-var(delete-btn-bg-hover);
     } @else if $type == button__delete__icon {
         fill: css-var(delete-btn-icon-hover);
-    } 
+    } @else if $type == button__property {
+        background-color: css-var(card-button-bg-hover);
+
+        path {
+            fill: css-var(card-button-text);
+        }
+    }
 }

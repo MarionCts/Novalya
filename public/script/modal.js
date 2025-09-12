@@ -16,12 +16,12 @@ const translations = {
     fr: {
         "delete.title": "Confirmer la suppression",
         "delete.message":
-            "Êtes-vous sûr de vouloir supprimer ? Cette action est irréversible.",
+            "Êtes-vous sûr de vouloir continuer ? Cette action est irréversible.",
     },
     en: {
         "modal.title": "Confirm deletion",
         "delete.message":
-            "Are you sure you want to delete? This action is irreversible.",
+            "Are you sure you want to keep going? This action is irreversible.",
     },
 };
 
