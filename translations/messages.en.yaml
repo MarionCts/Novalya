@@ -376,6 +376,7 @@ account:
   pageTitle: "My account"
   hello: "Hello"
   accountTitle: "Account management"
+  noFavorite: "You have no favorite properties for now."
   manageInfos: "Update personal information"
   deleteAccount: "Delete account"
   favoriteTitle: "My favorites"

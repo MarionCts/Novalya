@@ -376,6 +376,7 @@ account:
   pageTitle: "Mon compte"
   hello: "Bonjour"
   accountTitle: "Gestion du compte"
+  noFavorite: "Vous n'avez pas encore de biens en favoris pour le moment."
   manageInfos: "Modifier les informations personnelles"
   deleteAccount: "Supprimer le compte"
   favoriteTitle: "Mes favoris"

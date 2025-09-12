@@ -104,7 +104,7 @@
 					<p>{{ 'account.deleteMessage'|trans }}</p>
 					<form method="post" action="{{ path('app_user_account_deactivate', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
 						<input type="hidden" name="_token" value="{{ csrf_token('deactivate' ~ user.id) }}">
-						<button class="button button__delete">{{ 'deleteBtn'|trans }}</button>
+						<button class="button button__delete" data-user-id="{{ user.id }}">{{ 'deleteBtn'|trans }}</button>
 					</form>
 				</div>
 			</section>
@@ -115,6 +115,7 @@
 				<h2 class="title title__tertiary center">{{ 'account.favoriteTitle'|trans }}
 				</h2>
 
+				{% if favorites %}
 				<div class="favorite__container">
 					<div class="cards">
 						{% for favorite in favorites %}
@@ -163,6 +164,9 @@
 						{% endfor %}
 					</div>
 				</div>
+				{% else %}
+					<p>{{ 'account.noFavorite'|trans }}</p>
+				{% endif %}
 
 				{# PAGINATION #}
 
