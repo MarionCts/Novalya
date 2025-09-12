@@ -70,6 +70,8 @@ property:
   tags:
     label: "Choisissez un ou plusieurs tags :"
   isFeatured: "Photo de couverture :"
+  minPrice: "Prix min."
+  maxPrice: "Prix max."
 
 
 # ENUM OF THE PROPERTY FORM

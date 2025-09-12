@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use App\Enum\Value;
 use App\Entity\PropertyCategory;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -54,6 +55,24 @@ class FilterType extends AbstractType
                 'label_attr' => [
                     'class' => 'sr-only',
                 ],
+            ])
+            
+            // FILTER PRICE RANGE
+
+            // Minimum
+            ->add('min_price', NumberType::class, [
+                'required' => false,
+                'attr' => ['class' => 'form__input', 'placeholder' => 'property.minPrice'],
+                'label' => 'property.price.min',
+                'label_attr' => ['class' => 'sr-only'],
+            ])
+
+            // Maximum
+            ->add('max_price', NumberType::class, [
+                'required' => false,
+                'attr' => ['class' => 'form__input', 'placeholder' => 'property.maxPrice'],
+                'label' => 'property.maxPrice',
+                'label_attr' => ['class' => 'sr-only'],
             ]);
     }
 

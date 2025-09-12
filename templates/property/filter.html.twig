@@ -44,6 +44,20 @@
 				<div class="form__constraint">{{ error.message }}</div>
 			{% endfor %}
 
+			{# MIN PRICE FILTER #}
+			{{ form_label(form.min_price) }}
+			{{ form_widget(form.min_price) }}
+			{% for error in form.min_price.vars.errors %}
+				<div class="form__constraint">{{ error.message }}</div>
+			{% endfor %}
+
+			{# MAX PRICE FILTER #}
+			{{ form_label(form.max_price) }}
+			{{ form_widget(form.max_price) }}
+			{% for error in form.max_price.vars.errors %}
+				<div class="form__constraint">{{ error.message }}</div>
+			{% endfor %}
+
 			{# MOBILE BUTTON #}
 			<button type="submit" class="button button__primary filter__button--text">
 				{{ 'propertyFilter.filterBtn'|trans }}

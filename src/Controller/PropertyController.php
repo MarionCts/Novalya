@@ -89,6 +89,16 @@ final class PropertyController extends AbstractController
                 $result->andWhere('p.city = :city')
                     ->setParameter('city', $city);
             }
+
+            if (!empty($data['min_price'])) {
+                $result->andWhere('p.price >= :min')
+                    ->setParameter('min', $data['min_price']);
+            }
+
+            if (!empty($data['max_price'])) {
+                $result->andWhere('p.price <= :max')
+                    ->setParameter('max', $data['max_price']);
+            }
         }
 
         // Pagination: defining a limit number of properties to be shown (7) per page

@@ -56,6 +56,8 @@ property:
   tags:
     label: "Please choose one or more tags:"
   isFeatured: "Featured photo:"
+  minPrice: "Min price"
+  maxPrice: "Max price"
 
 
 # CONTACT FORM
