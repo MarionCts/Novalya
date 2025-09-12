@@ -149,6 +149,9 @@ homePage:
     fourthSecondAccent: "pour votre véhicule"
     fourthdescription: "Profitez d’un service exclusif pour votre véhicule : entretien, livraison, mise à disposition et démarches administratives. Nous prenons soin de votre voiture comme si c’était la nôtre."
     bedrooms: "chambres"
+  alt:
+    intro: "Photo d'une villa luxueuse avec piscine"
+    card: "Photo de couverture de la propriété"
 
 
 # PAGE VISITOR "PROPERTIES LIST"
@@ -196,6 +199,8 @@ about:
   roleFour: "Experte Viticole"
   roleFive: "Attaché Commercial"
   roleSix: "Consultante"
+  alt:
+    worker: "Photo du collaborateur ou de la collaboratrice"
 
 
   # PAGE "CONTACT US"
@@ -210,6 +215,8 @@ contactPage:
   contactMessage: "Pour prendre rendez-vous ou pour toute question au sujet d’un bien immobilier, veuillez remplir le formulaire ci-dessous et nous préciser vos disponibilités :"
   sendBtn: "Envoyer"
   flashSuccess: "Votre message a été envoyé avec succès !"
+  alt:
+    photo: "Photo du bureau de l'équipe de l'agence Novalya"
 
 
 # PAGE ADMIN "PROPERTIES LIST"
@@ -368,6 +375,8 @@ indivudualPropertyPage:
   energy: "Classe énergétique"
   climate: "Classe climatique"
   price: "Prix :"
+  alt:
+    carousel: "de la propriété"
 
 
 # PAGE "MY ACCOUNT"

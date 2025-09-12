@@ -124,7 +124,7 @@
 										{% for image in favorite.propertyImages %}
 											{# Selects only the featured image among all the pictures related to this property #}
 											{% if image.isFeatured == true %}
-												<img src="{{ asset(image.url) }}" alt=""></div>
+												<img src="{{ asset(image.url) }}" alt="{{ 'homePage.alt.intro'|trans }}"></div>
 										{% endif %}
 									{% endfor %}
 									<div class="card__content">

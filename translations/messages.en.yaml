@@ -150,6 +150,9 @@ homePage:
     fourthSecondAccent: "dedicated to your vehicle"
     fourthdescription: "Enjoy an exclusive service for your car: maintenance, delivery, availability, and administrative procedures. We take care of your vehicle as if it were our own."
     bedrooms: "bedrooms"
+  alt:
+    intro: "Photo of a luxurious villa with swimming pool"
+    card: "Featuring photo of the property"
 
 
 # PAGE VISITOR "PROPERTIES LIST"
@@ -197,6 +200,8 @@ about:
   roleFour: "Wine Estate Expert"
   roleFive: "Sales Representative"
   roleSix: "Consultant"
+  alt:
+    worker: "Photo of the professional worker"
 
 
   # PAGE "CONTACT US"
@@ -211,6 +216,8 @@ contactPage:
   contactMessage: "To schedule an appointment or for any questions regarding a property, please fill out the form below and let us know your availability:"
   sendBtn: "Send"
   flashSuccess: "Your message has been sent successfully!"
+  alt:
+    photo: "Photo of the office of Novalya's agency team"
 
 
 # PAGE ADMIN "PROPERTIES LIST"
@@ -368,6 +375,8 @@ indivudualPropertyPage:
   energy: "Energy class"
   climate: "Climate class"
   price: "Price:"
+  alt:
+    carousel: "of the property"
 
 
   # PAGE "MY ACCOUNT"

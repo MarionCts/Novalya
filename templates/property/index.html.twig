@@ -21,7 +21,7 @@
 						{# Selects only the featured image among all the pictures related to this property #}
 						{% if image.property.id == property.id and image.isFeatured == true %}
 							<div class="properties__image">
-								<img src="{{ asset(image.url) }}" alt=""></div>
+								<img src="{{ asset(image.url) }}" alt="{{ 'homePage.alt.intro'|trans }}"></div>
 						{% endif %}
 					{% endfor %}
 

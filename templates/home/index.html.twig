@@ -24,7 +24,7 @@
 		{# INTRO SECTION #}
 		<section class="intro p-section">
 			<div class="intro__image brr-60">
-				<img src="{{ asset('images/intro_villa.webp') }}" alt="Image d'une villa avec piscine">
+				<img src="{{ asset('images/intro_villa.webp') }}" alt="{{ 'homePage.alt.intro'|trans }}">
 			</div>
 			<div class="intro__content">
 				<h2 class="title title__secondary mb-55">{{ 'homePage.intro.mainTitle'|trans }}
@@ -62,7 +62,7 @@
 									{% for image in property.propertyImages %}
 										{# Selects only the featured image among all the pictures related to this property #}
 										{% if image.property.id == property.id and image.isFeatured == true %}
-											<img src="{{ asset(image.url) }}" alt="">
+											<img src="{{ asset(image.url) }}" alt="{{ 'homePage.alt.card'|trans }}">
 										{% endif %}
 									{% endfor %}
 								</div>

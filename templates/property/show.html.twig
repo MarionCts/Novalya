@@ -94,7 +94,7 @@
 				<div class="carousel-container">
 					{% for image in property.propertyImages %}
 						<div class="carousel-slide{% if loop.first %} active{% endif %}">
-							<img src="{{ asset(image.url) }}" alt="{{ property.name }} image {{ loop.index }}">
+							<img src="{{ asset(image.url) }}" alt=" Photo {{ loop.index }} {{ 'indivudualPropertyPage.alt.carousel'|trans }} {{ property.name }}">
 						</div>
 					{% endfor %}
 					<button class="carousel-btn prev">
