@@ -377,6 +377,7 @@ indivudualPropertyPage:
   price: "Prix :"
   alt:
     carousel: "de la propriété"
+  contactCTA: "Ce bien vous intéresse ? Remplissez le formulaire de contact ci-dessous :"
 
 
 # PAGE "MY ACCOUNT"

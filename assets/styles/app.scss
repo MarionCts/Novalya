@@ -654,7 +654,6 @@
 }
 
 .admin-pages__container {
-
     .user__pagination {
         a,
         p {
@@ -924,12 +923,22 @@
     }
 }
 
-.property__specs {
+.property-location {
     @include flex-preset(column, center, center);
     width: 100%;
 
     @include media(768px) {
-        max-width: 60rem;
+        @include flex-preset(row, stretch, stretch);
+        gap: 8.4rem;
+    }
+
+    .property__specs {
+        @include flex-preset(column, center, center);
+        width: 100%;
+
+        @include media(768px) {
+            max-width: 60rem;
+        }
     }
 
     h3 {
@@ -972,7 +981,10 @@
     width: 100%;
 
     @include media(768px) {
-        margin-top: 9rem;
+        margin-top: 0;
+        height: auto;
+        overflow: hidden;
+        border-radius: 2rem 0 2rem 0;
     }
 
     iframe {
@@ -980,6 +992,46 @@
         display: block;
         width: 100%;
         border: none;
+
+        @include media(768px) {
+            height: 100%;
+        }
+    }
+}
+
+.property__contact {
+    margin-top: 6rem;
+
+    @include media(1200px) {
+        margin-top: 9rem;
+        @include flex-preset(row, stretch, stretch);
+        gap: 8.4rem;
+    }
+
+    p {
+        margin-bottom: 3rem;
+
+        @include media(768px) {
+            margin-bottom: 6rem;
+        }
+    }
+
+    .contact__image--property {
+        display: none;
+        height: stretch;
+        overflow: hidden;
+        border-radius: 20rem 0 0 0;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        @include media(1200px) {
+            display: block;
+        }
     }
 }
 

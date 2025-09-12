@@ -6,6 +6,7 @@ use App\Entity\Property;
 use App\Enum\Status;
 use App\Entity\PropertyImage;
 use App\Form\PropertyType;
+use App\Form\ContactType;
 use App\Form\FilterType;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -179,8 +180,8 @@ final class PropertyController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_property_show', methods: ['GET'])]
-    public function show(Property $property, FavoriteRepository $favoriteRepository): Response
+    #[Route('/{id}', name: 'app_property_show', methods: ['GET', 'POST'])]
+    public function show(Property $property, TranslatorInterface $translator, Request $request, FavoriteRepository $favoriteRepository): Response
     {
         $status = $property->getStatus();
 
@@ -196,12 +197,26 @@ final class PropertyController extends AbstractController
             );
         }
 
+        // Duplicating the contact form from the contact page
+        $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+
         if ($status === Status::Published || $this->isGranted('ROLE_ADMIN')) {
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->addFlash('success', $translator->trans('contactPage.flashSuccess'));
+                return $this->redirectToRoute('app_property_show', [
+                    'id' => $property->getId(),
+                ], Response::HTTP_SEE_OTHER);
+            }
+
             return $this->render('property/show.html.twig', [
                 'property' => $property,
                 'favoriteIds' => $favoriteIds,
+                'contactForm' => $form->createView(),
             ]);
         }
+
         return $this->redirectToRoute('app_error_error', [], Response::HTTP_SEE_OTHER);
     }
 
