@@ -81,9 +81,25 @@ deleteBtn: "Supprimer"
 contactBtn: "Nous contacter"
 
 
+# CONFIRM BUTTON
+
+confirmBtn: "Confirmer"
+
+
+# CANCEL BUTTON
+
+cancelBtn: "Annuler"
+
+
 # RETURN TO ADMIN PANEL BUTTON
 
 adminBtn: "Retour au panel Admin"
+
+
+# MODALS WINDOWS
+
+modal:
+  delete: "Confirmer la suppression"
 
 
 # HOME PAGE
@@ -267,6 +283,7 @@ updateCategoryPage:
   mainTitle: "Modifier une" 
   mainAccent: "catégorie"
   getBack: "Retour aux catégories"
+  flashSuccess: "Catégorie modifiée avec succès !"
 
 
 # PAGE "DELETE A CATEGORY"
@@ -302,6 +319,7 @@ updateTagPage:
   mainTitle: "Modifier un" 
   mainAccent: "tag"
   getBack: "Retour aux tags"
+  flashSuccess: "Tag modifié avec succès !"
 
 
 # PAGE "DELETE A TAG"

@@ -82,9 +82,25 @@ deleteBtn: "Delete"
 contactBtn: "Contact us"
 
 
+# CONFIRM BUTTON
+
+confirmBtn: "Confirm"
+
+
+# CANCEL BUTTON
+
+cancelBtn: "Cancel"
+
+
 # RETURN TO ADMIN PANEL BUTTON
 
 adminBtn: "Back to Admin panel"
+
+
+# MODALS WINDOWS
+
+modal:
+  delete: "Confirm deletion"
 
 
 # HOME PAGE

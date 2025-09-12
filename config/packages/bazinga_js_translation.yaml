@@ -1,0 +1,4 @@
+bazinga_js_translation:
+    active_locales: ['fr', 'en']
+    default_domain: messages
+    locale_fallback: en

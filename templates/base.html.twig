@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ 'lang'|trans }}">
+<html
+	lang="{{ app.request.locale|split('_')[0] }}" data-lang="{{ app.request.locale|split('_')[0] }}">
 	{# HEAD #}
 	<head>
 		<meta charset="UTF-8">
@@ -15,13 +16,14 @@
 		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 		{# JS scripts #}
+		<script>window.currentLocale = "{{ app.request.locale|split('_')[0] }}";</script>
 		<script src="{{ asset('script/menu.js') }}" defer></script>
 		<script src="{{ asset('script/dropdown.js') }}" defer></script>
 		<script src="{{ asset('script/theme.js') }}" defer></script>
 		<script src="{{ asset('script/ajax.js') }}" defer></script>
 		<script src="{{ asset('script/inputImage.js') }}" defer></script>
 		<script src="{{ asset('script/carousel.js') }}" defer></script>
-		<script src="{{ asset('script/utils.js') }}" defer></script>
+		<script src="{{ asset('script/modal.js') }}" defer></script>
 
 		{# Favicon #}
 		<link
@@ -45,17 +47,31 @@
 				{% for label, messages in app.flashes %}
 					{% for message in messages %}
 						<div class="
-								{% if label == 'danger' %}form__info info-bg-danger
-								{% elseif label == 'success' %}form__info info-bg-success
-								{% elseif label == 'info' %}form__info info-bg-info
-								{% elseif label == 'warning' %}form__info info-bg-warning
-								{% endif %}">
+							{% if label == 'danger' %}form__info info-bg-danger
+							{% elseif label == 'success' %}form__info info-bg-success
+							{% elseif label == 'info' %}form__info info-bg-info
+							{% elseif label == 'warning' %}form__info info-bg-warning
+							{% endif %}">
 							{{ message }}
 						</div>
 					{% endfor %}
 				{% endfor %}
 			</div>
 		{% endblock %}
+
+		{# FENETRE MODALE SUPPRESSION #}
+		<div id="deleteConfirmationModal" class="hides-modal modal">
+			<h3 id="modalDeleteTitle" class="title title__fourth"></h3>
+			<p id="modalDeleteMessage"></p>
+			<div class="modal__buttons">
+				<button id="confirmDeleteBtn" class="button button__primary">
+					{{ 'confirmBtn'|trans }}
+				</button>
+				<button id="cancelDeleteBtn" class="button button__secondary">
+					{{ 'cancelBtn'|trans }}
+				</button>
+			</div>
+		</div>
 
 		{% block body %}{% endblock %}
 
@@ -68,4 +84,4 @@
 		{{ encore_entry_script_tags('app') }}
 		{% block javascripts %}{% endblock %}
 	</body>
-</html>
+</html></body></html>

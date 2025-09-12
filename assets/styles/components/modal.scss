@@ -1,0 +1,38 @@
+// ************** IMPORT STYLES **************
+
+@use "../abstracts" as *;
+
+// ************** MODAL WINDOWS ***************
+
+// DELETE MODAL
+
+.modal {
+    width: 85vw;
+    max-width: 70rem;
+    background-color: css-var(bg);
+    position: fixed;
+    padding: 5rem 3rem;
+    @include flex-preset(column, center, center);
+    box-shadow: 0px 4px 45px 0px #131722;
+    border-radius: 0 8rem 0 8rem;
+    border: 0.1rem solid css-var(modal-border);
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s linear;
+    gap: 3.5rem;
+
+    .modal__buttons {
+        @include flex-preset(column, center, center);
+        gap: 1rem;
+        max-width: 20rem;
+
+        button {
+            width: 100%;
+        }
+    }
+}
+
+.hides-modal {
+    opacity: 0;
+    visibility: hidden;
+}
