@@ -6,7 +6,11 @@ framework:
         default_path: '%kernel.project_dir%/translations'
         fallbacks: ['fr', 'en']
     assets:
-    json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+        packages:
+            encore:
+                json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+    asset_mapper:
+        enabled: true
 
     # Note that the session will be started ONLY if you read or write from it.
     session: true

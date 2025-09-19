@@ -52,6 +52,10 @@
         padding: 1.3rem 4.3rem;
         background-color: css-var(categories);
         border-radius: 0 0 2rem 0;
+
+        .legal__mentions {
+            color: css-var(newsletter-input-bg);
+        }
     }
 
     img {
