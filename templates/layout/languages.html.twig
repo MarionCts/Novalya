@@ -1,8 +1,0 @@
-{% set route = app.request.attributes.get('_route') %}
-{% set params = app.request.attributes.get('_route_params')|default({}) %}
-
-<div>
-	<a href="{{ path(route, params|merge({'_locale': 'fr'})) }}" class="paragraph legal__mentions">FR</a>
-	<span class="paragraph legal__mentions">|</span>
-	<a href="{{ path(route, params|merge({'_locale': 'en'})) }}" class="paragraph legal__mentions">EN</a>
-</div>

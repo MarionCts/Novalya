@@ -249,10 +249,7 @@ input[type="checkbox" i] {
             width: 100%;
             overflow: hidden;
             border-radius: 0 5rem 0 5rem;
-
-            @include media(768px) {
-                height: 25rem;
-            }
+            height: 25rem;
 
             img {
                 object-fit: cover;

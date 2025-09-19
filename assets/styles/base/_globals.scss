@@ -61,6 +61,25 @@ header {
     gap: 2rem;
 }
 
+.languages {
+    display: none;
+
+    @include media(768px) {
+        display: block;
+    }
+}
+
+.languages__mobile {
+
+    @include media(768px) {
+        display: none;
+    }
+}
+
+.languages__flags {
+    height: 2rem;
+}
+
 // ----- FOOTER -----
 
 // SHARED FLEXBOX, PADDING & GAP
@@ -101,31 +120,21 @@ header {
 
 footer {
     width: 100%;
-
-    .footer {
-        @include media(980px) {
-            @include flex-preset(row, flex-start, flex-start);
-        }
-    }
 }
 
 .footer {
     @include media(980px) {
-        @include flex-preset(row, center, center);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         border: 0.1rem solid css-var(text);
         border-radius: 0 8rem 0 8rem;
         padding: 4rem;
         margin-bottom: 4.1rem;
-        height: 43rem;
     }
+}
 
-    @include media(1035px) {
-        height: 41rem;
-    }
-
-    @include media(1350px) {
-        height: 35rem;
-    }
+.footer__connect, .footer__links, .footer__newsletter {
+    height: 100%;
 }
 
 .footer__connect {
@@ -133,6 +142,7 @@ footer {
 
     @include media(980px) {
         border-top: none;
+        padding-right: 4rem;
     }
 }
 
@@ -140,7 +150,6 @@ footer {
 .footer__links {
     @include media(980px) {
         position: relative;
-        height: 100%;
 
         &::after {
             content: "";
@@ -157,7 +166,7 @@ footer {
 .footer__links,
 .footer__newsletter {
     @include media(980px) {
-        padding-left: 4rem;
+        padding: 0 4rem 0;
     }
 }
 
@@ -166,6 +175,7 @@ footer {
 
     @include media(980px) {
         margin-bottom: 0;
+        padding-right: 0;
     }
 
     form {
