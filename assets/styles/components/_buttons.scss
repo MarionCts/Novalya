@@ -53,8 +53,7 @@
     &:hover {
         @include button-hover-preset(button__property);
     }
-
-    }
+}
 
 .button__delete--icon {
     @include button-preset(button);
@@ -79,7 +78,6 @@
 }
 
 .image-file {
-
     input[type="file"] {
         color: css-var(text);
         padding: 8px;
@@ -163,9 +161,15 @@
     justify-content: center;
     transition: all 0.2s linear;
 
+    @include media(1024px) {
+        right: 3rem;
+        left: auto;
+    }
+
     .button__switch svg {
         width: 2.3rem;
         height: 2.3rem;
+        fill: css-var(bg);
         transform-origin: center;
         transform-box: fill-box;
     }
@@ -185,6 +189,32 @@
 
 .button__switch:hover {
     transform: scale(1.2);
+}
+
+.button__switch--return {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s all linear;
+    right: auto;
+    left: 3rem;
+    bottom: 12rem;
+
+    @include media(1024px) {
+        right: 3rem;
+        left: auto;
+    }
+
+    svg {
+        fill: css-var(bg);
+        height: 2.1rem;
+        width: 2.5rem;
+        margin-top: 0.1rem;
+    }
+}
+
+.appears {
+    opacity: 1;
+    visibility: visible;
 }
 
 .is-hidden {

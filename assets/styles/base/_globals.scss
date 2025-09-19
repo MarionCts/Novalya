@@ -70,7 +70,6 @@ header {
 }
 
 .languages__mobile {
-
     @include media(768px) {
         display: none;
     }
@@ -133,7 +132,9 @@ footer {
     }
 }
 
-.footer__connect, .footer__links, .footer__newsletter {
+.footer__connect,
+.footer__links,
+.footer__newsletter {
     height: 100%;
 }
 

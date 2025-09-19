@@ -45,7 +45,7 @@
 
     &::before {
         content: "";
-        opacity: 0.4;
+        opacity: css-var(hero-bg-opacity);
         z-index: -1;
         position: absolute;
         min-height: 86vh;
