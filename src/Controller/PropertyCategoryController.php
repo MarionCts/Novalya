@@ -16,10 +16,15 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class PropertyCategoryController extends AbstractController
 {
     #[Route(name: 'app_property_category_index', methods: ['GET'])]
-    public function index(PropertyCategoryRepository $propertyCategoryRepository): Response
+    public function index(PropertyCategoryRepository $propertyCategoryRepository, Request $request): Response
     {
+        // We fetch what 'locale' returns ('en' or 'fr') and we decide whether the name will be shown in french or english
+        $locale = $request->getLocale();
+        $categories = $propertyCategoryRepository->findAll();
+        
         return $this->render('property_category/index.html.twig', [
-            'property_categories' => $propertyCategoryRepository->findAll(),
+            'property_categories' => $categories,
+            'locale' => $locale,
         ]);
     }
 

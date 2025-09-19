@@ -25,8 +25,10 @@ property:
   city:
     label: "City:"
     placeholder: "Location"
-  description:
-    label: "Description:"
+  descriptionFr:
+    label: "French description:"
+  descriptionEn:
+    label: "English description:"
   rooms_total:
     label: "Total rooms number:"
   bathrooms:
@@ -58,6 +60,15 @@ property:
   isFeatured: "Featured photo:"
   minPrice: "Min price"
   maxPrice: "Max price"
+
+
+# TAG FORM
+
+tag:
+  nameFr:
+    label: "French name:"
+  nameEn:
+    label: "English name:"
 
 
 # CONTACT FORM

@@ -16,10 +16,15 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class TagController extends AbstractController
 {
     #[Route(name: 'app_tag_index', methods: ['GET'])]
-    public function index(TagRepository $tagRepository): Response
+    public function index(Request $request, Tag $tag, TagRepository $tagRepository): Response
     {
+        // We fetch what 'locale' returns ('en' or 'fr') and we decide whether the name will be shown in french or english
+        $locale = $request->getLocale();
+        $tags = $tagRepository->findAll();
+
         return $this->render('tag/index.html.twig', [
-            'tags' => $tagRepository->findAll(),
+            'tags' => $tags,
+            'locale' => $locale,
         ]);
     }
 
@@ -74,7 +79,7 @@ final class TagController extends AbstractController
     #[Route('/{id}', name: 'app_tag_delete', methods: ['POST'])]
     public function delete(Request $request, Tag $tag, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$tag->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $tag->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($tag);
             $entityManager->flush();
         }

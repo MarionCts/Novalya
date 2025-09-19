@@ -24,6 +24,9 @@ class Tag
     #[ORM\ManyToMany(targetEntity: Property::class, inversedBy: 'tags')]
     private Collection $property;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nameEn = null;
+
     public function __construct()
     {
         $this->property = new ArrayCollection();
@@ -68,5 +71,26 @@ class Tag
         $this->property->removeElement($property);
 
         return $this;
+    }
+
+    public function getNameEn(): ?string
+    {
+        return $this->nameEn;
+    }
+
+    public function setNameEn(?string $nameEn): static
+    {
+        $this->nameEn = $nameEn;
+
+        return $this;
+    }
+
+    public function getTranslatedName(string $locale): ?string
+    {
+        if ($locale === 'en' && $this->getNameEn()) {
+            return $this->getNameEn();
+        }
+
+        return $this->getName();
     }
 }

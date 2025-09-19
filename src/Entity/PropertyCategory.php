@@ -24,6 +24,9 @@ class PropertyCategory
     #[ORM\OneToMany(targetEntity: Property::class, mappedBy: 'category')]
     private Collection $properties;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nameEn = null;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
@@ -74,5 +77,26 @@ class PropertyCategory
         }
 
         return $this;
+    }
+
+    public function getNameEn(): ?string
+    {
+        return $this->nameEn;
+    }
+
+    public function setNameEn(?string $nameEn): static
+    {
+        $this->nameEn = $nameEn;
+
+        return $this;
+    }
+
+    public function getTranslatedName(string $locale): ?string
+    {
+        if ($locale === 'en' && $this->getNameEn()) {
+            return $this->getNameEn();
+        }
+
+        return $this->getName();
     }
 }

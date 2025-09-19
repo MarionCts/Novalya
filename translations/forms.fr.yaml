@@ -39,8 +39,10 @@ property:
   city:
     label: "Ville :"
     placeholder: "Localisation"
-  description:
-    label: "Description :"
+  descriptionFr:
+    label: "Description en français :"
+  descriptionEn:
+    label: "Description en anglais :"
   rooms_total:
     label: "Nombre de pièces total :"
   bathrooms:
@@ -72,6 +74,15 @@ property:
   isFeatured: "Photo de couverture :"
   minPrice: "Prix min."
   maxPrice: "Prix max."
+
+
+# TAG FORM
+
+tag:
+  nameFr:
+    label: "Nom en français :"
+  nameEn:
+    label: "Nom en anglais :"
 
 
 # ENUM OF THE PROPERTY FORM

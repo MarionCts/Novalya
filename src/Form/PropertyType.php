@@ -14,6 +14,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
@@ -24,9 +25,19 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class PropertyType extends AbstractType
 {
+
+    private string $locale;
+
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->locale = $requestStack->getCurrentRequest()->getLocale();
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->setAttribute('translation_domain', 'forms');
+
+        $locale = $this->locale;
 
         $builder
 
@@ -78,7 +89,12 @@ class PropertyType extends AbstractType
             // PROPERTY CATEGORY
             ->add('category', EntityType::class, [
                 'class' => PropertyCategory::class,
-                'choice_label' => 'name',
+                'choice_label' => function (PropertyCategory $category) use ($locale) {
+                    if ($locale === 'en' && $category->getNameEn()) {
+                        return $category->getNameEn();
+                    }
+                    return $category->getName();
+                },
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.category.label',
             ])
@@ -87,7 +103,12 @@ class PropertyType extends AbstractType
             ->add('tags', EntityType::class, [
                 'class' => Tag::class,
                 'required' => false,
-                'choice_label' => 'name',
+                'choice_label' => function (Tag $tag) use ($locale) {
+                    if ($locale === 'en' && $tag->getNameEn()) {
+                        return $tag->getNameEn();
+                    }
+                    return $tag->getName();
+                },
                 'multiple' => true,
                 'by_reference' => false,
                 'expanded' => true,
@@ -95,10 +116,28 @@ class PropertyType extends AbstractType
                 'label' => 'property.tags.label',
             ])
 
-            // PROPERTY DESCRIPTION
+            // PROPERTY DESCRIPTION FR
             ->add('description', TextareaType::class, [
                 'attr'  => ['class' => 'form__input', 'rows' => 8],
-                'label' => 'property.description.label',
+                'label' => 'property.descriptionFr.label',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.description.not_blank',
+                    ]),
+                    new Length([
+                        'min' => 100,
+                        'max' => 5000,
+                        'minMessage' => 'property.description.length_min',
+                        'maxMessage' => 'property.description.length_max',
+                        'normalizer' => 'trim',
+                    ]),
+                ],
+            ])
+
+            // PROPERTY DESCRIPTION EN
+            ->add('description_en', TextareaType::class, [
+                'attr'  => ['class' => 'form__input', 'rows' => 8],
+                'label' => 'property.descriptionEn.label',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'property.description.not_blank',

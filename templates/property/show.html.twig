@@ -14,11 +14,11 @@
 			class="property__hero">
 
 			{# If there is no property set to favorite yet, "favoriteIds" will
-																																				display an empty array #}
+			display an empty array #}
 			{% set favoriteIds = favoriteIds|default([]) %}
 
 			{# we set the parameters of "isFavorited" which will fetch wether 
-																																				the property has been set to favorite or not #}
+			the property has been set to favorite or not #}
 			{% set isFavorited = app.user and (property.id in favoriteIds) %}
 
 			{% for image in property.propertyImages %}
@@ -116,13 +116,13 @@
 						<p>{{ 'indivudualPropertyPage.tags'|trans }}</p>
 
 						{% for tag in property.tags %}
-							<p class="paragraph__xsmall__bold tag__badge">{{ tag.name }}</p>
+							<p class="paragraph__xsmall__bold tag__badge">{{ tag.getTranslatedName(locale) }}</p>
 						{% endfor %}
 					</div>
 				{% endif %}
 
 				<h2 class="title title__secondary accent">Description</h2>
-				<p>{{ property.description }}</p>
+				<p>{{ property.getTranslatedDescription(locale) }}</p>
 				<p class="title title__fourth">{{ 'indivudualPropertyPage.price'|trans }}
 					{{ property.price|format_currency('EUR', {fraction_digit: 0}) }}</p>
 			</div>
@@ -135,7 +135,7 @@
 				<div class="specs">
 					<div class="specs__items">
 						<h4 class="title__specs">{{ 'indivudualPropertyPage.category'|trans }}</h4>
-						<p class="name">{{ property.category.name }}</p>
+						<p class="name">{{ property.category.getTranslatedName(locale) }}</p>
 					</div>
 					<div class="specs__items">
 						<h4 class="title__specs">{{ 'indivudualPropertyPage.location'|trans }}</h4>

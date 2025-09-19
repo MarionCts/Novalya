@@ -20,6 +20,12 @@
 			<div class="form__constraint">{{ error.message }}</div>
 		{% endfor %}
 
+		{{ form_label(form.nameEn) }}
+		{{ form_widget(form.nameEn) }}
+		{% for error in form.nameEn.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
 		{# ADD BUTTON #}
 		<button class="button button__primary mt-30">{{ 'addBtn'|trans }}</button>
 

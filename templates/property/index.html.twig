@@ -29,7 +29,7 @@
 					<div class="properties__content">
 						<div class="content">
 							<p class="paragraph__xsmall__bold">{{ 'propertyIndex.status'|trans }}</p>
-							<p class="paragraph__xsmall">{{ property.status.value }}</p>
+							<p class="paragraph__xsmall">{{ ('enum.status.' ~ property.status.value)|trans(domain='forms') }}</p>
 						</div>
 						<div class="content">
 							<p class="paragraph__xsmall__bold">{{ 'propertyIndex.creation'|trans }}</p>

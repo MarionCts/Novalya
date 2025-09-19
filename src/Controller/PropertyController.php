@@ -17,6 +17,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Repository\FavoriteRepository;
+use Doctrine\ORM\EntityManager;
 
 #[Route('/property')]
 final class PropertyController extends AbstractController
@@ -137,35 +138,26 @@ final class PropertyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // ⚠️ Parcours des sous-formulaires de la collection
             foreach ($form->get('propertyImages') as $imageForm) {
-                /** @var \Symfony\Component\HttpFoundation\File\UploadedFile|null $file */
                 $file = $imageForm->get('file')->getData();
                 if (!$file) {
                     continue;
                 }
 
-                // Générer le nom de fichier
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = (string) $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
 
-                // Déplacer le fichier
                 $file->move($this->getParameter('images_directory'), $newFilename);
 
-                // Récupérer l'entité PropertyImage mappée par le sous-form
-                /** @var PropertyImage $img */
                 $img = $imageForm->getData();
 
-                // Renseigner l'URL / path (adapte selon ton besoin)
                 $img->setUrl('/uploads/images/' . $newFilename);
 
-                // Associer au parent (normalement déjà fait via by_reference=false + add)
                 $img->setProperty($property);
                 $property->addPropertyImage($img);
             }
 
-            // Grâce à cascade: ['persist'], persister seulement le parent suffit
             $entityManager->persist($property);
             $entityManager->flush();
 
@@ -197,6 +189,9 @@ final class PropertyController extends AbstractController
             );
         }
 
+        // We fetch what 'locale' returns ('en' or 'fr') and we decide whether the description will be shown in french or english
+        $locale = $request->getLocale();
+
         // Duplicating the contact form from the contact page
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
@@ -214,6 +209,7 @@ final class PropertyController extends AbstractController
                 'property' => $property,
                 'favoriteIds' => $favoriteIds,
                 'contactForm' => $form->createView(),
+                'locale' => $locale,
             ]);
         }
 
@@ -262,7 +258,7 @@ final class PropertyController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_property_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_property_delete', methods: ['POST'])]
     public function delete(Request $request, Property $property, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         if ($this->isCsrfTokenValid('delete' . $property->getId(), $request->getPayload()->getString('_token'))) {

@@ -18,7 +18,23 @@ class TagType extends AbstractType
         $builder
             ->add('name', null, [
                 'attr'  => ['class' => 'form__input'],
-                'label' => 'property.name.label',
+                'label' => 'tag.nameFr.label',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.name.not_blank',
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'max' => 50,
+                        'minMessage' => 'property.name.length_min',
+                        'maxMessage' => 'property.name.length_max',
+                        'normalizer' => 'trim',
+                    ]),
+                ],
+            ])
+            ->add('nameEn', null, [
+                'attr'  => ['class' => 'form__input'],
+                'label' => 'tag.nameEn.label',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'property.name.not_blank',

@@ -2,9 +2,11 @@
 
 const newsBtn = document.getElementById("newsBtn");
 
-newsBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-});
+if (newsBtn) {
+    newsBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+    });
+}
 
 // RETURN TO TOP BUTTON SCROLLING/FADING EFFECT
 

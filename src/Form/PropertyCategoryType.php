@@ -16,7 +16,7 @@ class PropertyCategoryType extends AbstractType
         $builder
             ->add('name', null, [
                 'attr'  => ['class' => 'form__input'],
-                'label' => 'property.name.label',
+                'label' => 'tag.nameFr.label',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'property.name.not_blank',
@@ -30,7 +30,22 @@ class PropertyCategoryType extends AbstractType
                     ]),
                 ],
             ])
-        ;
+            ->add('nameEn', null, [
+                'attr'  => ['class' => 'form__input'],
+                'label' => 'tag.nameEn.label',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'property.name.not_blank',
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'max' => 200,
+                        'minMessage' => 'property.name.length_min',
+                        'maxMessage' => 'property.name.length_max',
+                        'normalizer' => 'trim',
+                    ]),
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -50,7 +50,7 @@ class Property
     #[ORM\Column(type: 'string', enumType: ClimateClass::class)]
     private ?ClimateClass $climateClass = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'text')]
     private ?string $mapUrl = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 0)]
@@ -89,6 +89,9 @@ class Property
 
     #[ORM\Column(enumType: Value::class)]
     private ?Value $value = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_en = null;
 
     public function __construct()
     {
@@ -391,5 +394,26 @@ class Property
         $this->value = $value;
 
         return $this;
+    }
+
+    public function getDescriptionEn(): ?string
+    {
+        return $this->description_en;
+    }
+
+    public function setDescriptionEn(?string $description_en): static
+    {
+        $this->description_en = $description_en;
+
+        return $this;
+    }
+
+    public function getTranslatedDescription(string $locale): ?string
+    {
+        if ($locale === 'en' && $this->getDescriptionEn()) {
+            return $this->getDescriptionEn();
+        }
+
+        return $this->getDescription();
     }
 }

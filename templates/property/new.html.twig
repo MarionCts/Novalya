@@ -51,10 +51,17 @@
 			<div class="form__constraint">{{ error.message }}</div>
 		{% endfor %}
 
-		{# DESCRIPTION FIELD #}
+		{# FRENCH DESCRIPTION FIELD #}
 		{{ form_label(form.description) }}
 		{{ form_widget(form.description) }}
 		{% for error in form.description.vars.errors %}
+			<div class="form__constraint">{{ error.message }}</div>
+		{% endfor %}
+
+		{# ENGLISH DESCRIPTION FIELD #}
+		{{ form_label(form.description_en) }}
+		{{ form_widget(form.description_en) }}
+		{% for error in form.description_en.vars.errors %}
 			<div class="form__constraint">{{ error.message }}</div>
 		{% endfor %}
 
@@ -79,7 +86,7 @@
 		</div>
 
 		<button type="button" class="button button__primary mt-10 js-add-image">
-			+ Ajouter une image
+			{{ 'addPropertyPage.addImage'|trans }}
 		</button>
 
 		<h2 class="panel__titles mt-35 mb-15">{{ 'addPropertyPage.localisation'|trans }}</h2>

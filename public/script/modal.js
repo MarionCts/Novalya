@@ -19,7 +19,7 @@ const translations = {
             "Êtes-vous sûr de vouloir continuer ? Cette action est irréversible.",
     },
     en: {
-        "modal.title": "Confirm deletion",
+        "delete.title": "Confirm deletion",
         "delete.message":
             "Are you sure you want to keep going? This action is irreversible.",
     },
@@ -42,6 +42,7 @@ deleteButtons.forEach((button) => {
         event.preventDefault(); 
         formToSubmit = this.closest("form"); 
 
+
         // Fetches the dataset ID of each button
         const propertyId = this.dataset.propertyId;
         const categoryId = this.dataset.categoryId;
@@ -62,7 +63,7 @@ deleteButtons.forEach((button) => {
 
 confirmDeleteBtn.addEventListener("click", function () {
     if (formToSubmit) {
-        formToSubmit.submit(); // Submits the form
+        formToSubmit.requestSubmit(); // Submits the form
     }
     modal.classList.add("hides-modal");
 });

@@ -1,4 +1,4 @@
 <form method="post" action="{{ path('app_property_delete', {'id': property.id}) }}">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ property.id) }}">
-    <button class="button button__delete" data-property-id="{{ property.id }}">{{ 'deleteBtn'|trans }}</button>
+    <button type="button" class="button button__delete" data-property-id="{{ property.id }}">{{ 'deleteBtn'|trans }}</button>
 </form>
