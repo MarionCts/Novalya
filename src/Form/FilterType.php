@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use App\Enum\Value;
 use App\Entity\PropertyCategory;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,10 +15,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FilterType extends AbstractType
 {
+
+    private string $locale;
+    
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->locale = $requestStack->getCurrentRequest()->getLocale();
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->setAttribute('translation_domain', 'forms');
         $choices = $options['cities'] ?? [];
+        $locale = $this->locale;
 
         $builder
 
@@ -37,7 +47,12 @@ class FilterType extends AbstractType
             // FILTER CATEGORY
             ->add('category', EntityType::class, [
                 'class' => PropertyCategory::class,
-                'choice_label' => 'name',
+                'choice_label' => function (PropertyCategory $category) use ($locale) {
+                    if ($locale === 'en' && $category->getNameEn()) {
+                        return $category->getNameEn();
+                    }
+                    return $category->getName();
+                },
                 'placeholder' => 'property.category.placeholder',
                 'attr'  => ['class' => 'form__input'],
                 'label' => 'property.category.label',
@@ -56,7 +71,7 @@ class FilterType extends AbstractType
                     'class' => 'sr-only',
                 ],
             ])
-            
+
             // FILTER PRICE RANGE
 
             // Minimum

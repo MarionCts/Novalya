@@ -155,7 +155,7 @@
     border-radius: 50%;
     position: fixed;
     left: 3rem;
-    bottom: 7rem;
+    bottom: 3rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -197,7 +197,7 @@
     transition: 0.3s all linear;
     right: auto;
     left: 3rem;
-    bottom: 12rem;
+    bottom: 8rem;
 
     @include media(1024px) {
         right: 3rem;
