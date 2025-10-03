@@ -51,11 +51,11 @@
 				{% for label, messages in app.flashes %}
 					{% for message in messages %}
 						<div class="
-															{% if label == 'danger' %}form__info info-bg-danger
-															{% elseif label == 'success' %}form__info info-bg-success
-															{% elseif label == 'info' %}form__info info-bg-info
-															{% elseif label == 'warning' %}form__info info-bg-warning
-															{% endif %}">
+																															{% if label == 'danger' %}form__info info-bg-danger
+																															{% elseif label == 'success' %}form__info info-bg-success
+																															{% elseif label == 'info' %}form__info info-bg-info
+																															{% elseif label == 'warning' %}form__info info-bg-warning
+																															{% endif %}">
 							{{ message }}
 						</div>
 					{% endfor %}
@@ -65,24 +65,28 @@
 
 		{# Modal window for delete buttons #}
 		<div id="deleteConfirmationModal" class="hides-modal modal">
-			<h3 id="modalDeleteTitle" class="title title__fourth"></h3>
-			<p id="modalDeleteMessage"></p>
-			<div class="modal__buttons">
-				<button type="button" id="confirmDeleteBtn" class="button button__primary">
-					{{ 'confirmBtn'|trans }}
-				</button>
-				<button id="cancelDeleteBtn" class="button button__secondary">
-					{{ 'cancelBtn'|trans }}
-				</button>
+			<div class="modal__content">
+				<h3 id="modalDeleteTitle" class="title title__fourth"></h3>
+				<p id="modalDeleteMessage"></p>
+				<div class="modal__buttons">
+					<button type="button" id="confirmDeleteBtn" class="button button__primary">
+						{{ 'confirmBtn'|trans }}
+					</button>
+					<button id="cancelDeleteBtn" class="button button__secondary">
+						{{ 'cancelBtn'|trans }}
+					</button>
+				</div>
 			</div>
 		</div>
 
 		{# Modal window for users who try to add a favorite property if they are not logged in #}
 		<div id="favoriteModal" class="hides-modal modal">
-			<p id="modalFavoriteMessage"></p>
-			<button id="closeBtn" class="button button__secondary">
-				{{ 'closeBtn'|trans }}
-			</button>
+			<div class="modal__content">
+				<p id="modalFavoriteMessage"></p>
+				<button id="closeBtn" class="button button__secondary">
+					{{ 'closeBtn'|trans }}
+				</button>
+			</div>
 		</div>
 
 		{% block body %}{% endblock %}

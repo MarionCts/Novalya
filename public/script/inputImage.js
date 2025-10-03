@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
   if (addBtn) {
     addBtn.addEventListener('click', function () {
       const index = container.dataset.index;
-    // "/__name__/" is the default name Symfony uses when creating this type of element ; with replace(), we are asking it to replace this name by the value of "index"
+    // "/__name__/" is the default name Symfony uses when creating this type of element ; 
+    // with replace(), we are asking it to replace this name by the value of "index"
       const html = container.dataset.prototype.replace(/__name__/g, index);
 
       const wrapper = document.createElement('div');

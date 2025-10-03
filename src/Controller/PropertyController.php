@@ -60,7 +60,7 @@ final class PropertyController extends AbstractController
             ->getScalarResult();
 
         // We convert the cities into an array for the render
-        $cities = array_map(fn($r) => $r['city'], $allCities);
+        $cities = array_column($allCities, 'city');
         $choices = array_combine($cities, $cities) ?: [];
 
         $form = $this->createForm(FilterType::class, null, ['cities' => $choices]);
