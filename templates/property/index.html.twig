@@ -52,9 +52,9 @@
 					<div class="properties__buttons">
 						<div>
 							{# udpate button #}
-							<a href="{{ path('app_property_edit', {'id': property.id}) }}" class="button button__primary">{{ 'updateBtn'|trans }}</a>
+							<a href="{{ path('app_property_edit', {'id': property.id}) }}" class="button button__primary full-w">{{ 'updateBtn'|trans }}</a>
 							{# show button #}
-							<a href="{{ path('app_property_show', {'id': property.id}) }}" class="button button__secondary">{{ 'showBtn'|trans }}</a>
+							<a href="{{ path('app_property_show', {'id': property.id}) }}" class="button button__secondary full-w">{{ 'showBtn'|trans }}</a>
 						</div>
 						{# delete button #}
 						{{ include('property/_delete_form.html.twig') }}

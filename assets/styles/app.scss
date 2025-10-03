@@ -42,7 +42,6 @@
 }
 
 .hero__bg {
-
     &::before {
         content: "";
         opacity: css-var(hero-bg-opacity);
@@ -149,7 +148,9 @@
         background: css-var(linear-services);
     }
 
-    &:hover::before, &:active::before, &:focus::before {
+    &:hover::before,
+    &:active::before,
+    &:focus::before {
         opacity: 0;
     }
 
@@ -166,7 +167,9 @@
         background: css-var(linear-services-hover);
     }
 
-    &:hover::after, &:active::after, &:focus::after {
+    &:hover::after,
+    &:active::after,
+    &:focus::after {
         opacity: 1;
     }
 
@@ -526,8 +529,8 @@
         @include flex-preset(column, center, center);
 
         @include media(1024px) {
-        @include flex-preset(column, flex-start, center);
-    }
+            @include flex-preset(column, flex-start, center);
+        }
     }
 }
 
@@ -544,7 +547,7 @@
     @include flex-preset(column, center, center);
     margin-top: 15rem;
     width: 100%;
-    
+
     .form {
         @include media(1200px) {
             max-width: 100%;
@@ -563,6 +566,7 @@
         @include media(1200px) {
             display: block;
             width: auto;
+            padding: 1.4rem 2.2rem;
 
             svg {
                 fill: css-var(bg);
@@ -785,17 +789,6 @@
             @include media(768px) {
                 max-width: 60rem;
             }
-        }
-    }
-}
-
-.admin-pages__container {
-    button,
-    a {
-        width: 100%;
-
-        @include media(768px) {
-            max-width: 60rem;
         }
     }
 }

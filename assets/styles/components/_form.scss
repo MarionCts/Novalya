@@ -52,31 +52,30 @@
 }
 
 .admin-pages__container {
-
     .flex-responsive {
-    @include flex-preset(column, center, center);
-    margin-top: 2rem;
-    gap: 2rem;
-    width: 100%;
+        @include flex-preset(column, center, center);
+        margin-top: 2rem;
+        gap: 2rem;
+        width: 100%;
 
-    @include media(768px) {
-        @include flex-preset(row, center, center);
-        max-width: 60rem;
+        @include media(768px) {
+            @include flex-preset(row, center, center);
+            max-width: 60rem;
 
-        button {
-            border-radius: 2rem 0 2rem 0;
+            button {
+                border-radius: 2rem 0 2rem 0;
+            }
+
+            a {
+                border-radius: 0 2rem 0 2rem;
+            }
+
+            form,
+            a {
+                width: 100%;
+            }
         }
-
-        a {
-            border-radius: 0 2rem 0 2rem;
-        }
-
-        form, button, a {
-            width: 100%;
-        }
-
     }
-}
 }
 
 .form__text {

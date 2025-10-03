@@ -68,6 +68,23 @@
     }
 }
 
+.form-button {
+    width: auto;
+
+    @include media(768px) {
+        align-self: flex-start;
+    }
+}
+
+.panel-button {
+    width: 100%;
+
+    @include media(768px) {
+        width: auto;
+        min-width: 30rem;
+    }
+}
+
 // INPUT TYPE FILE
 
 .admin-pages__container {

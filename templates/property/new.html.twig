@@ -170,10 +170,10 @@
 		{% endfor %}
 
 		{# ADD BUTTON #}
-		<button class="button button__primary  mt-30">{{ 'addBtn'|trans }}</button>
+		<button class="button button__primary mt-35 panel-button">{{ 'addBtn'|trans }}</button>
 
 		{# GET BACK TO PROPERTIES BUTTON #}
-		<a class="button button__secondary" href="{{ path('app_property_index') }}">{{ 'addPropertyPage.getBack'|trans }}</a>
+		<a class="button button__secondary panel-button" href="{{ path('app_property_index') }}">{{ 'addPropertyPage.getBack'|trans }}</a>
 
 		{{ form_end(form) }}
 

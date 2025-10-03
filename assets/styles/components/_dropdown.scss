@@ -4,10 +4,16 @@
 
 // ***** ADMIN & ACCOUNT DROPDOWN MENU ******
 
-.control-template__panel {
-    border: 0.1rem solid css-var(text);
-    border-radius: 0 2rem 0 2rem;
-    padding: 4rem;
+.admin-pages__container {
+    .control-template__panel {
+        border: 0.1rem solid css-var(text);
+        border-radius: 0 2rem 0 2rem;
+        padding: 4rem;
+
+        button {
+            width: 100%;
+        }
+    }
 }
 
 .control-template__panel--dropdown {

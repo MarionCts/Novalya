@@ -194,10 +194,10 @@
 		{% endfor %}
 
 		{# UPDATE BUTTON #}
-		<button class="button button__primary  mt-30">{{ 'updateBtn'|trans }}</button>
+		<button class="button button__primary  mt-35 panel-button">{{ 'updateBtn'|trans }}</button>
 
 		{# GET BACK TO PROPERTIES BUTTON #}
-		<a class="button button__secondary" href="{{ path('app_property_index') }}">{{ 'updatePropertyPage.getBack'|trans }}</a>
+		<a class="button button__secondary panel-button" href="{{ path('app_property_index') }}">{{ 'updatePropertyPage.getBack'|trans }}</a>
 
 		{{ form_end(form) }}
 
