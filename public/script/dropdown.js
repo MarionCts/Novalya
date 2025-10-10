@@ -4,8 +4,7 @@
 
 const propertiesDropdown = document.getElementById("properties-dropdown");
 const propertiesMenu = document.getElementById("properties-dropdown-menu");
-const propertiesOpenIcon = document.getElementById("properties-icon-open");
-const propertiesCloseIcon = document.getElementById("properties-icon-close");
+const propertiesIcon = document.getElementById("properties-icon");
 
 if (propertiesDropdown) {
     // Function to open or close the dropdown when the link is clicked
@@ -14,8 +13,7 @@ if (propertiesDropdown) {
         const isOpen = propertiesMenu.classList.toggle("opens");
 
         propertiesDropdown.setAttribute("aria-expanded", String(isOpen));
-        propertiesOpenIcon.classList.toggle("hidden", isOpen);
-        propertiesCloseIcon.classList.toggle("hidden", !isOpen);
+        propertiesIcon.classList.toggle("rotates", isOpen);
     });
 }
 
@@ -23,8 +21,7 @@ if (propertiesDropdown) {
 
 const categoriesDropdown = document.getElementById("categories-dropdown");
 const categoriesMenu = document.getElementById("categories-dropdown-menu");
-const categoriesOpenIcon = document.getElementById("categories-icon-open");
-const categoriesCloseIcon = document.getElementById("categories-icon-close");
+const categoriesIcon = document.getElementById("categories-icon");
 
 if (categoriesDropdown) {
     // Function to open or close the dropdown when the link is clicked
@@ -33,8 +30,7 @@ if (categoriesDropdown) {
         const isOpen = categoriesMenu.classList.toggle("opens");
 
         categoriesDropdown.setAttribute("aria-expanded", String(isOpen));
-        categoriesOpenIcon.classList.toggle("hidden", isOpen);
-        categoriesCloseIcon.classList.toggle("hidden", !isOpen);
+        categoriesIcon.classList.toggle("rotates", isOpen);
     });
 }
 
@@ -42,8 +38,7 @@ if (categoriesDropdown) {
 
 const tagsDropdown = document.getElementById("tags-dropdown");
 const tagsMenu = document.getElementById("tags-dropdown-menu");
-const tagsOpenIcon = document.getElementById("tags-icon-open");
-const tagsCloseIcon = document.getElementById("tags-icon-close");
+const tagsIcon = document.getElementById("tags-icon");
 
 if (tagsDropdown) {
     // Function to open or close the dropdown when the link is clicked
@@ -52,8 +47,7 @@ if (tagsDropdown) {
         const isOpen = tagsMenu.classList.toggle("opens");
 
         tagsDropdown.setAttribute("aria-expanded", String(isOpen));
-        tagsOpenIcon.classList.toggle("hidden", isOpen);
-        tagsCloseIcon.classList.toggle("hidden", !isOpen);
+        tagsIcon.classList.toggle("rotates", isOpen);
     });
 }
 
@@ -63,8 +57,7 @@ if (tagsDropdown) {
 
 const accountDropdown = document.getElementById("account-dropdown");
 const accountMenu = document.getElementById("account-dropdown-menu");
-const accountOpenIcon = document.getElementById("account-icon-open");
-const accountCloseIcon = document.getElementById("account-icon-close");
+const accountIcon = document.getElementById("account-icon");
 
 if (accountDropdown) {
     // Function to open or close the dropdown when the link is clicked
@@ -73,8 +66,7 @@ if (accountDropdown) {
         const isOpen = accountMenu.classList.toggle("opens");
 
         accountDropdown.setAttribute("aria-expanded", String(isOpen));
-        accountOpenIcon.classList.toggle("hidden", isOpen);
-        accountCloseIcon.classList.toggle("hidden", !isOpen);
+        accountIcon.classList.toggle("rotates", isOpen);
     });
 }
 
@@ -82,8 +74,7 @@ if (accountDropdown) {
 
 const favoritesDropdown = document.getElementById("favorites-dropdown");
 const favoritesMenu = document.getElementById("favorites-dropdown-menu");
-const favoritesOpenIcon = document.getElementById("favorites-icon-open");
-const favoritesCloseIcon = document.getElementById("favorites-icon-close");
+const favoritesIcon = document.getElementById("favorites-icon");
 
 if (favoritesDropdown) {
     // Function to open or close the dropdown when the link is clicked
@@ -92,8 +83,7 @@ if (favoritesDropdown) {
         const isOpen = favoritesMenu.classList.toggle("opens");
 
         favoritesDropdown.setAttribute("aria-expanded", String(isOpen));
-        favoritesOpenIcon.classList.toggle("hidden", isOpen);
-        favoritesCloseIcon.classList.toggle("hidden", !isOpen);
+        favoritesIcon.classList.toggle("rotates", isOpen);
     });
 }
 

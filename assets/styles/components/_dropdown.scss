@@ -31,6 +31,10 @@
     }
 }
 
+.rotates {
+    transform: rotate(180deg);
+}
+
 .dropdown__menu {
     opacity: 0;
     display: none;
@@ -50,9 +54,11 @@
 }
 
 .dropdown-icon {
+
+    transition: all 0.2s linear;
+
     path {
         fill: currentColor;
-        transition: fill 0.2s linear;
     }
 
     &:is(:hover, :focus-visible) {

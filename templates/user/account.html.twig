@@ -17,10 +17,7 @@
 					<ul>
 						<li>
 							<button id="account-dropdown" class="control-template__panel--dropdown panel__titles">{{ 'account.accountTitle'|trans }}
-								<svg id="account-icon-open" class="dropdown-icon hidden" width="18" height="15" viewbox="0 0 18 15" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 4.69771C16.3032 4.24392 15.5711 4.24871 15.1225 4.70839L9.00806 10.9738L2.89358 4.70839C2.44496 4.24871 1.71288 4.24392 1.25847 4.69771C0.804028 5.1515 0.79928 5.892 1.2479 6.35168L8.18524 13.4602C8.40245 13.6828 8.69882 13.8082 9.00806 13.8082C9.31725 13.8082 9.61363 13.6828 9.83088 13.4602L16.7682 6.35168C17.2168 5.892 17.212 5.1515 16.7576 4.69771Z"/>
-								</svg>
-								<svg id="account-icon-close" class="dropdown-icon" width="18" height="15" viewbox="0 0 18 15" fill="none">
+								<svg id="account-icon" class="dropdown-icon rotates" width="18" height="15" viewbox="0 0 18 15" fill="none">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 10.3023C16.3032 10.7561 15.5711 10.7513 15.1225 10.2916L9.00806 4.02623L2.89358 10.2916C2.44496 10.7513 1.71288 10.7561 1.25847 10.3023C0.804028 9.8485 0.79928 9.108 1.2479 8.64832L8.18524 1.53976C8.40245 1.31716 8.69882 1.19184 9.00806 1.19184C9.31725 1.19184 9.61363 1.31716 9.83088 1.53976L16.7682 8.64832C17.2168 9.108 17.212 9.8485 16.7576 10.3023Z"/>
 								</svg>
 							</button>
@@ -28,17 +25,16 @@
 								<li>
 									<a href="#update-account" id="info-btn" class="paragraph__small">{{ 'account.manageInfos'|trans }}</a>
 								</li>
-								<li>
-									<a href="#delete-account" id="delete-btn" class="paragraph__small">{{ 'account.deleteAccount'|trans }}</a>
-								</li>
+								{% if not 'ROLE_ADMIN' in app.user.roles %}
+									<li>
+										<a href="#delete-account" id="delete-btn" class="paragraph__small">{{ 'account.deleteAccount'|trans }}</a>
+									</li>
+								{% endif %}
 							</ul>
 						</li>
 						<li>
 							<button id="favorites-dropdown" class="control-template__panel--dropdown panel__titles">{{ 'account.favoriteTitle'|trans }}
-								<svg id="favorites-icon-open" class="dropdown-icon hidden" width="18" height="15" viewbox="0 0 18 15" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 4.69771C16.3032 4.24392 15.5711 4.24871 15.1225 4.70839L9.00806 10.9738L2.89358 4.70839C2.44496 4.24871 1.71288 4.24392 1.25847 4.69771C0.804028 5.1515 0.79928 5.892 1.2479 6.35168L8.18524 13.4602C8.40245 13.6828 8.69882 13.8082 9.00806 13.8082C9.31725 13.8082 9.61363 13.6828 9.83088 13.4602L16.7682 6.35168C17.2168 5.892 17.212 5.1515 16.7576 4.69771Z"/>
-								</svg>
-								<svg id="favorites-icon-close" class="dropdown-icon" width="18" height="15" viewbox="0 0 18 15" fill="none">
+								<svg id="favorites-icon" class="dropdown-icon rotates" width="18" height="15" viewbox="0 0 18 15" fill="none">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7576 10.3023C16.3032 10.7561 15.5711 10.7513 15.1225 10.2916L9.00806 4.02623L2.89358 10.2916C2.44496 10.7513 1.71288 10.7561 1.25847 10.3023C0.804028 9.8485 0.79928 9.108 1.2479 8.64832L8.18524 1.53976C8.40245 1.31716 8.69882 1.19184 9.00806 1.19184C9.31725 1.19184 9.61363 1.31716 9.83088 1.53976L16.7682 8.64832C17.2168 9.108 17.212 9.8485 16.7576 10.3023Z"/>
 								</svg>
 							</button>
@@ -96,18 +92,20 @@
 			</section>
 
 			{# DELETE ACCOUNT SECTION #}
-			<section id="account-delete" class="account__main hidden">
-				<h2 class="title title__tertiary center">{{ 'account.deleteTitle'|trans }}
-				</h2>
+			{% if not 'ROLE_ADMIN' in app.user.roles %}
+				<section id="account-delete" class="account__main hidden">
+					<h2 class="title title__tertiary center">{{ 'account.deleteTitle'|trans }}
+					</h2>
 
-				<div class="account__main--delete">
-					<p>{{ 'account.deleteMessage'|trans }}</p>
-					<form method="post" action="{{ path('app_user_account_deactivate', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-						<input type="hidden" name="_token" value="{{ csrf_token('deactivate' ~ user.id) }}">
-						<button class="button button__delete full-w" data-user-id="{{ user.id }}">{{ 'deleteBtn'|trans }}</button>
-					</form>
-				</div>
-			</section>
+					<div class="account__main--delete">
+						<p>{{ 'account.deleteMessage'|trans }}</p>
+						<form method="post" action="{{ path('app_user_account_deactivate', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('deactivate' ~ user.id) }}">
+							<button class="button button__delete full-w" data-user-id="{{ user.id }}">{{ 'deleteBtn'|trans }}</button>
+						</form>
+					</div>
+				</section>
+			{% endif %}
 
 			{# ACCOUNT FAVORITES #}
 			<section id="favorites" class="account__main">
