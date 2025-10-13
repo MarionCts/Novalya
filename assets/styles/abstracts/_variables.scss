@@ -40,7 +40,7 @@ $theme-dark: (
     card-button-text: hsl(21, 100, 99),
     card-button-bg-hover: hsl(34, 56, 29),
     hero-bg-opacity: 0.4,
-    menu-bg-opacity: 1,
+    menu-bg-opacity: 0.7,
     linear-services: linear-gradient(hsla(225, 29%, 11%, 0), hsla(225, 29%, 11%, 0.5), hsl(225, 29%, 11%, 0.8)),
     linear-services-hover: linear-gradient(hsla(225, 29%, 11%, 0.9), hsla(225, 29%, 11%, 1), hsl(225, 29%, 11%, 1)),
     dropdown-icon-select: url("./../../images/dropdown_icon_open.svg") no-repeat right
@@ -86,7 +86,7 @@ $theme-light: (
     card-button-text: hsl(21, 100, 99),
     card-button-bg-hover: hsl(34, 56, 29),
     hero-bg-opacity: 0.2,
-    menu-bg-opacity: 0.15,
+    menu-bg-opacity: 0.1,
     linear-services: linear-gradient(rgba(255, 252, 250, 0), rgba(255, 252, 250, 0.4), rgba(255, 252, 250, 1)),
     linear-services-hover: linear-gradient(rgba(255, 252, 250, 1), rgba(255, 252, 250, 1), rgba(255, 252, 250, 1)),
     dropdown-icon-select: url("./../../images/dropdown_icon_open_dark.svg") no-repeat right
