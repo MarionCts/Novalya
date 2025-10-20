@@ -1023,6 +1023,12 @@
         gap: 8.4rem;
     }
 
+    .contact__form {
+        @include media(1200px) {
+            max-width: 50%;
+        }
+    }
+
     p {
         margin-bottom: 3rem;
 

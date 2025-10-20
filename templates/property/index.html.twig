@@ -16,14 +16,22 @@
 			{% for property in properties %}
 
 				<div class="properties__specs">
-					{% for image in property.propertyImages %}
+					{% if property.propertyImages|length > 0 %}
+						{% for image in property.propertyImages %}
 
-						{# Selects only the featured image among all the pictures related to this property #}
-						{% if image.property.id == property.id and image.isFeatured == true %}
-							<div class="properties__image">
-								<img src="{{ asset(image.url) }}" alt="{{ 'homePage.alt.intro'|trans }}"></div>
-						{% endif %}
-					{% endfor %}
+							{# Selects only the featured image among all the pictures related to this property #}
+							{% if image.property.id == property.id and image.isFeatured == true %}
+								<div class="properties__image">
+									<img src="{{ asset(image.url) }}" alt="{{ 'homePage.alt.intro'|trans }}">
+								</div>
+							{% endif %}
+						{% endfor %}
+					{% else %}
+						<div class="properties__image">
+							<img src="{{ asset('images/placeholder.webp') }}" alt="{{ 'homePage.alt.intro'|trans }}">
+						</div>
+					{% endif %}
+
 
 					<h4 class="title panel__titles">{{ property.name }}</h4>
 					<div class="properties__content">

@@ -25,7 +25,7 @@ final class HomeController extends AbstractController
             );
         }
         return $this->render('home/index.html.twig', [
-            'properties' => $propertyRepository->findBy([], ['createdAt' => 'DESC'], 3),
+            'properties' => $propertyRepository->findBy(['status' => 'published'], ['createdAt' => 'DESC'], 3),
             'favoriteIds' => $favoriteIds,
         ]);
     }
