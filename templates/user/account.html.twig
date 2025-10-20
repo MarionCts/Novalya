@@ -25,7 +25,7 @@
 								<li>
 									<a href="#update-account" id="info-btn" class="paragraph__small">{{ 'account.manageInfos'|trans }}</a>
 								</li>
-								{% if not 'ROLE_ADMIN' in app.user.roles %}
+								{% if 'ROLE_ADMIN' not in app.user.roles %}
 									<li>
 										<a href="#delete-account" id="delete-btn" class="paragraph__small">{{ 'account.deleteAccount'|trans }}</a>
 									</li>
@@ -92,7 +92,7 @@
 			</section>
 
 			{# DELETE ACCOUNT SECTION #}
-			{% if not 'ROLE_ADMIN' in app.user.roles %}
+			{% if 'ROLE_ADMIN' not in app.user.roles %}
 				<section id="account-delete" class="account__main hidden">
 					<h2 class="title title__tertiary center">{{ 'account.deleteTitle'|trans }}
 					</h2>

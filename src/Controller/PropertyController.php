@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Property;
 use App\Enum\Status;
-use App\Entity\PropertyImage;
 use App\Form\PropertyType;
 use App\Form\ContactType;
 use App\Form\FilterType;
@@ -17,7 +16,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Repository\FavoriteRepository;
-use Doctrine\ORM\EntityManager;
 
 #[Route('/property')]
 final class PropertyController extends AbstractController
