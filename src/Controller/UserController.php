@@ -33,11 +33,10 @@ class UserController extends AbstractController
     }
 
     #[Route('/account/{id}', name: 'app_user_account', methods: ['GET', 'POST'])]
-    public function account(User $user, FavoriteRepository $favoriteRepository, UserPasswordHasherInterface $passwordHasher, Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager): Response
+    public function account(User $user, UserPasswordHasherInterface $passwordHasher, Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager): Response
     {
         if ($user !== $this->getUser()) {
             throw new AccessDeniedException($translator->trans('errorPage.message'));
-            // return $this->redirectToRoute('app_error_error');
         }
 
         $form = $this->createForm(UserType::class, $user);
